@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1198.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClienteController">
+    <children>
+        <TableView fx:id="tblCliente" editable="true" layoutX="176.0" layoutY="48.0" prefHeight="541.0" prefWidth="950.0" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="65.0">
+            <columns>
+                <TableColumn fx:id="colNombreCliente" editable="true" prefWidth="140.0" text="Nombre(s)">
+                   
+
+
+
+                </TableColumn>
+                <TableColumn fx:id="colApellidoPaterno" editable="true" prefWidth="121.0" text="Apellido Paterno">
+              
+  
+
+
+                </TableColumn>
+                <TableColumn fx:id="colApellidoMaterno" editable="true" prefWidth="129.0" text="Apellido Materno">
+                 
+             
+
+                </TableColumn>
+                
+                <TableColumn fx:id="colCalle" editable="true" prefWidth="75.0" text="Calle">
+            
+                </TableColumn>
+                
+                <TableColumn fx:id="colCP" editable="true" prefWidth="75.0" text="C.P.">
+                 
+                  
+                </TableColumn>
+                
+                <TableColumn fx:id="colColonia" editable="true" prefWidth="79.0" text="Colonia">
+                 
+
+                </TableColumn>
+                <TableColumn fx:id="colDelegacion" editable="true" prefWidth="114.0" text="Delegación">
+                   
+                 
+                
+                  
+                </TableColumn>
+                <TableColumn fx:id="colTelefono" editable="true" prefWidth="130.0" text="Teléfono">
+                   
+                </TableColumn>
+                <TableColumn fx:id="colFormaDePago" editable="true" prefWidth="86.0" text="Forma de pago">
+                   
+                 
+
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <TextField fx:id="txtNombreCliente" layoutX="12.0" layoutY="34.0" />
+        <TextField fx:id="txtApellidoPaterno" layoutX="12.0" layoutY="90.0" />
+        <TextField fx:id="txtCalle" layoutX="15.0" layoutY="219.0" />
+        <Label layoutX="12.0" layoutY="8.0" prefHeight="25.0" prefWidth="100.0" text="Nombres(s)" />
+        <Label layoutX="12.0" layoutY="65.0" prefHeight="25.0" prefWidth="100.0" text="Apellido Paterno" />
+        <Label layoutX="12.0" layoutY="125.0" prefHeight="25.0" prefWidth="100.0" text="Apellido Materno" />
+        <TextField fx:id="txtCP" layoutX="15.0" layoutY="284.0" prefHeight="0.0" prefWidth="149.0" />
+        <TextField fx:id="txtColonia" layoutX="15.0" layoutY="346.0" prefHeight="0.0" prefWidth="149.0" />
+        <TextField fx:id="txtDelegacion" layoutX="15.0" layoutY="410.0" prefHeight="0.0" prefWidth="149.0" />
+        <Label layoutX="15.0" layoutY="194.0" prefHeight="25.0" prefWidth="100.0" text="Calle" />
+        <Label layoutX="15.0" layoutY="254.0" prefHeight="25.0" prefWidth="100.0" text="C.P" />
+        <Label layoutX="15.0" layoutY="321.0" prefHeight="25.0" prefWidth="100.0" />
+        <Label layoutX="15.0" layoutY="379.0" prefHeight="25.0" prefWidth="136.0" text="Delegación" />
+        <Label layoutX="15.0" layoutY="444.0" prefHeight="25.0" prefWidth="136.0" text="Teléfono" />
+        <TextField fx:id="txtTelefono" layoutX="15.0" layoutY="469.0" prefHeight="0.0" prefWidth="149.0" />
+        <Label layoutX="15.0" layoutY="508.0" prefHeight="25.0" prefWidth="136.0" text="Forma de Pago" />
+        <ComboBox fx:id="comboBoxFormaDePago" layoutX="12.0" layoutY="533.0" prefWidth="150.0" />
+
+        <Button fx:id="btnGuardarCliente" layoutX="46.0" layoutY="577.0" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="25.0" prefWidth="74.0" text="Guardar" />
+        <Button fx:id="btnEliminarCliente" layoutX="244.0" layoutY="8.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
+        <Button fx:id="btnActualizarCliente" layoutX="329.0" layoutY="8.0" mnemonicParsing="false" onAction="#actualizarCliente" text="Actualizar" />
+     
+      <TextField fx:id="txtApellidoMaterno" layoutX="12.0" layoutY="150.0" />
+      <Label layoutX="15.0" layoutY="321.0" prefHeight="25.0" prefWidth="100.0" text="Colonia" />
+        <Button fx:id="btnMenu" layoutX="1058.0" layoutY="18.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="68.0" text="Menú" />
+      <TextField fx:id="TxtBusquedaCliente" layoutX="725.0" layoutY="18.0" opacity="0.63" prefHeight="31.0" prefWidth="159.0" text="Teléfono" />
+      <Button fx:id="btnBusquedaCliente" layoutX="894.0" layoutY="18.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="31.0" prefWidth="32.0" text="XD" />
+      <Button fx:id="btnRecargar" layoutX="949.0" layoutY="18.0" mnemonicParsing="false" onAction="#recargarTablaClientes" prefHeight="31.0" prefWidth="42.0" text="҉" />
+      <Label layoutX="543.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0" text="CLIENTES">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+    
+
+    </children>
+</AnchorPane>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="575.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoriasController">
+
+    <children>
+        <TableView fx:id="tblCategoria" editable="true" layoutX="81.0" layoutY="36.0" prefHeight="359.0" prefWidth="445.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="36.0">
+            <columns>
+                <TableColumn fx:id="colNombreCategoria" editable="true" prefWidth="200.0" text="Nombre">
+                   
+                </TableColumn>
+                <TableColumn fx:id="colDescripcionCategoria" editable="true" minWidth="0.0" prefWidth="198.0" text="Descripción">
+                </TableColumn>
+            </columns>
+        </TableView>
+        <Button fx:id="btnMenu" layoutX="217.0" layoutY="412.0" onAction="#openWintwo" prefHeight="34.0" prefWidth="142.0" text="Volver al menú" />
+      <Label layoutX="233.0" layoutY="9.0" text="CATEGORIAS">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+    
+
+    </children>
+</AnchorPane>

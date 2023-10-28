@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="548.0" prefWidth="1052.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VentaPastelController">
+
+    <children>
+        <TableView fx:id="tblVentaPastel" editable="true" layoutX="48.0" layoutY="39.0" prefHeight="541.0" prefWidth="950.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="39.0">
+            <columns>
+                <TableColumn fx:id="colFolioDeVenta" editable="true" prefWidth="214.0" text="Folio de venta">
+                   
+
+
+
+                </TableColumn>
+                <TableColumn fx:id="colCodigoDeBarraPastel" editable="true" minWidth="0.0" prefWidth="190.0" text="Código de barras del pastel">
+              
+  
+
+
+                </TableColumn>
+                <TableColumn fx:id="colPastel" editable="true" prefWidth="204.0" text="Pastel">
+                 
+             
+
+                </TableColumn>
+                
+                <TableColumn fx:id="colPeso" editable="true" prefWidth="182.0" text="Peso">
+            
+                </TableColumn>
+            </columns>
+        </TableView>
+       <Button fx:id="btnMenu" layoutX="452.0" layoutY="485.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="149.0" text="Volver al menú" />
+      <Label layoutX="412.0" layoutY="14.0" text="VENTAS RELACION CON PASTELES ">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+
+    </children>
+</AnchorPane>

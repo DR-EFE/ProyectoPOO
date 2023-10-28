@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="719.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoNocturnoC">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="17.0" stroke="#ffdef1" strokeType="INSIDE" width="719.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="37.0" layoutX="1.0" layoutY="457.0" stroke="#ffdef1" strokeType="INSIDE" width="719.0" />
+      <Circle fill="#ffc4df" layoutX="-21.0" layoutY="457.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="188.0" layoutY="-50.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="814.0" layoutY="274.0" radius="147.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="360.0" layoutY="488.0" radius="61.0" stroke="WHITE" strokeType="INSIDE" />
+      <Button fx:id="btnPedidos3" layoutX="192.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSix2" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
+         <font>
+            <Font name="Cambria Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVentas3" layoutX="420.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSeven" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
+         <font>
+            <Font name="Cambria Bold Italic" size="20.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="144.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/55.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="393.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/66.png" />
+         </image>
+      </ImageView>
+      <Circle fill="#ffc4df" layoutX="685.0" layoutY="50.0" radius="18.0" stroke="WHITE" strokeType="INSIDE" />
+      <Label layoutX="543.0" layoutY="43.0" text="empleado@Cream.pastel" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="195.0" layoutY="141.0" text="Pedidos" textFill="#b9c3ff">
+         <font>
+            <Font name="Century" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="425.0" layoutY="141.0" text="Ventas" textFill="#b9c3ff">
+         <font>
+            <Font name="Century" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="246.0" layoutY="58.0" text="Bienvenido " textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT" size="46.0" />
+         </font>
+      </Label>
+      <Text fontSmoothingType="LCD" layoutX="677.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" wrappingWidth="15.646484375">
+         <font>
+            <Font name="Bodoni MT Bold Italic" size="25.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="menuopciones" layoutX="23.0" layoutY="46.0" mnemonicParsing="false" style="-fx-background-color: pink;" text="Más opciones " textFill="#2f107c">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <items>
+            <MenuItem fx:id="itemClaro" mnemonicParsing="false" onAction="#cambiarTemaClaro" text="Tema claro ☀" />
+            <MenuItem fx:id="itemCerrar" mnemonicParsing="false" onAction="#openWinOne" text="Cerrar sesión  &lt;-" />
+         </items>
+      </MenuButton>
+   </children>
+</Pane>

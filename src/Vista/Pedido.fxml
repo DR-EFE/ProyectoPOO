@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="1198.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PedidosController">
+    <children>
+        <TableView fx:id="tblPedido" editable="true" layoutX="175.0" layoutY="50.0" prefHeight="513.0" prefWidth="1008.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
+            <columns>
+                <TableColumn fx:id="colFolio" editable="true" prefWidth="60.0" text="Folio ">
+                   
+
+
+
+                </TableColumn>
+                <TableColumn fx:id="colFechaHoraSolicitud" editable="true" prefWidth="150.0" text="Fecha y hora de solicitud">
+              
+  
+
+
+                </TableColumn>
+                <TableColumn fx:id="colDescripcion" editable="true" prefWidth="114.0" text="Descripción">
+                 
+             
+
+                </TableColumn>
+                
+                <TableColumn fx:id="colAnticipo" editable="true" prefWidth="83.0" text="Anticipo">
+            
+                </TableColumn>
+                
+                <TableColumn fx:id="colTipo" editable="true" prefWidth="101.0" text="Tipo">
+                 
+                  
+                </TableColumn>
+                
+                <TableColumn fx:id="colSubtotal" editable="true" prefWidth="82.0" text="Subtotal">
+                 
+
+                </TableColumn>
+                <TableColumn fx:id="colTotal" editable="true" prefWidth="79.0" text="Total">
+                   
+                 
+                
+                  
+                </TableColumn>
+                <TableColumn fx:id="colEstatus" editable="true" prefWidth="95.0" text="Estatus">
+                   
+                </TableColumn>
+                <TableColumn fx:id="colFechaHoraEntrega" editable="true" prefWidth="144.0" text="Fecha y hora de entrga">
+                   
+                 
+
+                </TableColumn>
+            <TableColumn fx:id="colTelefono_FK" prefWidth="97.0" text="Teléfono" />
+            </columns>
+        </TableView>
+
+        <TextField fx:id="txtFolio" layoutX="14.0" layoutY="38.0" />
+        <TextField fx:id="txtDescripcionPedido" layoutX="14.0" layoutY="153.0" prefHeight="45.0" prefWidth="149.0" />
+        <TextField fx:id="txtAnticipo" layoutX="14.0" layoutY="237.0" />
+        <Label layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" text="Folio de pedido" />
+        <Label layoutX="14.0" layoutY="70.0" prefHeight="25.0" prefWidth="149.0" text="Fecha y hora de solicitud" />
+        <Label layoutX="14.0" layoutY="128.0" prefHeight="25.0" prefWidth="100.0" text="Descripcion " />
+        <TextField fx:id="txtTipo" layoutX="14.0" layoutY="294.0" prefHeight="0.0" prefWidth="149.0" />
+        <TextField fx:id="txtSubtotal" layoutX="14.0" layoutY="356.0" prefHeight="0.0" prefWidth="149.0" />
+        <TextField fx:id="txtTotal" layoutX="15.0" layoutY="416.0" prefHeight="0.0" prefWidth="149.0" />
+        <Label layoutX="14.0" layoutY="204.0" prefHeight="25.0" prefWidth="100.0" text="Anticipo" />
+        <Label layoutX="14.0" layoutY="272.0" prefHeight="25.0" prefWidth="100.0" text="Tipo" />
+        <Label layoutX="14.0" layoutY="331.0" prefHeight="25.0" prefWidth="100.0" text="Subtotal" />
+        <Label layoutX="14.0" layoutY="391.0" prefHeight="25.0" prefWidth="136.0" text="Total" />
+        <Label layoutX="14.0" layoutY="447.0" prefHeight="25.0" prefWidth="136.0" text="Estatus" />
+        <TextField fx:id="txtEstatus" layoutX="14.0" layoutY="472.0" prefHeight="0.0" prefWidth="149.0" />
+        <Label fx:id="Fechadeentrega" layoutX="14.0" layoutY="503.0" prefHeight="25.0" prefWidth="136.0" text="Fecha y hora de entrega" />
+
+        <Button fx:id="btnGuardar" layoutX="362.0" layoutY="583.0" mnemonicParsing="false" onAction="#guardarRegistro" prefHeight="31.0" prefWidth="94.0" text="Guardar" AnchorPane.bottomAnchor="27.0" />
+        <Button fx:id="btnEliminar" layoutX="742.0" layoutY="583.0" mnemonicParsing="false" onAction="#eliminarRegistro" prefHeight="31.0" prefWidth="94.0" text="Eliminar" AnchorPane.bottomAnchor="27.0" />
+        <Button fx:id="btnActualizar" layoutX="538.0" layoutY="583.0" mnemonicParsing="false" onAction="#actualizarRegistroPedido" prefHeight="31.0" prefWidth="94.0" text="Actualizar" AnchorPane.bottomAnchor="27.0" />
+      <TextField fx:id="txtTelefono_FK" layoutX="14.0" layoutY="586.0" prefHeight="0.0" prefWidth="149.0" />
+      <Label layoutX="14.0" layoutY="561.0" prefHeight="25.0" prefWidth="136.0" text="Teléfono" />
+  <Button fx:id="btnMenu" layoutX="1090.0" layoutY="20.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="94.0" text="Menú" />
+      <DatePicker fx:id="FechaHoraDeSolicitud" layoutX="14.0" layoutY="95.0" prefHeight="25.0" prefWidth="149.0" />
+      <DatePicker fx:id="FechaHoraEntrega" layoutX="15.0" layoutY="528.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="TxtBuscarPedido" layoutX="679.0" layoutY="20.0" prefHeight="31.0" prefWidth="166.0" />
+      <Button fx:id="btnBuscarPedido" layoutX="853.0" layoutY="20.0" mnemonicParsing="false" onAction="#buscarPedido" prefHeight="31.0" prefWidth="39.0" text="🔍" />
+      <Button fx:id="btnRecargarTablaPedido" layoutX="909.0" layoutY="20.0" mnemonicParsing="false" onAction="#recargarTablaPedido" prefHeight="31.0" prefWidth="39.0" text="҉">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="472.0" layoutY="11.0" prefHeight="49.0" prefWidth="166.0" text="PEDIDOS">
+         <font>
+            <Font name="System Bold Italic" size="33.0" />
+         </font>
+      </Label>
+    
+    </children>
+</AnchorPane>
