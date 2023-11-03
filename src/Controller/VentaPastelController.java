@@ -74,7 +74,7 @@ public class VentaPastelController extends Utilitaria implements Initializable {
 			// método next()
 			while (resVentaPastel.next()) {
 				listaVentaPastel.add(new VentaPastel(resVentaPastel.getInt("folioVenta_FK"),
-						resVentaPastel.getString("folioVenta_FK"),
+						resVentaPastel.getString("CodigoBarrasPastel_FK"),
 						resVentaPastel.getString("Pastel"), resVentaPastel.getString("Peso")));
 			}
 		} catch (Exception ex) {
