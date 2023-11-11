@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D3DB;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D3DB;" 
+xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
    <children>
       <VBox layoutX="384.0" layoutY="129.0" prefHeight="274.0" prefWidth="216.0" style="-fx-background-color: #1354B7;">
          <children>
@@ -51,7 +52,7 @@
             <TextFlow prefHeight="200.0" prefWidth="200.0" />
          </children>
       </VBox>
-      <TextField fx:id="usernameField" layoutX="15.0" layoutY="148.0" />
+      <TextField fx:id="btnusernameField" layoutX="15.0" layoutY="148.0" />
       <Label layoutX="14.0" prefHeight="126.0" prefWidth="232.0" text="Registro" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="Arial Unicode MS" size="32.0" />
@@ -65,8 +66,8 @@
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font></Label>
-      <PasswordField fx:id="passwordField" layoutX="15.0" layoutY="209.0" />
-      <Button fx:id="btnRegistrar" layoutX="288.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleRegisterButtonAction" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: F4B8C6;" text="Sigueinte">
+      <PasswordField fx:id="btnLastName1" layoutX="15.0" layoutY="209.0" />
+      <Button fx:id="btnNext" layoutX="288.0" layoutY="350.0" mnemonicParsing="false" onAction="#siguiente" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: F4B8C6;" text="Sigueinte">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
@@ -76,7 +77,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="confirmPasswordField" layoutX="15.0" layoutY="266.0" />
+      <PasswordField fx:id="btnLasName2" layoutX="15.0" layoutY="266.0" />
       <ImageView fitHeight="78.0" fitWidth="115.0" layoutX="170.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Imagenes/undraw_Login_re_4vu2-removebg-preview.png" />
@@ -84,7 +85,7 @@
      
      
       </ImageView>
-      <PasswordField fx:id="passwordField1" layoutX="213.0" layoutY="214.0" />
+      <PasswordField fx:id="btnPhone" layoutX="213.0" layoutY="214.0" />
       <Label layoutX="210.0" layoutY="187.0" text="Número telefónico">
          <font>
             <Font name="Arial Bold" size="14.0" />
@@ -95,7 +96,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <ComboBox layoutX="213.0" layoutY="148.0" prefWidth="150.0" style="-fx-background-color: #FFF8F8;" />
+      <ComboBox fx:id="btnTipoDeChamba" layoutX="213.0" layoutY="148.0" prefWidth="150.0" style="-fx-background-color: #FFF8F8;" />
       
       
    </children>

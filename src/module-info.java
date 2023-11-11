@@ -5,6 +5,7 @@ module Tablita2 {
 	requires java.desktop;
 	requires java.sql;
 	requires javafx.graphics;
+	requires jbcrypt;
 	
 	opens Controller to javafx.graphics , javafx.fxml;
 

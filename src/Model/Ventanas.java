@@ -44,36 +44,55 @@ public class Ventanas {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(root);
+          primaryStage.setFullScreen(true);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
+    public void MostrarPane2(String fxmlPath) {
 
-    /*
-     * public void mostrarVentana(String fxmlPath, String title) {
-     * try {
-     * FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-     * Parent root = loader.load();
-     * 
-     * Stage primaryStage = new Stage();
-     * primaryStage.setTitle(title);
-     * 
-     * Scene scene = new Scene(root);
-     * primaryStage.setScene(scene);
-     * primaryStage.show();
-     * 
-     * SampleController controlador = loader.getController();
-     * 
-     * 
-     * 
-     * } catch (Exception e) {
-     * e.printStackTrace();
-     * }
-     * 
-     * 
-     * }
-     */
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+            Stage primaryStage = new Stage();
+
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(root);
+          //primaryStage.setFullScreen(true);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            
+         
+            
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+   
+      public void mostrarVentana(String fxmlPath, String title) {
+      try {
+      FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+      Parent root = loader.load();
+      
+      Stage primaryStage = new Stage();
+      primaryStage.setTitle(title);
+      
+      Scene scene = new Scene(root);
+     primaryStage.setScene(scene);
+      primaryStage.show();
+      
+      SampleController controlador = loader.getController();
+   
+     
+      } catch (Exception e) {
+      e.printStackTrace();
+      }
+      
+      
+      }
+     
 
 }

@@ -273,4 +273,36 @@ public class SampleController2 implements Initializable {
 
     }
 
+    
+    public void RegistroSig(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Register2.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.show();
+
+            Stage myStage = (Stage) this.btnCategoria.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

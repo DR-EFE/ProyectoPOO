@@ -31,14 +31,7 @@ public class VentasController extends Utilitaria implements Initializable {
 
 	@FXML
 	private TextField TxtBuquedaVenta;
-	@FXML
-	private Button btnEliminarVenta;
-	@FXML
-	private Button btnGuardarVenta;
-	@FXML
-	private Button btnActualizarVenta;
-	@FXML
-	private Button btnBuscarVenta;
+	
 	@FXML
 	private Button btnRecargarTablaVenta;
 
@@ -257,7 +250,7 @@ public class VentasController extends Utilitaria implements Initializable {
 	@FXML
 	private void buscarVenta(ActionEvent event) throws Exception {
 		String folioVenta = TxtBuquedaVenta.getText();
-		if (!folioVenta.isEmpty()) {
+		if ( Ventas.validarCampoBusqueda(folioVenta)) {
 			try {
 				Connection connection = ConnectionFactory.getConnection();
 				String selectQuery = "SELECT * FROM ventas WHERE Folio = ?";
@@ -288,12 +281,21 @@ public class VentasController extends Utilitaria implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "Debe ingresar un código de barras del producto");
+		
+			recargarTablaVentas();
 		}
+		
+		
+			
+			
+			
+		
+		
+		
 	}
 
-	@FXML
-	private void recargarTablaVentas(ActionEvent event) throws Exception {
+
+	private void recargarTablaVentas() throws Exception {
 		try {
 			Connection connection = ConnectionFactory.getConnection();
 			String selectQuery = "SELECT * FROM ventas";

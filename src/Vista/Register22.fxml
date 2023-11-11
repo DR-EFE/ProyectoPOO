@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D3DB;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ExtendedRegisterController">
+   <children>
+      <VBox layoutX="345.0" layoutY="129.0" prefHeight="274.0" prefWidth="257.0" style="-fx-background-color: #1354B7;">
+         <children>
+            <Label textFill="WHITE" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Esta va a ser tu Información de ingreso al sistema asi que recuerdala bien " textAlignment="CENTER" wrappingWidth="256.6015625" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="248.697265625" />
+            <Label textFill="WHITE" />
+            <Label alignment="CENTER" prefHeight="28.0" prefWidth="264.0" style="-fx-background-color: #FFFDFD;" text="¡ATENCIÓN!" textAlignment="RIGHT" textFill="#fc0909">
+               <font>
+                  <Font name="Arial Bold" size="15.0" />
+               </font>
+            </Label>
+            <Text fill="#fffafa" strokeType="OUTSIDE" strokeWidth="0.0" text="1-Recuerda bien el numero de empleado asignado , ya que va a ser el USUARIO con el que podras entrar al sistema" textAlignment="CENTER" wrappingWidth="256.880859375" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="2-.Tu contrasena tiene que tener minimo 4 caracteresentre numero y letras... Nada de caracteres especiales..." textAlignment="CENTER" wrappingWidth="256.572265625" />
+         </children>
+      </VBox>
+      <VBox alignment="TOP_CENTER" layoutX="345.0" layoutY="-2.0" prefHeight="134.0" prefWidth="257.0" style="-fx-background-color: #1354B7;">
+         <children>
+            <ImageView fitHeight="133.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Img/1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <TextField fx:id="btnNum" layoutX="15.0" layoutY="148.0" prefHeight="25.0" prefWidth="172.0" style="-fx-background-color: #555252;" />
+      <Label layoutX="14.0" prefHeight="126.0" prefWidth="232.0" text="Registro" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+         <font>
+            <Font name="Arial Unicode MS" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="15.0" layoutY="118.0" text="Numero de Empleado">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Label>
+      <Label layoutX="12.0" layoutY="182.0" text="Contraseña">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font></Label>
+      <PasswordField fx:id="passwordField" layoutX="15.0" layoutY="209.0" prefHeight="25.0" prefWidth="172.0" />
+      <Button fx:id="btnRegistrar" layoutX="234.0" layoutY="350.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: F4B8C6;" text="Sigueinte">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font></Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="133.0" layoutX="-6.0" layoutY="-52.0" rotate="-135.9" stroke="TRANSPARENT" strokeType="INSIDE" width="40.0" />
+      <Label layoutX="15.0" layoutY="243.0" text="Confirmacion de contraseña">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="confirmPasswordField" layoutX="15.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" />
+      <ImageView fitHeight="78.0" fitWidth="115.0" layoutX="170.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/WhatsApp_Image_2023-11-03_at_4.28.24_PM-removebg-preview.png" />
+         </image>
+     
+     
+      </ImageView>
+      <Button fx:id="btnAtras" layoutX="27.0" layoutY="350.0" mnemonicParsing="false" onAction="#Atras" prefHeight="25.0" prefWidth="73.0" style="-fx-background-color: F4B8C6;" text="atras">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
+      
+      
+   </children>
+</AnchorPane>
