@@ -24,6 +24,9 @@ public abstract class Utilitaria {
 	protected Button btnGuardar;
 	@FXML
 	protected Button btnActualizar;
+	
+	@FXML
+	protected Button btnBuscar;
 
 	public static void mostrarAlerta(String titulo, String mensaje) {
 		Alert alert = new Alert(AlertType.INFORMATION);

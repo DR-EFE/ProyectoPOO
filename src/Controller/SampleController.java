@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.Ventanas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,6 +24,8 @@ public class SampleController implements Initializable {
 
     @FXML
     private Button btnCancelar;
+    @FXML
+    private Button btnNext;
 
     @FXML
     private TextField txtContra;
@@ -29,6 +33,25 @@ public class SampleController implements Initializable {
     @FXML
     private TextField txtUsuario;
 
+    
+    Ventanas Ventana = new Ventanas();
+    
+    @FXML
+    void openRegister(ActionEvent event) {
+    	// Obtiene el Node que generó el evento (en este caso, el botón)
+        Node source = (Node) event.getSource();
+        // Obtiene la Stage (ventana) a la que pertenece el Node
+        Stage stage = (Stage) source.getScene().getWindow();
+        // Cierra la ventana actual
+        stage.close();
+        
+    	
+    	Ventana.MostrarPane2("/Vista/Register.fxml");
+    	
+    	
+    	
+    }
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         // TODO Auto-generated method stub

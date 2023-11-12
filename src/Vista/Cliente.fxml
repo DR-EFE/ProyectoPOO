@@ -77,16 +77,16 @@
         <Label layoutX="15.0" layoutY="508.0" prefHeight="25.0" prefWidth="136.0" text="Forma de Pago" />
         <ComboBox fx:id="comboBoxFormaDePago" layoutX="12.0" layoutY="533.0" prefWidth="150.0" />
 
-        <Button fx:id="btnGuardarCliente" layoutX="46.0" layoutY="577.0" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="25.0" prefWidth="74.0" text="Guardar" />
-        <Button fx:id="btnEliminarCliente" layoutX="244.0" layoutY="8.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
+        <Button fx:id="btnGuardar" layoutX="46.0" layoutY="577.0" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="25.0" prefWidth="74.0" text="Guardar" />
+        <Button fx:id="btnEliminar" layoutX="244.0" layoutY="8.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar" />
         <Button fx:id="btnActualizarCliente" layoutX="329.0" layoutY="8.0" mnemonicParsing="false" onAction="#actualizarCliente" text="Actualizar" />
      
       <TextField fx:id="txtApellidoMaterno" layoutX="12.0" layoutY="150.0" />
       <Label layoutX="15.0" layoutY="321.0" prefHeight="25.0" prefWidth="100.0" text="Colonia" />
         <Button fx:id="btnMenu" layoutX="1058.0" layoutY="18.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="68.0" text="Menú" />
       <TextField fx:id="TxtBusquedaCliente" layoutX="725.0" layoutY="18.0" opacity="0.63" prefHeight="31.0" prefWidth="159.0" text="Teléfono" />
-      <Button fx:id="btnBusquedaCliente" layoutX="894.0" layoutY="18.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="31.0" prefWidth="32.0" text="XD" />
-      <Button fx:id="btnRecargar" layoutX="949.0" layoutY="18.0" mnemonicParsing="false" onAction="#recargarTablaClientes" prefHeight="31.0" prefWidth="42.0" text="҉" />
+      <Button fx:id="btnBuscar" layoutX="894.0" layoutY="18.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="31.0" prefWidth="32.0" text="XD" />
+      <Button fx:id="btnActualizar" layoutX="949.0" layoutY="18.0" mnemonicParsing="false" onAction="#recargarTablaClientes" prefHeight="31.0" prefWidth="42.0" text="҉" />
       <Label layoutX="543.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0" text="CLIENTES">
          <font>
             <Font name="System Bold Italic" size="21.0" />

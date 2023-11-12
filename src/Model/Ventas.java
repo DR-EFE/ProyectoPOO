@@ -132,4 +132,27 @@ public class Ventas {
 			return true;
 		}
 
+		
+		public static boolean validarCampoBusqueda(String folioVentaText) {
+			if (folioVentaText.isEmpty()) {
+					Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+			return false;	
+			}
+			int folioVenta;
+			
+			try {
+				folioVenta = Integer.parseInt(folioVentaText);
+			} catch (NumberFormatException e) {
+				Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
+				return false;
+			}
+			
+			return true;
+			
+			
+			
+			
+		}
+		
+		
 }

@@ -1,6 +1,7 @@
 package Controller;
 
 import javafx.scene.control.TextField;
+import DAO.PastelesDAO;
 
 import javafx.scene.control.cell.TextFieldTableCell;
 
@@ -40,29 +41,23 @@ public class PastelesController extends Utilitaria implements Initializable {
 	@FXML
 	TableView<Pasteles> tblPais;
 	@FXML
+	protected Button btneliminarRegistro;
+	@FXML
+	protected Button btnActualizar;
+	@FXML
 	private Button btnRecargar;
 	@FXML
 	private Button closeButton;
 
 	@FXML
-	private Button btnMenu;
-	@FXML
 	private Button minimizeButton;
-	// @FXML
-	// private Button minimizeTButton;
+	
 	@FXML
 	private Button btnFormulario;
 	@FXML
 	private DatePicker FechaDeVencimiento;
 	@FXML
 	private DatePicker FechaElab;
-
-	@FXML
-	private Button btnEliminar;
-	@FXML
-	private Button btnGuardar;
-	@FXML
-	private Button btnActualizar;
 
 	@FXML
 	private Button BtnBusqueda;
@@ -87,10 +82,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 
 	@FXML
 	private TextField txtPrecio;
-	// @FXML
-	// private TextField txtFechaVencimiento;
-	// @FXML
-	// private TextField txtFechaElaboracion;
+
 
 	@FXML
 	TableColumn<Pasteles, String> colCodigodeBarras;
@@ -202,8 +194,18 @@ public class PastelesController extends Utilitaria implements Initializable {
 		comboBox.setItems(FXCollections.observableList(valores));
 	}
 
+	
+	    private PastelesDAO pastelesDAO;
+
+	    public PastelesController() throws Exception {
+	        this.pastelesDAO = new PastelesDAO(ConnectionFactory.getConnection());
+	    }
+	
+	
+	
+	
 	@FXML
-	private void actualizarRegistro() throws Exception {
+	private void actualizarRegistro(ActionEvent event) throws Exception {
 		Pasteles selectedPasteles = tblPais.getSelectionModel().getSelectedItem();
 		if (selectedPasteles != null) {
 			String codigoBarras = selectedPasteles.getCodigodeBarras().get();
@@ -254,72 +256,33 @@ public class PastelesController extends Utilitaria implements Initializable {
 		}
 	}
 
-	@FXML
-	private void eliminarRegistro(ActionEvent event) throws Exception {// el throws Exception siempre se ocupa para las
-																		// conexiones
-		Pasteles selectedProducto = tblPais.getSelectionModel().getSelectedItem();
+		@FXML
+    private void eliminarRegistro(ActionEvent event) throws Exception {
+        Pasteles selectedProducto = tblPais.getSelectionModel().getSelectedItem();
 
-		if (selectedProducto == null) {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
-			return;
-		}
+        if (selectedProducto == null) {
+            Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
+            return;
+        }
 
-		String codigoBarras = selectedProducto.getCodigodeBarras().get();
-		String categoria = selectedProducto.getCategoria().get();
+        String codigoBarras = selectedProducto.getCodigodeBarras().get();
+        String categoria = selectedProducto.getCategoria().get();
 
-		// obvio todo esta en un try
-		try {
-			// tiene que ser en ese orden ya que es un modelo relacional
-			// Eliminar los registros asociados en la tabla "ventas_pasteles" primero
-			String deleteVentasSql = "DELETE FROM ventas_pasteles WHERE CodigoBarrasPastel_FK = ?";
-			PreparedStatement deleteVentasStatement = ConnectionFactory.getConnection()
-					.prepareStatement(deleteVentasSql);
+        try {
+            boolean eliminado = pastelesDAO.eliminarPastel(codigoBarras, categoria);
 
-			deleteVentasStatement.setString(1, codigoBarras);
-			// executeUpdate() es un método que ejecuta la consulta y devuelve el número de
-			// filas afectadas por la operación
-			deleteVentasStatement.executeUpdate();
+            if (eliminado) {
+                Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
+                lista.remove(selectedProducto);
+            } else {
+                Utilitaria.mostrarAlerta("Error", "No se pudo eliminar el registro.");
+            }
+        } catch (SQLException e) {
+            Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
+        }
+    }
 
-			// Eliminar el registro de la tabla "pasteles"
-			String deletePastelesSql = "DELETE FROM pasteles WHERE codigo_de_barras = ?";
-			PreparedStatement deletePastelesStatement = ConnectionFactory.getConnection()
-					.prepareStatement(deletePastelesSql);
-			deletePastelesStatement.setString(1, codigoBarras);
-			int rowsAffected = deletePastelesStatement.executeUpdate();
 
-			// Verificar si la categoría aún tiene registros en la tabla "pasteles"
-			String selectPastelesSql = "SELECT COUNT(*) FROM pasteles WHERE categoria_fk = ?";
-			PreparedStatement selectPastelesStatement = ConnectionFactory.getConnection()
-					.prepareStatement(selectPastelesSql);
-			selectPastelesStatement.setString(1, categoria);
-			ResultSet resultSet = selectPastelesStatement.executeQuery();
-			resultSet.next();
-			int registrosCategoria = resultSet.getInt(1);
-
-			// Si no hay más registros en la tabla "pasteles" que referencien a la
-			// categoría, eliminar la categoría
-			if (registrosCategoria == 0) {
-				String deleteCategoriaSql = "DELETE FROM categorias WHERE nombre = ?";
-				PreparedStatement deleteCategoriaStatement = ConnectionFactory.getConnection()
-						.prepareStatement(deleteCategoriaSql);
-				deleteCategoriaStatement.setString(1, categoria);
-				int categoriaRowsAffected = deleteCategoriaStatement.executeUpdate();
-			}
-
-			// rowsAffected se utiliza para almacenar el número de filas afectadas por una
-			// operación de eliminación en una base de datos.
-			// se utiliza para verificar si la eliminación del registro de la tabla
-			if (rowsAffected > 0) {
-				Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
-				// quita la fila seleccionada
-				lista.remove(selectedProducto);
-			} else {
-				Utilitaria.mostrarAlerta("Error", "No se pudo eliminar el registro.");
-			}
-		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
-		}
-	}
 
 	@FXML
 	private void guardarRegistro(ActionEvent event) throws Exception {
@@ -506,7 +469,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 	 * 
 	 */
 
-}
+	}
 
 /*
  * Por si no le sabes padrino , aqui te pongo para que funciona muchas de las

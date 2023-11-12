@@ -29,18 +29,12 @@ public class ClienteController extends Utilitaria implements Initializable {
 
 	@FXML
 	TableView<Cliente> tblCliente;
-	@FXML
-	private Button btnRecargar;
-	@FXML
-	private Button btnEliminarCliente;
-	@FXML
-	private Button btnGuardarCliente;
+	
+
 	@FXML
 	private Button btnActualizarCliente;
-	@FXML
-	private Button btnMenu;
-	@FXML
-	private Button btnBusquedaCliente;
+	
+	
 	@FXML
 	private TextField TxtBusquedaCliente;
 

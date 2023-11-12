@@ -18,7 +18,7 @@ public class Main extends Application {
 
 		Ventanas Pane = new Ventanas();
 		Pane.MostrarPane("/Vista/Sample.fxml");
-		Pane.MostrarPane("/Vista/Graficas.fxml");
+		//Pane.MostrarPane("/Vista/Graficas.fxml");
 		
 	}
 

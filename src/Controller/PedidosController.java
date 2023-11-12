@@ -34,12 +34,6 @@ public class PedidosController extends Utilitaria implements Initializable {
 	TableView<Pedido> tblPedido;
 
 	@FXML
-	private Button btnEliminar;
-	@FXML
-	private Button btnGuardar;
-	@FXML
-	private Button btnActualizar;
-	@FXML
 	private Button btnBuscarPedido;
 	@FXML
 	private Button btnRecargarTablaPedido;
