@@ -2,7 +2,9 @@ package Model;
 
 import java.io.IOException;
 
+import Controller.ExtendedRegisterController;
 import Controller.Main;
+import Controller.RegisterController;
 import Controller.SampleController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -70,8 +72,41 @@ public class Ventanas {
             System.out.println(e.getMessage());
         }
     }
+    
 
-   
+
+    public void MostrarPane3(String ruta, RegisterController registerController) {
+        try {
+            // Carga el archivo FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+            Parent root = loader.load();
+
+            // Obtiene el controlador de la clase cargada
+            ExtendedRegisterController controller = loader.getController();
+
+            // Pasa la instancia de RegisterController
+            controller.setRegisterController(registerController);
+
+            // Configura la nueva escena
+            Scene scene = new Scene(root);
+
+            // Obtiene la Stage actual (ventana) del RegisterController
+            Stage stage = registerController.getStage();
+
+            // Cambia la escena en la Stage actual
+            stage.setScene(scene);
+
+            // Muestra la ventana
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+  
+
+
       public void mostrarVentana(String fxmlPath, String title) {
       try {
       FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
