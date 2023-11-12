@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
@@ -65,8 +66,8 @@ public class ExtendedRegisterController {
 
         
     }
-  
-    
+   
+
     @FXML
     private void handleRegisterButtonAction() {
         String password = passwordField.getText();
@@ -97,7 +98,10 @@ public class ExtendedRegisterController {
                 boolean registroExitoso = userCredentialsDAO.insertUserCredentials(userCredentials);
 
                 if (registroExitoso) {
-                    showAlert("Éxito", "Usuario registrado correctamente.");
+                	 // Obtener el UserID generado
+                    int userID = userCredentials.getUserID();  // Asegúrate de tener este método en tu clase UserCredentials
+                	  Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+                	  mostrarAlertaConUserID("Éxito", "El registro se ha guardado correctamente. UserID: " + userID);       	  
                 } else {
                     showAlert("Error", "Error al registrar el usuario en la base de datos.");
                 }
@@ -114,12 +118,28 @@ public class ExtendedRegisterController {
     private void RegistrarFinal(ActionEvent event) {
     	 registerController.guardarRegistro();
     	handleRegisterButtonAction();
+    	 // Obtiene el Node que generó el evento (en este caso, el botón)
+        Node source = (Node) event.getSource();
+        // Obtiene la Stage (ventana) a la que pertenece el Node
+        Stage stage = (Stage) source.getScene().getWindow();
+        // Cierra la ventana actual
+        stage.close();
+
+        // Abre la nueva ventana
+        Ventana.MostrarPane("/Vista/Sample.fxml");
     
     	
     	 
     	
     }
-    
+ // Método para mostrar una alerta con el UserID
+    private void mostrarAlertaConUserID(String title, String content) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
     
     
 

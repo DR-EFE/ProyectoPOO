@@ -46,7 +46,7 @@ public class RegisterController {
    @FXML
    private void initialize() {
        // Cargar tipos de trabajo al ComboBox
-       btnTipoDeChamba.getItems().addAll("Tipo 1", "Tipo 2", "Tipo 3");
+       btnTipoDeChamba.getItems().addAll("Gerente", "Empleado");
    }
 
    
@@ -65,12 +65,6 @@ public class RegisterController {
      String apellidoMaterno = btnLasName2.getText();
      String telefono = btnPhone.getText();
      
-   
-     System.out.println("Nombre: " + nombre);
-     System.out.println("Apellido Paterno: " + apellidoPaterno);
-     System.out.println("Apellido Materno: " + apellidoMaterno);
-     System.out.println("Teléfono: " + telefono);
-     System.out.println("Objeto usuario después de asignar valores: " + usuario);
 
      // almacenar los datos en el objeto Usuario
      usuario.setUsername(nombre);
@@ -80,11 +74,9 @@ public class RegisterController {
      // Almacenar el tipo de trabajo seleccionado del ComboBox
      String tipoDeTrabajoSeleccionado = btnTipoDeChamba.getValue();
      usuario.setTipoDeChamba(tipoDeTrabajoSeleccionado);
-     System.out.println("Tipo de chamba : " + tipoDeTrabajoSeleccionado);
-
+     
   // En RegisterController
-     System.out.println("Instancia de UserModel en RegisterController: " + System.identityHashCode(usuario));
-
+     
 	 
 	// Obtiene el Node que generó el evento (en este caso, el botón)
      Node source = (Node) event.getSource();
@@ -110,7 +102,7 @@ public class RegisterController {
 	        btnPhone.setText(usuario.getPhone());
 
 	    // Mensajes de depuración
-	    System.out.println("Valor de usuario en setUsuario: " + usuario);
+	   
 	}
 
 
@@ -135,7 +127,7 @@ public class RegisterController {
             boolean guardado = userDAO.guardarUsuario(user);
 
             if (guardado) {
-                Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+              
                 limpiarCampos();
             } else {
                 Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
