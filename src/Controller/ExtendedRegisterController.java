@@ -100,8 +100,8 @@ public class ExtendedRegisterController {
                 if (registroExitoso) {
                 	 // Obtener el UserID generado
                     int userID = userCredentials.getUserID();  // Asegúrate de tener este método en tu clase UserCredentials
-                	  Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
-                	  mostrarAlertaConUserID("Éxito", "El registro se ha guardado correctamente. UserID: " + userID);       	  
+                	  //Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+                	  mostrarAlertaConUserID("Éxito", "El registro se ha guardado correctamente. Este es su numero de usuario: " + userID);       	  
                 } else {
                     showAlert("Error", "Error al registrar el usuario en la base de datos.");
                 }
