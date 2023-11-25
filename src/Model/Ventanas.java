@@ -53,6 +53,8 @@ public class Ventanas {
             System.out.println(e.getMessage());
         }
     }
+    
+    
     public void MostrarPane2(String fxmlPath) {
 
         try {
