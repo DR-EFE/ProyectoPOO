@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1182.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VentasController">
 
     <children>
-        <TableView fx:id="tblVentas" editable="true" layoutX="176.0" layoutY="61.0" prefHeight="541.0" prefWidth="801.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="61.0">
+        <TableView fx:id="tblVentas" editable="true" layoutX="42.0" layoutY="61.0" prefHeight="541.0" prefWidth="1104.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="61.0">
             <columns>
                 <TableColumn fx:id="colFolio" editable="true" prefWidth="105.0" text="Folio ">
 
@@ -23,36 +23,19 @@
 
                 </TableColumn>
                 
-                <TableColumn fx:id="colTotal" editable="true" prefWidth="114.0" text="Total">
+                <TableColumn fx:id="colTotal" editable="true" prefWidth="140.0" text="Total">
             
                 </TableColumn>
-            <TableColumn fx:id="colFechaDeVenta" prefWidth="124.0" text="Fecha de venta" />
-            <TableColumn fx:id="colProductos" prefWidth="220.0" text="Productos" />
+            <TableColumn fx:id="colFechaDeVenta" prefWidth="118.0" text="Fecha de venta" />
+             <TableColumn fx:id="colEmpleadoVenta" prefWidth="201.0" text="Vendedor" />
+             <TableColumn fx:id="colCodigo" prefWidth="111.0" text="Codigo" />
+            <TableColumn fx:id="colProductos" prefWidth="192.0" text="Productos" />
             </columns>
         </TableView>
-
-        <TextField fx:id="txtCantidadVendida" layoutX="12.0" layoutY="120.0" />
-        <TextField fx:id="txtSubtotal" layoutX="12.0" layoutY="189.0" />
-        <TextField fx:id="txtTotal" layoutX="12.0" layoutY="265.0" />
-        <Label layoutX="12.0" layoutY="94.0" prefHeight="25.0" prefWidth="100.0" text="Cantidad vendida" />
-        <Label layoutX="12.0" layoutY="164.0" prefHeight="25.0" prefWidth="149.0" text="Subtotal" />
-        <TextField fx:id="txtFechaDeVenta" layoutX="12.0" layoutY="336.0" prefHeight="0.0" prefWidth="149.0" />
-        <Label layoutX="12.0" layoutY="240.0" prefHeight="25.0" prefWidth="100.0" text="Total" />
-        <Label layoutX="12.0" layoutY="306.0" prefHeight="25.0" prefWidth="100.0" text="Fecha de Venta" />
-
-        <Button fx:id="btnGuardar" layoutX="12.0" layoutY="453.0" mnemonicParsing="false" onAction="#guardarVenta" prefHeight="25.0" prefWidth="149.0" text="Guardar" />
-        <Button fx:id="btnEliminar" layoutX="12.0" layoutY="557.0" mnemonicParsing="false" onAction="#eliminarVenta" prefHeight="25.0" prefWidth="149.0" text="Eliminar" />
-        <Button fx:id="btnActualizar" layoutX="11.0" layoutY="507.0" mnemonicParsing="false" onAction="#actualizarVenta" prefHeight="25.0" prefWidth="149.0" text="Actualizar" />
          <Button fx:id="btnMenu" layoutX="1016.0" layoutY="20.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="86.0" text="Menú" />
-    
-    
-      <Label layoutX="12.0" layoutY="23.0" prefHeight="25.0" prefWidth="100.0" text="Folio" />
-      <TextField fx:id="txtFolio" layoutX="12.0" layoutY="48.0" />
-      <Label layoutX="12.0" layoutY="375.0" prefHeight="25.0" prefWidth="100.0" text="Pastel" />
-      <TextField fx:id="txtProductos" layoutX="12.0" layoutY="405.0" prefHeight="0.0" prefWidth="149.0" />
       <TextField fx:id="TxtBuquedaVenta" layoutX="601.0" layoutY="20.0" prefHeight="31.0" prefWidth="161.0" />
       <Button fx:id="btnBuscar" layoutX="771.0" layoutY="20.0" mnemonicParsing="false" onAction="#buscarVenta" prefHeight="31.0" prefWidth="41.0" text="🔍" />
-      <Button fx:id="btnRecargarTablaVenta" layoutX="830.0" layoutY="20.0" mnemonicParsing="false"  prefHeight="31.0" prefWidth="41.0" text="҉">
+      <Button fx:id="btnRecargarTablaVenta" layoutX="830.0" layoutY="20.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="41.0" text="҉">
          <font>
             <Font size="14.0" />
          </font>

@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="661.0" prefWidth="1198.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Pedidos2Controller">
     <children>
-        <TableView fx:id="tblPedido" editable="true" layoutX="175.0" layoutY="50.0" prefHeight="511.0" prefWidth="950.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="50.0">
+        <TableView fx:id="tblPedido" editable="true" layoutX="40.0" layoutY="50.0" prefHeight="513.0" prefWidth="1103.0" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="50.0">
             <columns>
                 <TableColumn fx:id="colFolio" editable="true" prefWidth="112.0" text="Folio de pedido">
                    
@@ -56,38 +56,14 @@
                  
 
                 </TableColumn>
-            <TableColumn fx:id="colTelefono_FK" prefWidth="15.0" text="Teléfono" />
+            <TableColumn fx:id="colTelefono_FK" prefWidth="150.0" text="Teléfono" />
             </columns>
         </TableView>
-
-        <TextField fx:id="txtFolio" layoutX="14.0" layoutY="60.0" />
-        <TextField fx:id="txtFechaHoraSolicitud" layoutX="14.0" layoutY="116.0" />
-        <TextField fx:id="txtDescripcionPedido" layoutX="14.0" layoutY="176.0" prefHeight="45.0" prefWidth="149.0" />
-        <TextField fx:id="txtAnticipo" layoutX="14.0" layoutY="257.0" />
-        <Label layoutX="14.0" layoutY="34.0" prefHeight="25.0" prefWidth="100.0" text="Folio de pedido" />
-        <Label layoutX="14.0" layoutY="91.0" prefHeight="25.0" prefWidth="149.0" text="Fecha y hora de solicitud" />
-        <Label layoutX="14.0" layoutY="151.0" prefHeight="25.0" prefWidth="100.0" text="Descripcion " />
-        <TextField fx:id="txtTipo" layoutX="14.0" layoutY="317.0" prefHeight="0.0" prefWidth="149.0" />
-        <TextField fx:id="txtSubtotal" layoutX="14.0" layoutY="382.0" prefHeight="0.0" prefWidth="149.0" />
-        <TextField fx:id="txtTotal" layoutX="14.0" layoutY="440.0" prefHeight="0.0" prefWidth="149.0" />
-        <Label layoutX="14.0" layoutY="232.0" prefHeight="25.0" prefWidth="100.0" text="Anticipo" />
-        <Label layoutX="14.0" layoutY="292.0" prefHeight="25.0" prefWidth="100.0" text="Tipo" />
-        <Label layoutX="14.0" layoutY="357.0" prefHeight="25.0" prefWidth="100.0" text="Subtotal" />
-        <Label layoutX="14.0" layoutY="415.0" prefHeight="25.0" prefWidth="136.0" text="Total" />
-        <Label layoutX="14.0" layoutY="475.0" prefHeight="25.0" prefWidth="136.0" text="Estatus" />
-        <TextField fx:id="txtEstatus" layoutX="15.0" layoutY="500.0" prefHeight="0.0" prefWidth="149.0" />
-        <Label layoutX="14.0" layoutY="538.0" prefHeight="25.0" prefWidth="136.0" text="Fecha y hora de entrega" />
-
-        <Button fx:id="btnGuardar" layoutX="279.0" layoutY="628.0" mnemonicParsing="false" onAction="#guardarRegistro" text="Guardar" AnchorPane.bottomAnchor="50.0" />
-        <Button fx:id="btnEliminar" layoutX="689.0" layoutY="628.0" mnemonicParsing="false" onAction="#eliminarRegistro" prefHeight="25.0" prefWidth="68.0" text="Eliminar" AnchorPane.bottomAnchor="50.0" />
-        <Button fx:id="btnActualizar" layoutX="477.0" layoutY="628.0" mnemonicParsing="false" onAction="#actualizarRegistroPedido" text="Actualizar" AnchorPane.bottomAnchor="50.0" />
+        <Button fx:id="btnEliminar" layoutX="665.0" layoutY="589.0" mnemonicParsing="false" onAction="#eliminarRegistro" prefHeight="45.0" prefWidth="121.0" text="Eliminar" AnchorPane.bottomAnchor="27.0" />
+        <Button fx:id="btnActualizar" layoutX="401.0" layoutY="589.0" mnemonicParsing="false" onAction="#actualizarRegistroPedido" prefHeight="45.0" prefWidth="127.0" text="Actualizar" AnchorPane.bottomAnchor="27.0" />
       
-      <TextField fx:id="TxtBuscarPedido" layoutX="689.0" layoutY="14.0" prefHeight="31.0" prefWidth="166.0" />
+      <TextField fx:id="TxtBuscarPedido" layoutX="689.0" layoutY="14.0" prefHeight="31.0" prefWidth="166.0" style="-fx-background-color: F5B6B6;" />
       <Button fx:id="btnBuscarPedido" layoutX="863.0" layoutY="14.0" mnemonicParsing="false" onAction="#buscarPedido" prefHeight="31.0" prefWidth="39.0" text="🔍" />
-
-      <TextField fx:id="txtFechaHoraEntrega" layoutX="14.0" layoutY="563.0" prefHeight="0.0" prefWidth="149.0" />
-      <TextField fx:id="txtTelefono_FK" layoutX="14.0" layoutY="616.0" prefHeight="0.0" prefWidth="149.0" />
-      <Label layoutX="14.0" layoutY="591.0" prefHeight="25.0" prefWidth="136.0" text="Teléfono" />
   <Button fx:id="btnMenu" layoutX="1107.0" layoutY="14.0" onAction="#openWintwo2" prefHeight="31.0" prefWidth="68.0" text="Menu" />
       <Label layoutX="488.0" layoutY="14.0" prefHeight="25.0" prefWidth="100.0" text="PEDIDOS">
          <font>
