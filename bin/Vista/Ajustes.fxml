@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1182.0" style="-fx-background-color: A9D9FC;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GraficasController">
+   <children>
+      <Pane layoutX="41.0" layoutY="61.0" prefHeight="529.0" prefWidth="540.0" style="-fx-background-color: FFF8F8;">
+         <children>
+            <Text layoutX="27.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajustes " textAlignment="CENTER" wrappingWidth="486.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RFC" wrappingWidth="188.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de la empresa" wrappingWidth="310.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Razon social " wrappingWidth="310.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Button layoutX="29.0" layoutY="470.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="159.0" text="Menu">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <Button layoutX="317.0" layoutY="470.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="36.0" prefWidth="159.0" text="Guardar">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Button>
+            <TextField layoutX="14.0" layoutY="108.0" prefHeight="36.0" prefWidth="321.0" style="-fx-background-color: FD5959;" />
+            <TextField layoutX="14.0" layoutY="237.0" prefHeight="36.0" prefWidth="321.0" style="-fx-background-color: FD5959;" />
+            <TextField layoutX="20.0" layoutY="351.0" prefHeight="36.0" prefWidth="321.0" style="-fx-background-color: FD5959;" />
+         </children></Pane>
+      <Pane layoutX="623.0" layoutY="61.0" prefHeight="525.0" prefWidth="540.0" style="-fx-background-color: FFF8F8;">
+         <children>
+            <Text layoutX="33.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección" wrappingWidth="188.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="33.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono" wrappingWidth="188.13671875">
+               <font>
+                  <Font name="Zilla Slab" size="28.0" />
+               </font>
+            </Text>
+            <Text layoutX="211.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Esta información va a salir en los tickets y en las facturas, así que asegurarte que sea la correcta" wrappingWidth="307.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField layoutX="14.0" layoutY="90.0" prefHeight="36.0" prefWidth="321.0" style="-fx-background-color: FD5959;" />
+            <TextField layoutX="14.0" layoutY="276.0" prefHeight="36.0" prefWidth="321.0" style="-fx-background-color: FD5959;" />
+         </children></Pane>
+      <Button layoutX="550.0" layoutY="6.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="113.0" style="-fx-background-color: F58686;" text="Menu">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -9,58 +9,42 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="1198.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClienteController">
     <children>
-        <TableView fx:id="tblCliente" editable="true" layoutX="282.0" layoutY="72.0" prefHeight="493.0" prefWidth="844.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="282.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="72.0">
+        <TableView fx:id="tblCliente" editable="true" layoutX="50.0" layoutY="72.0" prefHeight="401.0" prefWidth="1076.0" AnchorPane.bottomAnchor="155.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="72.0" AnchorPane.topAnchor="72.0">
             <columns>
-                <TableColumn fx:id="colNombreCliente" editable="true" prefWidth="140.0" text="Numero de empleado ">
+                <TableColumn fx:id="colNombreCliente" editable="true" prefWidth="154.0" text="Fecha">
                    
 
 
 
                 </TableColumn>
-                <TableColumn fx:id="colApellidoPaterno" editable="true" prefWidth="196.0" text="Nombre Completo">
+                <TableColumn fx:id="colApellidoPaterno" editable="true" prefWidth="438.0" text="Prouctos vendidos">
               
   
 
 
                 </TableColumn>
-                <TableColumn fx:id="colApellidoMaterno" editable="true" prefWidth="149.0" text="Número telefónico">
+                <TableColumn fx:id="colApellidoMaterno" editable="true" prefWidth="182.0" text="Cantidad vendida ">
                  
              
 
                 </TableColumn>
                 
-                <TableColumn fx:id="colCalle" editable="true" prefWidth="105.0" text="Cargo">
+                <TableColumn fx:id="colCalle" editable="true" prefWidth="301.0" text="Total">
             
-                </TableColumn>
-                
-                <TableColumn fx:id="colCP" editable="true" prefWidth="156.0" text="Fecha de registro">
-                 
-                  
-                </TableColumn>
-                <TableColumn fx:id="colTelefono" editable="true" prefWidth="126.0" text="Teléfono">
-                   
-                </TableColumn>
-                <TableColumn fx:id="colFormaDePago" editable="true" prefWidth="225.0" text="Forma de pago">
-                   
-                 
-
                 </TableColumn>
             </columns>
         </TableView>
-        <Label layoutX="15.0" layoutY="321.0" prefHeight="25.0" prefWidth="100.0" />
-        <Button fx:id="btnEliminar" layoutX="55.0" layoutY="144.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="70.0" prefWidth="179.0" text="Eliminar">
-         <font>
-            <Font size="25.0" />
-         </font></Button>
-        <Button fx:id="btnActualizarCliente" layoutX="54.0" layoutY="274.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="76.0" prefWidth="185.0" text="Actualizar">
-         <font>
-            <Font size="25.0" />
-         </font></Button>
         <Button fx:id="btnMenu" layoutX="1058.0" layoutY="18.0" onAction="#openWintwo" prefHeight="31.0" prefWidth="68.0" text="Menú" />
-      <TextField fx:id="TxtBusquedaCliente" layoutX="725.0" layoutY="18.0" opacity="0.63" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: F5B6B6;" text="Numero de empleado" />
+      <TextField fx:id="TxtBusquedaCliente" layoutX="725.0" layoutY="18.0" opacity="0.63" prefHeight="31.0" prefWidth="159.0" style="-fx-background-color: F5B6B6;" text="Producto" />
       <Button fx:id="btnBuscar" layoutX="894.0" layoutY="18.0" mnemonicParsing="false" onAction="#buscarCliente" prefHeight="31.0" prefWidth="32.0" text="XD" />
       <Button fx:id="btnActualizar" layoutX="949.0" layoutY="18.0" mnemonicParsing="false" onAction="#recargarTablaClientes" prefHeight="31.0" prefWidth="42.0" text="҉" />
-      <Label layoutX="543.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0" text="CLIENTES">
+      <Label layoutX="543.0" layoutY="18.0" prefHeight="25.0" prefWidth="100.0" text="CAJA">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="885.0" layoutY="513.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: FFF9F9;" />
+      <Label layoutX="881.0" layoutY="483.0" prefHeight="31.0" prefWidth="248.0" text="Total en caja ">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>

@@ -58,6 +58,50 @@ import Factory.ConnectionFactory;
 	            }
 	        }
 	    }
+
+	    public static UserCredentials getUserCredentialsByUserName(String NumEmpleado) throws Exception {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+
+	        try {
+	            connection = ConnectionFactory.getConnection();
+
+	            // Consulta SQL para obtener las credenciales por nombre de usuario
+	            String selectSql ="SELECT * FROM user_credentials WHERE UserID = ?";
+	            statement = connection.prepareStatement(selectSql);
+	            statement.setString(1, NumEmpleado);
+
+	            resultSet = statement.executeQuery();
+
+	            if (resultSet.next()) {
+	                // Obtener los datos de la base de datos
+	             
+	                byte[] passwordHash = resultSet.getBytes("PasswordHash");
+	                byte[] salt = resultSet.getBytes("Salt");
+
+	                // Crear y retornar un objeto UserCredentials
+	                UserCredentials userCredentials = new UserCredentials();
+	              //  userCredentials.setUserID(userID);
+	                userCredentials.setPasswordHash(passwordHash);
+	                userCredentials.setSalt(salt);
+
+	                return userCredentials;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace(); // Manejo del error
+	        } finally {
+	            try {
+	                if (resultSet != null) resultSet.close();
+	                if (statement != null) statement.close();
+	                if (connection != null) connection.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace(); // Manejo del error al cerrar conexiones
+	            }
+	        }
+
+	        return null; // Retornar null si no se encuentra el usuario
+	    }
 	}
 	
 

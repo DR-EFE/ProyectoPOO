@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DAO.UserCredentialsDAO;
+import Model.PasswordUtil;
+import Model.UserCredentials;
 import Model.Ventanas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,30 +67,31 @@ public class SampleController implements Initializable {
     }
 
     @FXML
-    void validateCredentials(ActionEvent event) {
+    void validateCredentials(ActionEvent event) throws Exception {
         String usuario = txtUsuario.getText();
         String contrasena = txtContra.getText();
-        String usuario2 = txtUsuario.getText();
-        String contrasena2 = txtContra.getText();
 
-        // Validar el usuario y la contraseña root
-        if (usuario.equals("e") && contrasena.equals("123456")) {
-            // abrir la segunda ventana (maximo usuario)
-            openWintwo(event);
-        } else if (usuario2.equals("f") && contrasena2.equals("fffff")) {
-            // abrir ventana dos del empleado
-            openWintwo2(event);
-        }
+        // Obtener las credenciales almacenadas en la base de datos
+        UserCredentials userCredentials = UserCredentialsDAO.getUserCredentialsByUserName(usuario);
 
-        else {
-            // Credenciales inválidas, mostrar un mensaje de error
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de autenticación");
-            alert.setHeaderText(null);
-            alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
-            alert.showAndWait();
+        if (userCredentials != null && PasswordUtil.checkPassword(contrasena, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+            // Credenciales válidas, abrir la ventana correspondiente
+            
+                openWintwo(event);
+            } else {
+              
+            	 // Credenciales inválidas, mostrar un mensaje de error
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de autenticación");
+                alert.setHeaderText(null);
+                alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
+                alert.showAndWait();
+            }
+       
+           
         }
-    }
+    
+
 
     @FXML
     void openWintwo(ActionEvent event) {

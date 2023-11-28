@@ -18,15 +18,18 @@ public class PasswordUtil {
         return BCrypt.hashpw(password, saltString);
     }
 
-    // Resto del código...
+    
 
 
-    // Resto del código...
+    public static boolean checkPassword(String enteredPassword, byte[] storedPasswordHash, byte[] salt) {
+        // Convertir el salt de byte[] a String para utilizarlo con BCrypt
+        String saltString = new String(salt, StandardCharsets.UTF_8);
 
+        // Generar el hash de la contraseña ingresada utilizando el salt almacenado
+        String hashedPassword = BCrypt.hashpw(enteredPassword, saltString);
 
-    public static boolean checkPassword(String candidatePassword, String hashedPassword) {
-        // Verificar si la contraseña ingresada coincide con el hash almacenado
-        return BCrypt.checkpw(candidatePassword, hashedPassword);
+        // Comparar el hash generado con el hash almacenado
+        return Arrays.equals(hashedPassword.getBytes(StandardCharsets.UTF_8), storedPasswordHash);
     }
 
 	
