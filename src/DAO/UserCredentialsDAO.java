@@ -58,6 +58,7 @@ import Factory.ConnectionFactory;
 	            }
 	        }
 	    }
+	    
 
 	    public static UserCredentials getUserCredentialsByUserName(String NumEmpleado) throws Exception {
 	        Connection connection = null;
@@ -102,7 +103,50 @@ import Factory.ConnectionFactory;
 
 	        return null; // Retornar null si no se encuentra el usuario
 	    }
-	}
+	
+	
+	  public static UserCredentials getUserID2(String NumEmpleado) throws Exception {
+	        Connection connection = null;
+	        PreparedStatement statement = null;
+	        ResultSet resultSet = null;
+
+	        try {
+	            connection = ConnectionFactory.getConnection();
+
+	            // Consulta SQL para obtener las credenciales por nombre de usuario
+	            String selectSql ="SELECT * FROM users WHERE UserID = ? AND TipodeChamba = 'Gerente'";
+	            statement = connection.prepareStatement(selectSql);
+	            statement.setString(1, NumEmpleado);
+
+	            resultSet = statement.executeQuery();
+
+	            if (resultSet.next()) {
+	                // Obtener los datos de la base de datos
+	            	int UserID2 = resultSet.getInt("UserID");
+	          
+	                // Crear y retornar un objeto UserCredentials
+	                UserCredentials userCredentials = new UserCredentials();
+	               userCredentials.setUserID(UserID2);
+	              
+	                return userCredentials;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace(); // Manejo del error
+	        } finally {
+	            try {
+	                if (resultSet != null) resultSet.close();
+	                if (statement != null) statement.close();
+	                if (connection != null) connection.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace(); // Manejo del error al cerrar conexiones
+	            }
+	        }
+
+	        return null; // Retornar null si no se encuentra el usuario
+	  
+	    
+	    }
+	  }
 	
 
 
