@@ -1,41 +1,31 @@
 package Model;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import Controller.CategoriasController;
 import Controller.ExtendedRegisterController;
 import Controller.Main;
 import Controller.RegisterController;
 import Controller.SampleController;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Ventanas {
+	
+	public String direccionFX="";
 
-    /*
-     * public void mostrarVentana(String fxmlPath, String title, double width,
-     * double height, String cssPath) {
-     * try {
-     * FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-     * AnchorPane root = loader.load();
-     * 
-     * Stage primaryStage = new Stage();
-     * primaryStage.setTitle(title);
-     * primaryStage.setFullScreen(true);
-     * 
-     * Scene scene = new Scene(root, width, height);
-     * scene.getStylesheets().add(getClass().getResource(cssPath).toExternalForm());
-     * 
-     * primaryStage.setScene(scene);
-     * primaryStage.show();
-     * } catch (Exception e) {
-     * e.printStackTrace();
-     * }
-     * }
-     */
+	@FXML
+    private Button btnCategoria;
+	
 
     public void MostrarPane(String fxmlPath) {
 
@@ -46,7 +36,7 @@ public class Ventanas {
 
             // Show the scene containing the root layout.
             Scene scene = new Scene(root);
-          primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(true); // este sirve para poder hacer que se muestre en oantalla completa la ventana 
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

@@ -70,6 +70,7 @@ import Factory.ConnectionFactory;
 
 	            // Consulta SQL para obtener las credenciales por nombre de usuario
 	            String selectSql ="SELECT * FROM user_credentials WHERE UserID = ?";
+	            //String selectSql1 ="SELECT * FROM user WHERE TipodeChamba= ?";
 	            statement = connection.prepareStatement(selectSql);
 	            statement.setString(1, NumEmpleado);
 
@@ -110,7 +111,7 @@ import Factory.ConnectionFactory;
 	        PreparedStatement statement = null;
 	        ResultSet resultSet = null;
 
-	        try {
+	        try {	
 	            connection = ConnectionFactory.getConnection();
 
 	            // Consulta SQL para obtener las credenciales por nombre de usuario
