@@ -144,7 +144,4 @@ public class RegisterController {
         btnPhone.clear();
         btnTipoDeChamba.getSelectionModel().clearSelection();
     }
-
-
-
 }

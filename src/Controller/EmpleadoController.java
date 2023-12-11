@@ -32,8 +32,61 @@ public class EmpleadoController implements Initializable {
 
     @FXML
     private MenuItem itemCerrar;
+    
+    
+    @FXML
+    void openEstadoPedido(ActionEvent event) {
+    	
+
+    }
 
     @FXML
+    void openPedidosEmpleado(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Pedido2.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Pedidos");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnVentas2.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(VentaEmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    void openVentasEmpleado(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VentasEmpleado.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Ventas");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnPedidos2.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(VentaEmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    /*@FXML
     void openWinSeven(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Factura.fxml"));
@@ -131,7 +184,7 @@ public class EmpleadoController implements Initializable {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

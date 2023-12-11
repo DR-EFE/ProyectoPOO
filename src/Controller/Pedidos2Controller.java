@@ -58,6 +58,9 @@ public class Pedidos2Controller extends Utilitaria implements Initializable {
 
 	@FXML
 	private Button btnMenu;
+	
+	@FXML
+    private Button btnDatosCliente;
 
 	@FXML
 	private TextField TxtBuqueda;
@@ -452,5 +455,33 @@ public class Pedidos2Controller extends Utilitaria implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+    void openPedidosTienda(ActionEvent event) {
+		try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PedidosEmpleado.fxml"));
+            Parent root = loader.load();
+
+            SampleController controlador = loader.getController();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            //stage.setTitle("Primera Ventana");
+
+            // Llama al método initialize() de SampleController2
+            controlador.initialize(null, null);
+
+            stage.show();
+
+            // Cierra la ventana actual
+            Stage myStage = (Stage) btnDatosCliente.getScene().getWindow();
+            myStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 }

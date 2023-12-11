@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ public class SampleController implements Initializable {
 
     @FXML
     private Button btnCancelar;
+    
     @FXML
     private Button btnNext;
 
@@ -35,6 +37,10 @@ public class SampleController implements Initializable {
 
     @FXML
     private TextField txtUsuario;
+    
+    @FXML
+    private PasswordField passwordField1;
+
 
     
     Ventanas Ventana = new Ventanas();
@@ -47,12 +53,7 @@ public class SampleController implements Initializable {
         Stage stage = (Stage) source.getScene().getWindow();
         // Cierra la ventana actual
         stage.close();
-        
-    	
     	Ventana.MostrarPane2("/Vista/Register.fxml");
-    	
-    	
-    	
     }
     
     @Override
@@ -62,36 +63,38 @@ public class SampleController implements Initializable {
 
     @FXML
     void Cancelar(ActionEvent event) {
-        txtContra.setText("");
-        txtUsuario.setText("");
-    }
+    	txtUsuario.clear();
+        passwordField1.clear(); 
+    } 
 
     @FXML
     void validateCredentials(ActionEvent event) throws Exception {
         String usuario = txtUsuario.getText();
-        String contrasena = txtContra.getText();
+        //String contrasena = txtContra.getText();
+        String password1 = passwordField1.getText();
+        
 
         // Obtener las credenciales almacenadas en la base de datos
         UserCredentials userCredentials = UserCredentialsDAO.getUserCredentialsByUserName(usuario);
 
-        if (userCredentials != null && PasswordUtil.checkPassword(contrasena, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+        if (userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
             // Credenciales válidas, abrir la ventana correspondiente
-            
-                openWintwo(event);
+        	openWintwo(event);
             } else {
-              
             	 // Credenciales inválidas, mostrar un mensaje de error
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error de autenticación");
                 alert.setHeaderText(null);
                 alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
                 alert.showAndWait();
-            }
-       
-           
+            }    
         }
     
-
+    @FXML
+    void openWinNext(ActionEvent event) {
+    	//Ventanas Pane1 = new Ventanas();
+		Ventana.MostrarPane("/Vista/Sample2.fxml");
+    }
 
     @FXML
     void openWintwo(ActionEvent event) {
@@ -101,9 +104,11 @@ public class SampleController implements Initializable {
             Parent root = loader.load();
 
             SampleController2 controlador = loader.getController();
-
+            
+            //Stage primaryStage = new Stage(); // recordar quitar esto sino jala :)
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Segunda Ventana");
 
@@ -121,7 +126,7 @@ public class SampleController implements Initializable {
     }
 
     @FXML
-    public void openWintwo2(ActionEvent event) {
+    public void openWinEmpleado(ActionEvent event) {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Empleado.fxml"));
@@ -133,6 +138,7 @@ public class SampleController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("Segunda Ventana");
+            stage.setFullScreen(true);
 
             // Llama al método initialize() de SampleController2
             controlador.initialize(null, null);

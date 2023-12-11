@@ -23,10 +23,13 @@ import javafx.stage.Stage;
 public class SampleController2 implements Initializable {
 
     @FXML
-    private Button btnCategoria;
+    private Button btnCaja;
 
     @FXML
-    private Button btnMenu;
+    private Button btnCatalogo;
+
+    @FXML
+    private Button btnCategoria;
 
     @FXML
     private Button btnClientes;
@@ -38,20 +41,23 @@ public class SampleController2 implements Initializable {
     private Button btnPedidos;
 
     @FXML
+    private Button btnUsuarios;
+
+    @FXML
     private Button btnVentaPastel;
 
     @FXML
     private Button btnVentas;
 
     @FXML
+    private MenuItem itemCerrar;
+
+    @FXML
     private MenuItem itemNocturno;
 
     @FXML
     private MenuButton menuopciones;
-
-    @FXML
-    private MenuItem itemCerrar;
-
+    
     @FXML
     void openWinOne(ActionEvent event) {
         try {
@@ -64,7 +70,7 @@ public class SampleController2 implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.setTitle("Primera Ventana");
+            //stage.setTitle("Primera Ventana");
 
             // Llama al método initialize() de SampleController2
             controlador.initialize(null, null);
@@ -78,6 +84,7 @@ public class SampleController2 implements Initializable {
             e.printStackTrace();
         }
     }
+    
 
     @FXML
     void cambiarVista(ActionEvent event) {
@@ -104,147 +111,8 @@ public class SampleController2 implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    @FXML
-    void openWinFive(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Principal.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Pasteles");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnPasteles.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(PastelesController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @FXML
-    void openWinFor(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Cliente.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Clientes");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnClientes.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(ClienteController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @FXML
-    void openWinOcho(ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ventas_pasteles.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Venta Pasteles");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnVentaPastel.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(VentaPastelController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @FXML
-    void openWinSeven(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Ventas.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Ventas");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnVentas.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(VentasController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @FXML
-    void openWinSix(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Pedido.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Pedidos");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnPedidos.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(PedidosController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    @FXML
-    void openWinthree(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Categorias.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-
-            stage.setScene(scene);
-            stage.setTitle("Ventana Categoria");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnCategoria.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(CategoriasController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -270,11 +138,10 @@ public class SampleController2 implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     
-    public void RegistroSig(ActionEvent event) {
+   /* public void RegistroSig(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Register2.fxml"));
 
@@ -290,19 +157,186 @@ public class SampleController2 implements Initializable {
             myStage.close();
 
         } catch (IOException ex) {
-            Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExtendedRegisterController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }*/    
+    
+    @FXML
+    void openCaja(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Caja.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Ventas");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnCaja.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(CajaController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }
+
+    @FXML
+    void openCatalogos(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openCategorias(ActionEvent event) {
+    	String direccionFX="/Vista/Categorias.fxml";
+    	//String layautButton="btnCategoria"; 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(direccionFX));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Categoria");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnCategoria.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            //Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    void openClientes(ActionEvent event) {
+            try {
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Cliente.fxml"));
+                Parent root = loader.load();
+
+                Sample2Noc controlador = loader.getController();
+
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(scene);
+
+                // Llama al método initialize() de SampleController2
+                controlador.initialize(null, null);
+                stage.show();
+
+                // Cierra la ventana actual
+                Stage myStage = (Stage) btnClientes.getScene().getWindow();
+                myStage.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
+    @FXML
+    void openPedidos(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Pedido.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Pedidos");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnPedidos.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(PedidosController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
+    @FXML
+    void openUsuarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openVentas(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Ventas.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Ventas");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnVentas.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(VentasController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }
+
+    @FXML
+    void openVentasPastel(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ventas_pasteles.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Venta Pasteles");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnVentaPastel.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(VentaPastelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
+    @FXML
+    void OpenPasteles(ActionEvent event) {
+    	try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Principal.fxml"));
+
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+
+            stage.setScene(scene);
+            stage.setTitle("Ventana Pasteles");
+            stage.show();
+
+            Stage myStage = (Stage) this.btnPasteles.getScene().getWindow();
+            myStage.close();
+
+        } catch (IOException ex) {
+            Logger.getLogger(PastelesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     
 }

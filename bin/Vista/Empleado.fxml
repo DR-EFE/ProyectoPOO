@@ -1,76 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="719.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1320.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="17.0" stroke="#ffdef1" strokeType="INSIDE" width="719.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="37.0" layoutX="1.0" layoutY="431.0" stroke="#ffdef1" strokeType="INSIDE" width="719.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="49.0" stroke="#ffdef1" strokeType="INSIDE" width="1342.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="80.0" layoutX="-7.0" layoutY="587.0" stroke="#ffdef1" strokeType="INSIDE" width="1336.0" />
       <Circle fill="#ffc4df" layoutX="-40.0" layoutY="427.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
-      <Circle fill="#ffc4df" layoutX="218.0" layoutY="-39.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
-      <Circle fill="#ffc4df" layoutX="794.0" layoutY="270.0" radius="147.0" stroke="WHITE" strokeType="INSIDE" />
-      <Circle fill="#ffc4df" layoutX="360.0" layoutY="461.0" radius="61.0" stroke="WHITE" strokeType="INSIDE" />
-      <Label layoutX="257.0" layoutY="61.0" text="Bienvenido ">
+      <Circle fill="#ffc4df" layoutX="463.0" layoutY="643.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="1234.0" layoutY="52.0" radius="147.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="1327.0" layoutY="507.0" radius="61.0" stroke="WHITE" strokeType="INSIDE" />
+      <Label layoutX="516.0" layoutY="62.0" text="Bienvenido ">
          <font>
-            <Font name="Bodoni MT" size="46.0" />
+            <Font name="Bodoni MT" size="68.0" />
          </font>
       </Label>
-      <Button fx:id="btnPedidos2" layoutX="196.0" layoutY="338.0" mnemonicParsing="false" onAction="#openWinSix2" style="-fx-background-color: pink;" text="Ingresar" textFill="#321790">
+      <Button fx:id="btnPedidos2" alignment="BOTTOM_CENTER" layoutX="170.0" layoutY="159.0" mnemonicParsing="false" onAction="#openPedidosEmpleado" prefHeight="305.0" prefWidth="270.0" style="-fx-background-color: white;" text="Pedidos" textAlignment="CENTER" textFill="#321790">
          <font>
-            <Font name="Cambria Bold Italic" size="19.0" />
+            <Font name="Cambria Bold Italic" size="30.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button fx:id="btnVentas2" layoutX="424.0" layoutY="338.0" mnemonicParsing="false" onAction="#openWinSeven" style="-fx-background-color: pink;" text="Ingresar" textFill="#321790">
+      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="561.0" layoutY="183.0" mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
          <font>
-            <Font name="Cambria Bold Italic" size="19.0" />
+            <Font name="Cambria Bold Italic" size="30.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label layoutX="437.0" layoutY="150.0" text="Ventas" textFill="#0e1d7c">
-         <font>
-            <Font name="Century" size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="207.0" layoutY="150.0" text="Pedidos" textFill="#0e1d7c">
-         <font>
-            <Font name="Century" size="24.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="246.0" fitWidth="348.0" layoutX="170.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../ProyectoSegundo/src/Img/5.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="409.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="222.0" fitWidth="328.0" layoutX="550.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../ProyectoSegundo/src/Img/6.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
-      <Label layoutX="539.0" layoutY="34.0" text="empleado@Cream.pastel">
+      <MenuButton fx:id="menuopciones" layoutX="36.0" layoutY="74.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="208.0" style="-fx-background-color: pink;" text="Más opciones " textFill="#2f107c" underline="true">
          <font>
-            <Font name="System Bold Italic" size="10.0" />
-         </font>
-      </Label>
-      <Circle fill="#ffc4df" layoutX="681.0" layoutY="41.0" radius="18.0" stroke="WHITE" strokeType="INSIDE" />
-      <Text fontSmoothingType="LCD" layoutX="673.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" wrappingWidth="15.646484375">
-         <font>
-            <Font name="Bodoni MT Bold Italic" size="25.0" />
-         </font>
-      </Text>
-      <MenuButton fx:id="menuopciones" layoutX="21.0" layoutY="37.0" mnemonicParsing="false" style="-fx-background-color: pink;" text="Más opciones " textFill="#2f107c" underline="true">
-         <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="22.0" />
          </font>
          <items>
             <MenuItem fx:id="itemNocturno" mnemonicParsing="false" onAction="#cambiarVista" text="Modo nocturno 🌙" />
             <MenuItem fx:id="itemCerrar" mnemonicParsing="false" onAction="#openWinOne" text="Cerrar sesión  &lt;-" />
          </items>
       </MenuButton>
+      <Button fx:id="btnVentas211" alignment="BOTTOM_CENTER" layoutX="907.0" layoutY="209.0" mnemonicParsing="false" onAction="#openEstadoPedido" prefHeight="264.0" prefWidth="285.0" style="-fx-background-color: white;" text="Estado del Pedido" textAlignment="CENTER" textFill="#321790">
+         <font>
+            <Font name="Cambria Bold Italic" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="200.0" fitWidth="282.0" layoutX="942.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Img/Logo%20Pizzeria%20Delivery%20Circular%20Negro.jpg" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </Pane>
