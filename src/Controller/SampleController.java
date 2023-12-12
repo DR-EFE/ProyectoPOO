@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -40,6 +41,8 @@ public class SampleController implements Initializable {
 
     @FXML
     private TextField txtUsuario;
+    @FXML
+    private PasswordField passwordField1;
 
     
     Ventanas Ventana = new Ventanas();
@@ -74,7 +77,7 @@ public class SampleController implements Initializable {
     @FXML
     void validateCredentials(ActionEvent event) throws Exception {
         String usuario = txtUsuario.getText();
-        String contrasena = txtContra.getText();
+        String password1 = passwordField1.getText();
         Connection connection = ConnectionFactory.getConnection();
 
     	String selectQuery = "SELECT * FROM users WHERE UserID = ?";
@@ -85,11 +88,11 @@ public class SampleController implements Initializable {
         UserCredentials userCredentials = UserCredentialsDAO.getUserCredentialsByUserName(usuario);
         UserCredentials userID = UserCredentialsDAO.getUserID2(usuario);   //  
        // String userID2 = UserModel.getTipoDeChamba() ;
-        if (userID!=null && userCredentials != null && PasswordUtil.checkPassword(contrasena, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+        if (userID!=null && userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
 
                 openWintwo(event);
 
-            }else if(userCredentials != null && PasswordUtil.checkPassword(contrasena, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+            }else if(userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
             	openWintwo2(event);
             
             }

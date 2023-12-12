@@ -39,7 +39,7 @@ public class EmpleadoController implements Initializable {
     	
 
     }
-
+    
     @FXML
     void openPedidosEmpleado(ActionEvent event) {
     	try {
@@ -86,7 +86,8 @@ public class EmpleadoController implements Initializable {
 
     }
 
-    /*@FXML
+    /*
+   @FXML
     void openWinSeven(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Factura.fxml"));

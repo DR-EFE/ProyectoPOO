@@ -33,7 +33,12 @@
             <Font name="Georgia Bold Italic" size="72.0" />
          </font>
       </Label>
-      <Button fx:id="btnNext" layoutX="163.0" layoutY="585.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openRegister" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #fdcedd;" text="Registrate aquí" textFill="#0008eb" underline="true">
+      <Button fx:id="btnNext" layoutX="163.0" layoutY="585.0" 
+      maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" 
+      mnemonicParsing="false" onAction="#openRegister" prefHeight="42.0"
+       prefWidth="172.0" style="-fx-background-color: #fdcedd;" 
+       text="Registrate aquí" textFill="#0008eb" underline="true">
+       
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>

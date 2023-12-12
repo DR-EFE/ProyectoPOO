@@ -3,7 +3,7 @@ package Controller;
 import Model.Cliente;
 import Model.Pasteles;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.control.cell.TextFieldTableCell;	
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -47,14 +47,8 @@ public class ClienteController extends Utilitaria implements Initializable {
 	private TextField txtApellidoPaterno;
 	@FXML
 	private TextField txtApellidoMaterno;
-	@FXML
-	private TextField txtCalle;
-	@FXML
-	private TextField txtCP;
-	@FXML
-	private TextField txtColonia;
-	@FXML
-	private TextField txtDelegacion;
+
+	
 	@FXML
 	private TextField txtTelefono;
 
@@ -64,14 +58,8 @@ public class ClienteController extends Utilitaria implements Initializable {
 	TableColumn<Cliente, String> colApellidoPaterno;
 	@FXML
 	TableColumn<Cliente, String> colApellidoMaterno;
-	@FXML
-	TableColumn<Cliente, String> colCalle;
-	@FXML
-	TableColumn<Cliente, String> colCP;
-	@FXML
-	TableColumn<Cliente, String> colColonia;
-	@FXML
-	TableColumn<Cliente, String> colDelegacion;
+	
+	
 	@FXML
 	TableColumn<Cliente, String> colTelefono;
 	@FXML
@@ -90,8 +78,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 			// método next()
 			while (resClientes.next()) {
 				listaClientes.add(new Cliente(resClientes.getString("Nombre"), resClientes.getString("A_Paterno"),
-						resClientes.getString("A_Materno"), resClientes.getString("Calle"), resClientes.getString("CP"),
-						resClientes.getString("Colonia"), resClientes.getString("Delegacion"),
+						resClientes.getString("A_Materno"),
 						resClientes.getString("Telefono"), resClientes.getString("Forma_de_pago")));
 			}
 		} catch (Exception ex) {
@@ -102,33 +89,24 @@ public class ClienteController extends Utilitaria implements Initializable {
 		colNombreCliente.setCellFactory(TextFieldTableCell.forTableColumn());
 		colApellidoPaterno.setCellFactory(TextFieldTableCell.forTableColumn());
 		colApellidoMaterno.setCellFactory(TextFieldTableCell.forTableColumn());
-		colCalle.setCellFactory(TextFieldTableCell.forTableColumn());
-		colCP.setCellFactory(TextFieldTableCell.forTableColumn());
-		colColonia.setCellFactory(TextFieldTableCell.forTableColumn());
-		colDelegacion.setCellFactory(TextFieldTableCell.forTableColumn());
+		
 		colTelefono.setCellFactory(TextFieldTableCell.forTableColumn());
 		colFormaDePago.setCellFactory(TextFieldTableCell.forTableColumn());
 
 		colNombreCliente.setCellValueFactory(dato -> dato.getValue().getNombreCliente());
 		colApellidoPaterno.setCellValueFactory(dato -> dato.getValue().getApellidoPaterno());
 		colApellidoMaterno.setCellValueFactory(dato -> dato.getValue().getApellidoMaterno());
-		colCalle.setCellValueFactory(dato -> dato.getValue().getCalle());
-		colCP.setCellValueFactory(dato -> dato.getValue().getCp());
-		colColonia.setCellValueFactory(dato -> dato.getValue().getColonia());
-		colDelegacion.setCellValueFactory(dato -> dato.getValue().getDelegacion());
+		
+		
 		colTelefono.setCellValueFactory(dato -> dato.getValue().getTelefono());
 		colFormaDePago.setCellValueFactory(dato -> dato.getValue().getFormaDePago());
 
 		tblCliente.setItems(listaClientes);
 
-		// Crear la lista de valores
-		List<String> valoresFormaPago = Arrays.asList("Transferencia", "Efectivo");
-
-		// Asignar la lista de valores al ComboBox
-		comboBoxFormaDePago.setItems(FXCollections.observableList(valoresFormaPago));
+		
 
 	}
-
+/*
 	@FXML
 	private void guardarCliente(ActionEvent event) throws Exception {
 
@@ -194,7 +172,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 		txtDelegacion.setText("");
 		txtTelefono.setText("");
 	}
-
+*/
 	@FXML
 	private void eliminarCliente(ActionEvent event) throws Exception {// el throws Exception siempre se ocupa para las
 																		// conexiones
@@ -249,30 +227,24 @@ public class ClienteController extends Utilitaria implements Initializable {
 			String nombre = selectedClientes.getNombreCliente().get();
 			String apellidoPaterno = selectedClientes.getApellidoPaterno().get();
 			String apellidoMaterno = selectedClientes.getApellidoMaterno().get();
-			String calle = selectedClientes.getCalle().get();
-			String cp = selectedClientes.getCp().get();
-			String colonia = selectedClientes.getColonia().get();
-			String delegacion = selectedClientes.getDelegacion().get();
+			
 			String telefono = selectedClientes.getTelefono().get();
 			String formaDePago = selectedClientes.getFormaDePago().get();
 
-			if (!Pasteles.validarCampos(nombre, apellidoPaterno, apellidoMaterno, calle, cp, colonia, delegacion,
+			if (!Cliente.validarCampos(nombre, apellidoPaterno, apellidoMaterno, 
 					telefono, formaDePago)) {
 				return;
 			}
 
 			try {
 				Connection connection = ConnectionFactory.getConnection();
-				String updateQuery = "UPDATE clientes SET Nombre = ?, A_Paterno = ?, A_Materno = ?, Calle = ?, CP = ?, Colonia = ?, Delegacion = ?, Forma_de_pago = ? WHERE Telefono = ?";
+				String updateQuery = "UPDATE clientes SET Nombre = ?, A_Paterno = ?, A_Materno = ?, Forma_de_pago = ? WHERE Telefono = ?";
 				PreparedStatement statement = connection.prepareStatement(updateQuery);
 
 				statement.setString(1, nombre);
 				statement.setString(2, apellidoPaterno);
 				statement.setString(3, apellidoMaterno);
-				statement.setString(4, calle);
-				statement.setString(5, cp);
-				statement.setString(6, colonia);
-				statement.setString(7, delegacion);
+				
 				statement.setString(8, formaDePago);
 				statement.setString(9, telefono);
 
@@ -321,7 +293,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 					String formaPago = resultSet.getString("Forma_de_pago");
 
 					// Crear el objeto Producto con los valores ingresados
-					Cliente nuevoProducto = new Cliente(nombre, apellidoP, apellidoM, calle, cp, colonia, delegacion,
+					Cliente nuevoProducto = new Cliente(nombre, apellidoP, apellidoM, 
 							telefonoC, formaPago);
 
 					// Agregar el objeto Producto a la tabla
@@ -363,7 +335,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 				String formaPago = resultSet.getString("Forma_de_pago");
 
 				// Crear un nuevo objeto Pasteles con los valores obtenidos
-				Cliente nuevoProducto = new Cliente(nombre, apellidoP, apellidoM, calle, cp, colonia, delegacion,
+				Cliente nuevoProducto = new Cliente(nombre, apellidoP, apellidoM, 
 						telefonoC, formaPago);
 
 				// Agregar el objeto Producto a la tabla

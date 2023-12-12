@@ -9,24 +9,20 @@ public class Cliente {
 	private StringProperty nombreCliente;
 	private StringProperty apellidoPaterno;
 	private StringProperty apellidoMaterno;
-	private StringProperty calle;
-	private StringProperty cp;
-	private StringProperty colonia;
-	private StringProperty delegacion;
+
 	private StringProperty telefono;
 	private StringProperty formaDePago;
 
 	public Cliente(String nombreCliente, String apellidoPaterno, String apellidoMaterno,
-			String calle, String cp, String colonia, String delegacion,
 			String telefono, String formaDePago) {
 		super();
 		this.nombreCliente = new SimpleStringProperty(nombreCliente);
 		this.apellidoPaterno = new SimpleStringProperty(apellidoPaterno);
 		this.apellidoMaterno = new SimpleStringProperty(apellidoMaterno);
-		this.calle = new SimpleStringProperty(calle);
-		this.cp = new SimpleStringProperty(cp);
-		this.colonia = new SimpleStringProperty(colonia);
-		this.delegacion = new SimpleStringProperty(delegacion);
+		
+		
+		
+	
 		this.telefono = new SimpleStringProperty(telefono);
 		this.formaDePago = new SimpleStringProperty(formaDePago);
 	}
@@ -55,37 +51,10 @@ public class Cliente {
 		this.apellidoMaterno = apellidoMaterno;
 	}
 
-	public StringProperty getCalle() {
-		return calle;
-	}
 
-	public void setCalle(StringProperty calle) {
-		this.calle = calle;
-	}
 
-	public StringProperty getCp() {
-		return cp;
-	}
 
-	public void setCp(StringProperty cp) {
-		this.cp = cp;
-	}
 
-	public StringProperty getColonia() {
-		return colonia;
-	}
-
-	public void setColonia(StringProperty colonia) {
-		this.colonia = colonia;
-	}
-
-	public StringProperty getDelegacion() {
-		return delegacion;
-	}
-
-	public void setDelegacion(StringProperty delegacion) {
-		this.delegacion = delegacion;
-	}
 
 	public StringProperty getTelefono() {
 		return telefono;
@@ -103,12 +72,10 @@ public class Cliente {
 		this.formaDePago = formaDePago;
 	}
 
-	public static boolean validarCampos(String nombre, String aPaterno, String aMaterno, String calle, String cp,
-			String colonia, String delegacion, String telefono, String formaDePago) {
+	public static boolean validarCampos(String nombre, String aPaterno, String aMaterno,  String telefono, String formaDePago) {
 
 		// Validar que se hayan ingresado todos los campos requeridos
-		if (nombre.isEmpty() || aPaterno.isEmpty() || aMaterno.isEmpty() || calle.isEmpty() || cp.isEmpty() ||
-				colonia.isEmpty() || delegacion.isEmpty() || telefono.isEmpty() || formaDePago == null) {
+		if (nombre.isEmpty() || aPaterno.isEmpty() || aMaterno.isEmpty()  || telefono.isEmpty() || formaDePago == null) {
 			Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 			return false;
 		}

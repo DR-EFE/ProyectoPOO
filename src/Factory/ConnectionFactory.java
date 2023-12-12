@@ -16,7 +16,7 @@ public class ConnectionFactory {
         // Cargar el driver de la base de datos
         Class.forName(DRIVER);
         // Establecer la conexión utilizando la URL, el usuario y la contraseña
-        return DriverManager.getConnection(URL, "root", "mlg+pm7Blc");
+        return DriverManager.getConnection(URL, "root", "Root12345");
     }
 
     // Método para ejecutar una consulta y obtener un conjunto de resultados

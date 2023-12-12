@@ -223,14 +223,14 @@ public class SampleController2 implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Cliente.fxml"));
                 Parent root = loader.load();
 
-                Sample2Noc controlador = loader.getController();
+             //   Sample2Noc controlador = loader.getController();
 
                 Scene scene = new Scene(root);
                 Stage stage = new Stage();
                 stage.setScene(scene);
 
                 // Llama al método initialize() de SampleController2
-                controlador.initialize(null, null);
+              //  controlador.initialize(null, null);
                 stage.show();
 
                 // Cierra la ventana actual

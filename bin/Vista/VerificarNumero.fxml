@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="831.0" style="-fx-background-color: #ECF7DD;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.VerificarNumeroController">
+   <children>
+      <Text layoutX="241.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿El cliente ya está registrado? Verifica su número" textAlignment="CENTER" wrappingWidth="349.05078125">
+         <font>
+            <Font name="Bodoni MT" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="527.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="525.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="525.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folio">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font>
+      </Text>
+      <DatePicker layoutX="593.0" layoutY="123.0" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: white;" />
+      <SplitMenuButton layoutX="593.0" layoutY="182.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="217.0" style="-fx-background-color: white;" text="SplitMenuButton">
+         <items>
+            <MenuItem mnemonicParsing="false" text="09:00 AM" />
+            <MenuItem mnemonicParsing="false" text="10:00 AM" />
+            <MenuItem mnemonicParsing="false" text="12:00 PM" />
+            <MenuItem mnemonicParsing="false" text="13:00 PM" />
+            <MenuItem mnemonicParsing="false" text="14:00 PM" />
+            <MenuItem mnemonicParsing="false" text="15:00 PM" />
+            <MenuItem mnemonicParsing="false" text="16:00 PM" />
+            <MenuItem mnemonicParsing="false" text="17:00 PM" />
+            <MenuItem mnemonicParsing="false" text="18:00 PM" />
+            <MenuItem mnemonicParsing="false" text="19:00 PM" />
+            <MenuItem mnemonicParsing="false" text="20:00 PM" />
+            <MenuItem mnemonicParsing="false" text="21:00 PM" />
+         </items>
+      </SplitMenuButton>
+      <TextField layoutX="593.0" layoutY="244.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: white;" />
+      <Text layoutX="79.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Número de telefono" wrappingWidth="323.06640625">
+         <font>
+            <Font name="Britannic Bold" size="35.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tfVerificarNumero" layoutX="66.0" layoutY="213.0" onAction="#VerificarNumero" prefHeight="35.0" prefWidth="323.0" style="-fx-background-color: white;" />
+      <Button fx:id="btnVerificar" alignment="BOTTOM_CENTER" layoutX="184.0" layoutY="269.0" mnemonicParsing="false" onAction="#VerificarNumero" style="-fx-background-color: F5B6B6;" text="Verificar">
+         <font>
+            <Font name="Britannic Bold" size="17.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
