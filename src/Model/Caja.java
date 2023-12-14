@@ -3,7 +3,7 @@ package Model;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+// Model para que funciones Caja 
 public class Caja {
     private final SimpleStringProperty fecha;
     private final SimpleStringProperty productosVendidos;
