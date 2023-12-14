@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
@@ -131,9 +133,9 @@
          </cursor>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd1ea" height="56.0" layoutX="-17.0" layoutY="-9.0" stroke="WHITE" strokeType="INSIDE" width="1391.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd1ea" height="75.0" layoutX="-7.0" layoutY="706.0" stroke="WHITE" strokeType="INSIDE" width="1372.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd1ea" height="150.0" layoutX="-7.0" layoutY="631.0" stroke="WHITE" strokeType="INSIDE" width="1372.0" />
       <Circle fill="#ffc4df" layoutX="1363.0" layoutY="59.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
-      <Circle fill="#ffc4df" layoutX="1389.0" layoutY="615.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="#ffc4df" layoutX="1392.0" layoutY="485.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
       <Circle fill="#ffc4df" layoutX="375.0" layoutY="-18.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
       <MenuButton fx:id="menuopciones" layoutX="30.0" layoutY="64.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="237.0" style="-fx-background-color: pink;" text="Más opciones " textFill="#2f107c" underline="true">
          <font>
@@ -196,7 +198,29 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="134.0" fitWidth="157.0" layoutX="1025.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="btnHoraFecha" layoutX="1378.0" layoutY="508.0" mnemonicParsing="false" onAction="#mostrarHoraFecha" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: white;" text="Iniciar Día">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a8a" height="46.0" layoutX="1068.0" layoutY="652.0" opacity="0.35" stroke="#8a8a8a" strokeType="INSIDE" width="275.0" />
+      <TextField fx:id="TextFieldFH" alignment="CENTER" editable="false" layoutX="1058.0" layoutY="645.0" opacity="0.68" prefHeight="46.0" prefWidth="275.0" promptText="Fecha" style="-fx-background-color: white;">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <font>
+            <Font name="Britannic Bold" size="21.0" />
+         </font>
+      </TextField>
+      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="1037.0" layoutY="403.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="150.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
+         <font>
+            <Font name="Cambria Bold Italic" size="30.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="134.0" fitWidth="157.0" layoutX="1045.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/Logo%20Pizzeria%20Delivery%20Circular%20Negro.png" />
          </image>

@@ -70,10 +70,10 @@ public class SampleController implements Initializable {
 
     @FXML
     void Cancelar(ActionEvent event) {
-        txtContra.setText("");
-        txtUsuario.setText("");
-    }
-
+    	txtUsuario.clear();
+        passwordField1.clear(); 
+    } 
+    
     @FXML
     void validateCredentials(ActionEvent event) throws Exception {
         String usuario = txtUsuario.getText();
@@ -93,7 +93,7 @@ public class SampleController implements Initializable {
                 openWintwo(event);
 
             }else if(userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
-            	openWintwo2(event);
+            	openWinEmpleado(event);
             
             }
         		else {
@@ -104,11 +104,7 @@ public class SampleController implements Initializable {
                        alert.setHeaderText(null);
                        alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
                        alert.showAndWait();
-            	
-            	
             }
-        
-           
     
     }
        
@@ -155,6 +151,7 @@ public class SampleController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Segunda Ventana");
 

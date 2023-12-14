@@ -104,8 +104,6 @@ import Factory.ConnectionFactory;
 
 	        return null; // Retornar null si no se encuentra el usuario
 	    }
-	
-	
 	  public static UserCredentials getUserID2(String NumEmpleado) throws Exception {
 	        Connection connection = null;
 	        PreparedStatement statement = null;
@@ -148,6 +146,3 @@ import Factory.ConnectionFactory;
 	    
 	    }
 	  }
-	
-
-

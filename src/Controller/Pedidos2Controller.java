@@ -1,16 +1,13 @@
 package Controller;
 
-import Model.Pedido;
-import javafx.scene.control.TextField;
+import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-import javafx.scene.control.cell.TextFieldTableCell;
-
-import javafx.stage.Stage;
-import javafx.util.converter.FloatStringConverter;
-import javafx.util.converter.IntegerStringConverter;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,470 +15,139 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
-
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+public class Pedidos2Controller extends Utilitaria implements Initializable{
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+    @FXML
+    private TextField TextFieldFecha1;
 
-import javafx.util.converter.DoubleStringConverter;
+    @FXML
+    private TextField TextFieldHora1;
 
-import javafx.beans.binding.Bindings;
+    @FXML
+    private TextField TxtBuscarPedido;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+    @FXML
+    private Button btnBuscarPedido;
 
-import Factory.ConnectionFactory;
+    @FXML
+    private Button btnBuscarPedido1;
 
-public class Pedidos2Controller extends Utilitaria implements Initializable {
+    @FXML
+    private Button btnConfirmarPedido;
 
-	@FXML
-	TableView<Pedido> tblPedido;
-
-	@FXML
-	private Button btnBuscarPedido;
-	@FXML
-	private Button btnRecargarTablaPedido;
-
-	@FXML
-	private Button btnMenu;
-	
-	@FXML
+    @FXML
     private Button btnDatosCliente;
 
-	@FXML
-	private TextField TxtBuqueda;
-	@FXML
-	private TextField TxtBuscarPedido;
+    @FXML
+    private Button btnMenu;
 
-	@FXML
-	private TextField txtFolio;
-	@FXML
-	private DatePicker FechaHoraDeSolicitud;
-	@FXML
-	private TextField txtDescripcionPedido;
-	@FXML
-	private TextField txtAnticipo;
-	@FXML
-	private TextField txtTipo;
-	@FXML
-	private TextField txtSubtotal;
-	@FXML
-	private TextField txtTotal;
-	@FXML
-	private TextField txtEstatus;
-	@FXML
-	private DatePicker FechaHoraEntrega;
-	@FXML
-	private TextField txtTelefono_FK;
+    @FXML
+    private TableColumn<?, ?> colAnticipo;
 
-	@FXML
-	TableColumn<Pedido, Integer> colFolio;
-	@FXML
-	TableColumn<Pedido, String> colFechaHoraSolicitud;
-	@FXML
-	TableColumn<Pedido, String> colDescripcion;
-	@FXML
-	TableColumn<Pedido, Double> colAnticipo;
-	@FXML
-	TableColumn<Pedido, String> colTipo;
-	@FXML
-	TableColumn<Pedido, Double> colSubtotal;
-	@FXML
-	TableColumn<Pedido, Double> colTotal;
-	@FXML
-	TableColumn<Pedido, String> colEstatus;
-	@FXML
-	TableColumn<Pedido, String> colFechaHoraEntrega;
-	@FXML
-	TableColumn<Pedido, String> colTelefono_FK;
+    @FXML
+    private TableColumn<?, ?> colDescripcion;
 
-	private ObservableList<Pedido> listaPedido;
+    @FXML
+    private TableColumn<?, ?> colEstatus;
 
-	@FXML
-	public void openWintwo2(ActionEvent event) {
+    @FXML
+    private TableColumn<?, ?> colFolio;
 
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Empleado.fxml"));
-			Parent root = loader.load();
+    @FXML
+    private TableColumn<?, ?> colSubtotal;
 
-			EmpleadoController controlador = loader.getController();
+    @FXML
+    private TableColumn<?, ?> colTelefono_FK;
 
-			Scene scene = new Scene(root);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.setTitle("Segunda Ventana");
+    @FXML
+    private TableColumn<?, ?> colTipo;
 
-			// Llama al método initialize() de SampleController2
-			controlador.initialize(null, null);
+    @FXML
+    private TableColumn<?, ?> colTotal;
 
-			stage.show();
-
-			// Cierra la ventana actual
-			Stage myStage = (Stage) btnMenu.getScene().getWindow();
-			myStage.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
+    @FXML
+    private TableView<?> tblPedido;
+    
+    @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		listaPedido = FXCollections.observableArrayList();
+		// TODO Auto-generated method stub
+		// Crear un Timeline para actualizar automáticamente la hora cada segundo
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> MostrarHora1(event)));
+        Timeline timeline1 = new Timeline(new KeyFrame(Duration.seconds(1), event -> MostrarFecha1(event)));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+        timeline1.setCycleCount(Timeline.INDEFINITE);
+        timeline1.play();
 
-		try {
-
-			ResultSet resPedido = ConnectionFactory.executeQuery("SELECT * FROM pedidos");// devuelve un objeto
-
-			while (resPedido.next()) {
-				listaPedido.add(new Pedido(resPedido.getInt("Folio"), resPedido.getString("FechaHoraSolicitud"),
-						resPedido.getString("Descripcion"), resPedido.getDouble("Anticipo"),
-						resPedido.getString("Tipo"), resPedido.getDouble("Subtotal"),
-						resPedido.getDouble("Total"), resPedido.getString("Estatus"),
-						resPedido.getString("FechaHoraEntrega"), resPedido.getString("TelefonoFK")));
-			}
-		} catch (Exception ex) {
-			System.err.println("ERROR: " + ex.getMessage());
-		}
-
-		tblPedido.setEditable(true);
-		colFolio.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-		colFechaHoraSolicitud.setCellFactory(TextFieldTableCell.forTableColumn());
-		colDescripcion.setCellFactory(TextFieldTableCell.forTableColumn());
-		colAnticipo.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-		colTipo.setCellFactory(TextFieldTableCell.forTableColumn());
-		colSubtotal.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-		colTotal.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-		colEstatus.setCellFactory(TextFieldTableCell.forTableColumn());
-		colFechaHoraEntrega.setCellFactory(TextFieldTableCell.forTableColumn());
-		colTelefono_FK.setCellFactory(TextFieldTableCell.forTableColumn());
-
-		colFolio.setCellValueFactory(dato -> dato.getValue().getFolio().asObject());
-		colFechaHoraSolicitud.setCellValueFactory(dato -> dato.getValue().getFechaHoraSolicitud());
-		// colFechaHoraSolicitud.setCellValueFactory(dato ->
-		// Bindings.createObjectBinding(() ->
-		// dato.getValue().getFechaHoraSolicitud().get(),
-		// dato.getValue().getFechaHoraSolicitud()));
-		colDescripcion.setCellValueFactory(dato -> dato.getValue().getDescripcion());
-		colAnticipo.setCellValueFactory(dato -> dato.getValue().getAnticipo().asObject());
-		colTipo.setCellValueFactory(dato -> dato.getValue().getTipo());
-		colSubtotal.setCellValueFactory(dato -> dato.getValue().getSubtotal().asObject());
-		colTotal.setCellValueFactory(dato -> dato.getValue().getTotal().asObject());
-		colEstatus.setCellValueFactory(dato -> dato.getValue().getEstatus());
-		colFechaHoraEntrega.setCellValueFactory(dato -> dato.getValue().getFechaHoraEntrega());
-		// colFechaHoraEntrega.setCellValueFactory(dato ->
-		// Bindings.createObjectBinding(() ->
-		// dato.getValue().getFechaHoraEntrega().get(),
-		// dato.getValue().getFechaHoraEntrega()));
-		colTelefono_FK.setCellValueFactory(dato -> dato.getValue().getTelefonoFK());
-
-		tblPedido.setItems(listaPedido);
 
 	}
 
-	@FXML
-	private void actualizarRegistroPedido() throws Exception {
-		Pedido selectedPedido = tblPedido.getSelectionModel().getSelectedItem();
+    @FXML
+    void MostrarFecha1(ActionEvent event) {
+    	// Obtener la fecha 
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora según tus preferencias
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDateTime = currentDateTime.format(formatter);
+        // Establecer el texto formateado en el TextField
+        TextFieldFecha1.setText(formattedDateTime);
 
-		if (selectedPedido != null) {
-			int folio = selectedPedido.getFolio().get();
-			String fechaHoraSolicitud = selectedPedido.getFechaHoraSolicitud().get();
-			String descripcion = selectedPedido.getDescripcion().get();
-			double anticipo = selectedPedido.getAnticipo().get();
-			String tipo = selectedPedido.getTipo().get();
-			double subtotal = selectedPedido.getSubtotal().get();
-			double total = selectedPedido.getTotal().get();
-			String estatus = selectedPedido.getEstatus().get();
-			String fechaHoraEntrega = selectedPedido.getFechaHoraEntrega().get();
-			String telefonoFK = selectedPedido.getTelefonoFK().get();
+    }
 
-			if (!Pedido.validarCampos(String.valueOf(folio), fechaHoraSolicitud, descripcion, String.valueOf(anticipo),
-					tipo, String.valueOf(subtotal), String.valueOf(total), estatus, fechaHoraEntrega, telefonoFK)) {
-				return;
-			}
+    @FXML
+    void MostrarHora1(ActionEvent event) {
+    	// Obtener la hora actual
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        // Formatear la fecha y hora según tus preferencias
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+        // Establecer el texto formateado en el TextField
+        TextFieldHora1.setText(formattedDateTime);
+    }
 
-			try {
-				Connection connection = ConnectionFactory.getConnection();
-				String updateQuery = "UPDATE pedidos SET FechaHoraSolicitud = ?, Descripcion = ?, Anticipo = ?, Tipo = ?, Subtotal = ?, Total = ?, Estatus = ?, FechaHoraEntrega = ?, TelefonoFK = ? WHERE Folio = ?";
-				PreparedStatement statement = connection.prepareStatement(updateQuery);
+    @FXML
+    void buscarPedido(ActionEvent event) {
 
-				statement.setTimestamp(1, Timestamp.valueOf(fechaHoraSolicitud)); // FechaHoraSolicitud
-				statement.setString(2, descripcion); // Descripcion
-				statement.setDouble(3, anticipo); // Anticipo
-				statement.setString(4, tipo); // Tipo
-				statement.setDouble(5, subtotal); // Subtotal
-				statement.setDouble(6, total); // Total
-				statement.setString(7, estatus); // Estatus
-				statement.setTimestamp(8, Timestamp.valueOf(fechaHoraEntrega)); // FechaHoraEntrega
-				statement.setString(9, telefonoFK); // TelefonoFK
-				statement.setInt(10, folio); // Folio
+    }
 
-				int rowsUpdated = statement.executeUpdate();
+    @FXML
+    void openPedidosTienda(ActionEvent event) {
 
-				if (rowsUpdated > 0) {
-					Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
-				} else {
-					Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
-				}
+    }
 
-				statement.close();
-				connection.close();
-			} catch (SQLException e) {
-				Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
-			}
-		} else {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
-		}
-	}
+    @FXML
+    void recargarTablaPedido(ActionEvent event) {
 
-	@FXML
-	private void eliminarRegistro(ActionEvent event) throws Exception {
-		Pedido selectedPedido = tblPedido.getSelectionModel().getSelectedItem();
+    }
 
-		if (selectedPedido == null) {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
-			return;
-		}
-
-		int folio = selectedPedido.getFolio().get();
-
-		try {
-			Connection connection = ConnectionFactory.getConnection();
-			connection.setAutoCommit(false); // Desactivar el modo de confirmación automática
-
-			// Eliminar los registros asociados en la tabla "clientes" primero
-			String deleteVentasSql = "DELETE FROM clientes WHERE Telefono = ?";
-			PreparedStatement deleteVentasStatement = connection.prepareStatement(deleteVentasSql);
-			deleteVentasStatement.setInt(1, folio);
-			deleteVentasStatement.executeUpdate();
-
-			// Eliminar el pedido de la tabla "Pedidos"
-			String deletePedidoSql = "DELETE FROM Pedidos WHERE Folio = ?";
-			PreparedStatement deletePedidoStatement = connection.prepareStatement(deletePedidoSql);
-			deletePedidoStatement.setInt(1, folio);
-			deletePedidoStatement.executeUpdate();
-
-			connection.commit(); // Confirmar los cambios realizados en la base de datos
-
-			Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
-			listaPedido.remove(selectedPedido);
-		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
-		}
-	}
-
-	@FXML
-	public void guardarRegistro(ActionEvent event) throws Exception {
-
-		String fechaHoraS = null;
-		String fechaHoraE = null;
-		if (FechaHoraDeSolicitud.getValue() != null) {
-			fechaHoraS = FechaHoraDeSolicitud.getValue().toString();
-		}
-		if (FechaHoraEntrega.getValue() != null) {
-			fechaHoraE = FechaHoraEntrega.getValue().toString();
-		}
-
-		// Obtener los valores ingresados en los campos de texto
-		String folio = txtFolio.getText().trim();
-		String descripcion = txtDescripcionPedido.getText().trim();
-		String anticipo = txtAnticipo.getText().trim();
-		String tipo = txtTipo.getText().trim();
-		String subtotal = txtSubtotal.getText().trim();
-		String total = txtTotal.getText().trim();
-		String estatus = txtEstatus.getText().trim();
-		String telefonoFK = txtTelefono_FK.getText().trim();
-
-		// Validar los campos ingresados
-		if (!Pedido.validarCampos(folio, fechaHoraS, descripcion, anticipo, tipo, subtotal, total, estatus, fechaHoraE,
-				telefonoFK)) {
-			return;
-		}
-
-		// validacion de campos numericos
-		int folioI = Integer.parseInt(folio);
-		double anticipoD = Double.parseDouble(anticipo);
-		double subtotalD = Double.parseDouble(subtotal);
-		double totalD = Double.parseDouble(total);
-
-		try {
-			folioI = Integer.parseInt(folio);
-			anticipoD = Double.parseDouble(anticipo);
-			subtotalD = Double.parseDouble(subtotal);
-			totalD = Double.parseDouble(total);
-		} catch (NumberFormatException e) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos3333.");
-			return;
-		}
-		// Crear el objeto Pedido con los valores ingresados
-		Pedido nuevoPedido = new Pedido(folioI, fechaHoraS, descripcion, anticipoD, tipo, subtotalD, totalD, estatus,
-				fechaHoraE, telefonoFK);
-
-		try {
-			// Insertar el nuevo registro en la base de datos
-			String insertSql = "INSERT INTO Pedidos (Folio, FechaHoraSolicitud,Descripcion, Anticipo, Tipo, Subtotal, Total, Estatus,  FechaHoraEntrega, TelefonoFK) "
-					+
-					"VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-			PreparedStatement insertStatement = ConnectionFactory.getConnection().prepareStatement(insertSql);
-			// el .get() recupera el valor real ,Int,String,Double...
-			insertStatement.setInt(1, nuevoPedido.getFolio().get());
-			insertStatement.setString(2, nuevoPedido.getFechaHoraSolicitud().get());
-			insertStatement.setString(3, nuevoPedido.getDescripcion().get());
-			insertStatement.setDouble(4, nuevoPedido.getAnticipo().get());
-			insertStatement.setString(5, nuevoPedido.getTipo().get());
-			insertStatement.setDouble(6, nuevoPedido.getSubtotal().get());
-			insertStatement.setDouble(7, nuevoPedido.getTotal().get());
-			insertStatement.setString(8, nuevoPedido.getEstatus().get());
-			insertStatement.setString(9, nuevoPedido.getFechaHoraEntrega().get());
-			insertStatement.setString(10, nuevoPedido.getTelefonoFK().get());
-
-			int rowsAffected = insertStatement.executeUpdate();
-
-			if (rowsAffected > 0) {
-				Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
-				listaPedido.add(nuevoPedido);
-				limpiarCampos();
-			} else {
-				Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
-			}
-		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
-		}
-	}
-
-	private void limpiarCampos() {
-		txtFolio.setText("");
-		txtDescripcionPedido.setText("");
-		txtAnticipo.setText("");
-		txtTipo.setText("");
-		txtSubtotal.setText("");
-		txtTotal.setText("");
-		txtEstatus.setText("");
-		txtTelefono_FK.setText("");
-	}
-
-	@FXML
-	private void buscarPedido(ActionEvent event) throws Exception {
-		String folioPedido = TxtBuscarPedido.getText();
-		if (!folioPedido.isEmpty()) {
-			try {
-				Connection connection = ConnectionFactory.getConnection();
-				String selectQuery = "SELECT * FROM pedidos WHERE Folio = ?";
-				PreparedStatement statement = connection.prepareStatement(selectQuery);
-				statement.setString(1, folioPedido);
-
-				ResultSet resultSet = statement.executeQuery();
-				// Limpiar la tabla antes de mostrar los nuevos resultados
-				tblPedido.getItems().clear();
-
-				while (resultSet.next()) {
-					// Obtener los valores de cada columna del resultado de la consulta
-					int folio = resultSet.getInt("Folio");
-					String fechaHoraSoli = resultSet.getString("FechaHoraSolicitud");
-					String descripcionP = resultSet.getString("Descripcion");
-					double anticipo = resultSet.getDouble("Anticipo");
-					String tipoP = resultSet.getString("Tipo");
-					double subtotalP = resultSet.getDouble("Subtotal");
-					double total = resultSet.getDouble("Total");
-					String estatus = resultSet.getString("Estatus");
-					String fechaHoraEntrega = resultSet.getString("FechaHoraEntrega");
-					String telefono = resultSet.getString("TelefonoFK");
-
-					// Crear el objeto Pedido con los valores obtenidos
-					Pedido nuevoPedido = new Pedido(folio, fechaHoraSoli, descripcionP, anticipo,
-							tipoP, subtotalP, total, estatus, fechaHoraEntrega, telefono);
-
-					// Agregar el objeto Pedido a la tabla
-					tblPedido.getItems().add(nuevoPedido);
-				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} else {
-			Utilitaria.mostrarAlerta("Error", "Debe ingresar un código de barras del producto");
-		}
-	}
-
-	@FXML
-	private void recargarTablaPedido(ActionEvent event) throws Exception {
-		try {
-			Connection connection = ConnectionFactory.getConnection();
-			String selectQuery = "SELECT * FROM pedidos";
-			// El Statement se utiliza para ejecutar la consulta SQL en la base de datos.
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery(selectQuery);// epresenta el conjunto de resultados de la
-																		// consulta.
-
-			// Limpiar la tabla antes de mostrar los nuevos resultados
-			tblPedido.getItems().clear();
-
-			while (resultSet.next()) {
-				// Obtener los valores de cada columna del resultado de la consulta
-				int folio = resultSet.getInt("Folio");
-				String fechaHoraSoli = resultSet.getString("FechaHoraSolicitud");
-				String descripcionP = resultSet.getString("Descripcion");
-				double anticipo = resultSet.getDouble("Anticipo");
-				String tipoP = resultSet.getString("Tipo");
-				double subtotalP = resultSet.getDouble("Subtotal");
-				double total = resultSet.getDouble("Total");
-				String estatus = resultSet.getString("Estatus");
-				String fechaHoraEntrega = resultSet.getString("FechaHoraEntrega");
-				String telefono = resultSet.getString("TelefonoFK");
-
-				// Crear un nuevo objeto Pasteles con los valores obtenidos
-				Pedido nuevoProducto = new Pedido(folio, fechaHoraSoli, descripcionP, anticipo, tipoP, subtotalP, total,
-						estatus,
-						fechaHoraEntrega, telefono);
-
-				// Agregar el objeto Producto a la tabla
-				tblPedido.getItems().add(nuevoProducto);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	@FXML
-    void openPedidosTienda(ActionEvent event) {
+    void openWinMenu(ActionEvent event) {
 		try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sample2.fxml"));
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PedidosEmpleado.fxml"));
             Parent root = loader.load();
-
-            SampleController controlador = loader.getController();
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setFullScreen(true);
             stage.setScene(scene);
-            //stage.setTitle("Primera Ventana");
-
-            // Llama al método initialize() de SampleController2
-            controlador.initialize(null, null);
-
+            stage.setTitle("Ventana Ventas");
             stage.show();
 
-            // Cierra la ventana actual
-            Stage myStage = (Stage) btnDatosCliente.getScene().getWindow();
+            Stage myStage = (Stage) this.btnMenu.getScene().getWindow();
             myStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+        } catch (IOException ex) {
+            //Logger.getLogger(CajaController.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
     }
 
 }

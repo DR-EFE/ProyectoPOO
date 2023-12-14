@@ -49,7 +49,7 @@ public class EmpleadoController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-
+            stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Ventana Pedidos");
             stage.show();
