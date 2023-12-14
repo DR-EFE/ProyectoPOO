@@ -14,7 +14,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="725.0" prefWidth="1380.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+ minWidth="-Infinity" prefHeight="725.0" prefWidth="1380.0" 
+ style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" 
+ xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="49.0" stroke="#ffdef1" strokeType="INSIDE" width="1342.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="122.0" layoutX="-1.0" layoutY="613.0" stroke="#ffdef1" strokeType="INSIDE" width="1392.0" />
@@ -35,7 +38,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="554.0" layoutY="244.0" mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="554.0" layoutY="244.0" 
+      mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" 
+      prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -68,7 +73,10 @@
             <MenuItem fx:id="itemCerrar" mnemonicParsing="false" onAction="#openWinOne" text="Cerrar sesión  &lt;-" />
          </items>
       </MenuButton>
-      <Button fx:id="btnVentas211" alignment="BOTTOM_CENTER" layoutX="905.0" layoutY="269.0" mnemonicParsing="false" onAction="#openEstadoPedido" prefHeight="264.0" prefWidth="285.0" style="-fx-background-color: white;" text="Estado del Pedido" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnVentas211" alignment="BOTTOM_CENTER" layoutX="905.0" 
+      layoutY="269.0" mnemonicParsing="false" onAction="#openEstadoPedido" 
+      prefHeight="264.0" prefWidth="285.0" style="-fx-background-color: white;" text="Estado del Pedido"
+       textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -84,7 +92,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextField fx:id="TextFieldFHE" alignment="CENTER" editable="false" layoutX="1068.0" layoutY="655.0" opacity="0.68" prefHeight="46.0" prefWidth="275.0" promptText="Fecha" style="-fx-background-color: white;">
+      <TextField fx:id="TextFieldFHE" alignment="CENTER" editable="false" 
+      layoutX="1068.0" layoutY="655.0" opacity="0.68" prefHeight="46.0" 
+      prefWidth="275.0" promptText="Fecha" style="-fx-background-color: white;">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

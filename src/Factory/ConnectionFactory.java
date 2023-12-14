@@ -28,5 +28,30 @@ public class ConnectionFactory {
         // Ejecutar la consulta y devolver el conjunto de resultados
         return statement.executeQuery(query);
     }
+    
+    
+    public static void close(ResultSet resultSet, Statement statement, Connection connection) {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 
 }

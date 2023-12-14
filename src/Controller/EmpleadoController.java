@@ -66,7 +66,7 @@ public class EmpleadoController implements Initializable {
     @FXML
     void openVentasEmpleado(ActionEvent event) {
     	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VentasEmpleado.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/VentaEmpleado.fxml"));
 
             Parent root = loader.load();
 
@@ -86,7 +86,7 @@ public class EmpleadoController implements Initializable {
 
     }
 
-    /*
+    
    @FXML
     void openWinSeven(ActionEvent event) {
         try {
@@ -185,7 +185,7 @@ public class EmpleadoController implements Initializable {
             e.printStackTrace();
         }
 
-    }*/
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {

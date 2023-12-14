@@ -93,7 +93,7 @@ public class SampleController implements Initializable {
                 openWintwo(event);
 
             }else if(userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
-            	openWinEmpleado(event);
+            	openWintwo2(event);
             
             }
         		else {
