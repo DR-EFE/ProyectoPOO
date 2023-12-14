@@ -18,6 +18,8 @@ public class Ventas {
 	private FloatProperty subtotal;
 	private FloatProperty total;
 	private StringProperty fechaDeVenta;
+	private StringProperty Codigodebarras;
+	private StringProperty Categorias;
 
 	public Ventas(int folio, int cantidadVendida, float subtotal, float total, String fechaVenta, String productos) {
 		super();
@@ -27,6 +29,39 @@ public class Ventas {
 		this.total = new SimpleFloatProperty(total);
 		this.fechaDeVenta = new SimpleStringProperty(fechaVenta);
 		this.productos = new SimpleStringProperty(productos);
+	}
+	
+	public Ventas(int folio, int cantidadVendida, float subtotal, float total, String fechaVenta, 
+			String productos,String CodigodeBarras,String Categorias) {
+		super();
+		this.folio = new SimpleIntegerProperty(folio);
+		this.cantidadVendida = new SimpleIntegerProperty(cantidadVendida);
+		this.subtotal = new SimpleFloatProperty(subtotal);
+		this.total = new SimpleFloatProperty(total);
+		this.fechaDeVenta = new SimpleStringProperty(fechaVenta);
+		this.productos = new SimpleStringProperty(productos);
+		this.Codigodebarras = new SimpleStringProperty(CodigodeBarras);
+		this.Categorias= new SimpleStringProperty(Categorias);
+	}
+
+	public StringProperty getCodigodebarras() {
+		return Codigodebarras;
+	}
+
+	public void setCodigodebarras(StringProperty codigodebarras) {
+		Codigodebarras = codigodebarras;
+	}
+
+	public StringProperty getCategorias() {
+		return Categorias;
+	}
+
+	public void setCategorias(StringProperty categorias) {
+		Categorias = categorias;
+	}
+
+	public Ventas() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public IntegerProperty getFolio() {

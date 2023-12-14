@@ -12,7 +12,10 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1320.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmpleadoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+prefHeight="659.0" prefWidth="1320.0" style="-fx-background-color: white;" 
+xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" 
+fx:controller="Controller.EmpleadoController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="49.0" stroke="#ffdef1" strokeType="INSIDE" width="1342.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffcdf6" height="80.0" layoutX="-7.0" layoutY="587.0" stroke="#ffdef1" strokeType="INSIDE" width="1336.0" />
@@ -25,7 +28,9 @@
             <Font name="Bodoni MT" size="68.0" />
          </font>
       </Label>
-      <Button fx:id="btnPedidos2" alignment="BOTTOM_CENTER" layoutX="170.0" layoutY="159.0" mnemonicParsing="false" onAction="#openPedidosEmpleado" prefHeight="305.0" prefWidth="270.0" style="-fx-background-color: white;" text="Pedidos" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnPedidos2" alignment="BOTTOM_CENTER" layoutX="170.0" layoutY="159.0" 
+      mnemonicParsing="false" onAction="#openPedidosEmpleado" prefHeight="305.0" prefWidth="270.0" 
+      style="-fx-background-color: white;" text="Pedidos" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -33,7 +38,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="561.0" layoutY="183.0" mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="561.0" layoutY="183.0" 
+      mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" 
+      prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
