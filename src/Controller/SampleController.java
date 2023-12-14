@@ -2,11 +2,16 @@ package Controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import DAO.UserCredentialsDAO;
+import Factory.ConnectionFactory;
 import Model.PasswordUtil;
 import Model.UserCredentials;
+import Model.UserModel;
 import Model.Ventanas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,29 +71,40 @@ public class SampleController implements Initializable {
     	txtUsuario.clear();
         passwordField1.clear(); 
     } 
-
+    
     @FXML
     void validateCredentials(ActionEvent event) throws Exception {
         String usuario = txtUsuario.getText();
-        //String contrasena = txtContra.getText();
         String password1 = passwordField1.getText();
-        
+        Connection connection = ConnectionFactory.getConnection();
 
+    	String selectQuery = "SELECT * FROM users WHERE UserID = ?";
+		PreparedStatement statement = connection.prepareStatement(selectQuery);
+		//statement.setString(1, usuario);
+		
         // Obtener las credenciales almacenadas en la base de datos
         UserCredentials userCredentials = UserCredentialsDAO.getUserCredentialsByUserName(usuario);
+        UserCredentials userID = UserCredentialsDAO.getUserID2(usuario);   //  
+       // String userID2 = UserModel.getTipoDeChamba() ;
+        if (userID!=null && userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
 
-        if (userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
-            // Credenciales válidas, abrir la ventana correspondiente
-        	openWintwo(event);
-            } else {
-            	 // Credenciales inválidas, mostrar un mensaje de error
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error de autenticación");
-                alert.setHeaderText(null);
-                alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
-                alert.showAndWait();
-            }    
-        }
+                openWintwo(event);
+
+            }else if(userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+            	openWinEmpleado(event);
+            
+            }
+        		else {
+        			//vamos	
+                    // Credenciales inválidas, mostrar un mensaje de error
+                       Alert alert = new Alert(Alert.AlertType.ERROR);
+                       alert.setTitle("Error de autenticación");
+                       alert.setHeaderText(null);
+                       alert.setContentText("Usuario o contraseña incorrectos. Por favor, intente nuevamente.");
+                       alert.showAndWait();
+            }
+    
+    }
     
     @FXML
     void openWinNext(ActionEvent event) {
@@ -110,7 +126,7 @@ public class SampleController implements Initializable {
             Stage stage = new Stage();
             stage.setFullScreen(true);
             stage.setScene(scene);
-            stage.setTitle("Segunda Ventana");
+            stage.setTitle("Primera Ventana");
 
             // Llama al método initialize() de SampleController2
             controlador.initialize(null, null);
@@ -136,6 +152,7 @@ public class SampleController implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
+            stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Segunda Ventana");
             stage.setFullScreen(true);
