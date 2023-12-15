@@ -127,8 +127,8 @@ public class Pasteles {
 		}
 		// Validar el formato del código de barras (solo se permiten 13 dígitos
 		// numéricos)
-		if (!codigoBarras.matches("\\d{13}")) {
-			Utilitaria.mostrarAlerta("Error", "El código de barras debe contener exactamente 13 dígitos numéricos.");
+		if (!codigoBarras.matches("\\d{10}")) {
+			Utilitaria.mostrarAlerta("Error", "El código de barras debe contener exactamente 10 dígitos numéricos.");
 			return false;
 		}
 
@@ -163,18 +163,7 @@ public class Pasteles {
 		fechaElaboracionDate = LocalDate.parse(fechaElaboracion);
 		fechaVencimientoDate = LocalDate.parse(fechaVencimiento);
 
-		/*
-		 * try {
-		 * fechaElaboracionDate = LocalDate.parse(fechaElaboracion);
-		 * fechaVencimientoDate = LocalDate.parse(fechaVencimiento);
-		 * } catch (DateTimeParseException e) {
-		 * Utilitaria.mostrarAlerta("Error",
-		 * "Por favor, ingrese las fechas en el formato correcto (YYYY-MM-DD).");
-		 * return false;
-		 * }
-		 * 
-		 * 
-		 */
+	
 		if (fechaVencimientoDate.isBefore(fechaElaboracionDate)) {
 			Utilitaria.mostrarAlerta("Error",
 					"La fecha de vencimiento no puede ser anterior a la fecha de elaboración.");

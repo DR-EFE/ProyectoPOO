@@ -116,7 +116,7 @@ public class SampleController2 implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setFullScreen(true);
+          //  stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Segunda Ventana");
 
@@ -196,7 +196,7 @@ public class SampleController2 implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setFullScreen(true);
+           stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Ventana Ventas");
             stage.show();
@@ -219,7 +219,7 @@ public class SampleController2 implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setFullScreen(true);
+           // stage.setFullScreen(true);
             stage.setScene(scene);
             stage.show();
 
@@ -244,7 +244,7 @@ public class SampleController2 implements Initializable {
 
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setFullScreen(true);
+            //stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setTitle("Ventana Categoria");
             stage.show();

@@ -51,7 +51,7 @@
             </columns>
         </TableView>
       <Button fx:id="btnBuscarPedido" layoutX="438.0" layoutY="107.0" mnemonicParsing="false" onAction="#buscarPedido" prefHeight="31.0" prefWidth="39.0" text="🔍" />
-  <Button fx:id="btnMenu" layoutX="1107.0" layoutY="14.0" onAction="#openWinMenu" prefHeight="31.0" prefWidth="68.0" text="Menu" />
+  <Button fx:id="btnMenu" layoutX="1107.0" layoutY="14.0" onAction="#openWintwo2" prefHeight="31.0" prefWidth="68.0" text="Menu" />
       <Label alignment="BOTTOM_CENTER" layoutX="554.0" layoutY="32.0" prefHeight="46.0" prefWidth="165.0" text="Pedidos" textAlignment="CENTER">
          <font>
             <Font name="Britannic Bold" size="45.0" />

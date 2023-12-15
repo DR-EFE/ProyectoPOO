@@ -19,9 +19,6 @@ public class Cliente {
 		this.nombreCliente = new SimpleStringProperty(nombreCliente);
 		this.apellidoPaterno = new SimpleStringProperty(apellidoPaterno);
 		this.apellidoMaterno = new SimpleStringProperty(apellidoMaterno);
-		
-		
-		
 	
 		this.telefono = new SimpleStringProperty(telefono);
 		this.formaDePago = new SimpleStringProperty(formaDePago);
@@ -50,10 +47,6 @@ public class Cliente {
 	public void setApellidoMaterno(StringProperty apellidoMaterno) {
 		this.apellidoMaterno = apellidoMaterno;
 	}
-
-
-
-
 
 
 	public StringProperty getTelefono() {

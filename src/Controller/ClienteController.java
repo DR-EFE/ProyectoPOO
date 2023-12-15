@@ -1,7 +1,7 @@
 package Controller;
 
 import Model.Cliente;
-import Model.Pasteles;
+
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;	
 import javafx.collections.FXCollections;
@@ -19,8 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.ResourceBundle;
 
 import Factory.ConnectionFactory;
@@ -55,7 +54,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 	@FXML
 	TableColumn<Cliente, String> colNombreCliente;
 	@FXML
-	TableColumn<Cliente, String> colApellidoPaterno;
+	TableColumn<Cliente, String> colApellidoPaterno;	
 	@FXML
 	TableColumn<Cliente, String> colApellidoMaterno;
 	
@@ -205,9 +204,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 			deleteClienteStatement.setString(1, telefono);
 			int rowsAffected = deleteClienteStatement.executeUpdate();
 
-			// rowsAffected se utiliza para almacenar el número de filas afectadas por una
-			// operación de eliminación en una base de datos.
-			// se utiliza para verificar si la eliminación del registro de la tabla
+		
 			if (rowsAffected > 0) {
 				Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
 				// quita la fila seleccionada
@@ -219,51 +216,49 @@ public class ClienteController extends Utilitaria implements Initializable {
 			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
 		}
 	}
-
+		
 	@FXML
 	private void actualizarCliente() throws Exception {
-		Cliente selectedClientes = tblCliente.getSelectionModel().getSelectedItem();
-		if (selectedClientes != null) {
-			String nombre = selectedClientes.getNombreCliente().get();
-			String apellidoPaterno = selectedClientes.getApellidoPaterno().get();
-			String apellidoMaterno = selectedClientes.getApellidoMaterno().get();
-			
-			String telefono = selectedClientes.getTelefono().get();
-			String formaDePago = selectedClientes.getFormaDePago().get();
+	    Cliente selectedClientes = tblCliente.getSelectionModel().getSelectedItem();
+	    if (selectedClientes != null) {
+	        String nombre = selectedClientes.getNombreCliente().get();
+	        String apellidoPaterno = selectedClientes.getApellidoPaterno().get();
+	        String apellidoMaterno = selectedClientes.getApellidoMaterno().get();
+	        String telefono = selectedClientes.getTelefono().get();
+	        String formaDePago = selectedClientes.getFormaDePago().get();
 
-			if (!Cliente.validarCampos(nombre, apellidoPaterno, apellidoMaterno, 
-					telefono, formaDePago)) {
-				return;
-			}
+	        if (!Cliente.validarCampos(nombre, apellidoPaterno, apellidoMaterno, telefono, formaDePago)) {
+	            return;
+	        }
 
-			try {
-				Connection connection = ConnectionFactory.getConnection();
-				String updateQuery = "UPDATE clientes SET Nombre = ?, A_Paterno = ?, A_Materno = ?, Forma_de_pago = ? WHERE Telefono = ?";
-				PreparedStatement statement = connection.prepareStatement(updateQuery);
+	        try {
+	            Connection connection = ConnectionFactory.getConnection();
+	            String updateQuery = "UPDATE clientes SET Nombre = ?, A_Paterno = ?, A_Materno = ?, Forma_de_pago = ? WHERE Telefono = ?";
+	            PreparedStatement statement = connection.prepareStatement(updateQuery);
 
-				statement.setString(1, nombre);
-				statement.setString(2, apellidoPaterno);
-				statement.setString(3, apellidoMaterno);
-				
-				statement.setString(8, formaDePago);
-				statement.setString(9, telefono);
+	            // Corregir los índices aquí
+	            statement.setString(1, nombre);
+	            statement.setString(2, apellidoPaterno);
+	            statement.setString(3, apellidoMaterno);
+	            statement.setString(4, formaDePago);
+	            statement.setString(5, telefono);
 
-				int rowsUpdated = statement.executeUpdate();
+	            int rowsUpdated = statement.executeUpdate();
 
-				if (rowsUpdated > 0) {
-					Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
-				} else {
-					Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
-				}
+	            if (rowsUpdated > 0) {
+	                Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
+	            } else {
+	                Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
+	            }
 
-				statement.close();
-				connection.close();
-			} catch (SQLException e) {
-				Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
-			}
-		} else {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
-		}
+	            statement.close();
+	            connection.close();
+	        } catch (SQLException e) {
+	            Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
+	        }
+	    } else {
+	        Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
+	    }
 	}
 
 	@FXML
@@ -285,10 +280,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 					String nombre = resultSet.getString("Nombre");
 					String apellidoP = resultSet.getString("A_Paterno");
 					String apellidoM = resultSet.getString("A_Materno");
-					String calle = resultSet.getString("Calle");
-					String cp = resultSet.getString("CP");
-					String colonia = resultSet.getString("Colonia");
-					String delegacion = resultSet.getString("Delegacion");
+					
 					String telefonoC = resultSet.getString("Telefono");
 					String formaPago = resultSet.getString("Forma_de_pago");
 
@@ -327,10 +319,8 @@ public class ClienteController extends Utilitaria implements Initializable {
 				String nombre = resultSet.getString("Nombre");
 				String apellidoP = resultSet.getString("A_Paterno");
 				String apellidoM = resultSet.getString("A_Materno");
-				String calle = resultSet.getString("Calle");
-				String cp = resultSet.getString("CP");
-				String colonia = resultSet.getString("Colonia");
-				String delegacion = resultSet.getString("Delegacion");
+			
+			
 				String telefonoC = resultSet.getString("Telefono");
 				String formaPago = resultSet.getString("Forma_de_pago");
 

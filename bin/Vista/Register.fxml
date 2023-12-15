@@ -12,34 +12,34 @@
 
 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D3DB;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterController">
    <children>
-      <VBox layoutX="384.0" layoutY="129.0" prefHeight="274.0" prefWidth="216.0" style="-fx-background-color: #1354B7;">
+      <VBox layoutX="368.0" layoutY="129.0" prefHeight="274.0" prefWidth="232.0" style="-fx-background-color: #1354B7;">
          <children>
             <Label textFill="WHITE" />
             <Label text="1-El usuario tiene que ser tu numero de empleado OK" textFill="WHITE" />
             <Label textFill="WHITE" />
-            <Label prefHeight="28.0" prefWidth="264.0" text="          te deseo suerte en tu nuevo trabajo." textAlignment="RIGHT" textFill="WHITE">
+            <Label prefHeight="28.0" prefWidth="264.0" text="     te deseo suerte en tu nuevo trabajo." textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Label prefHeight="33.0" prefWidth="264.0" text="Necesitamos un poco de tu informacion personal" textAlignment="CENTER" textFill="WHITE">
+            <Label prefHeight="33.0" prefWidth="264.0" text="   Necesitamos un poco de tu informacion" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
-            <Label prefHeight="34.0" prefWidth="265.0" text="           para personalizar el sistema" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
+            <Label prefHeight="34.0" prefWidth="265.0" text="    personal para personalizar el sistema" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="384.0" layoutY="-2.0" prefHeight="184.0" prefWidth="216.0" style="-fx-background-color: #1354B7;">
+      <VBox alignment="TOP_CENTER" layoutX="368.0" layoutY="-2.0" prefHeight="182.0" prefWidth="232.0" style="-fx-background-color: #1354B7;">
          <children>
           
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="331.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Imagenes/user.png" />
+                  <Image url="@../Img/1.png" />
                </image>
             </ImageView>
             <Label contentDisplay="CENTER" prefHeight="17.0" prefWidth="136.0" text="       Hola Nuevo" textAlignment="CENTER" textFill="WHITE">
@@ -75,9 +75,9 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="78.0" fitWidth="115.0" layoutX="170.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="78.0" fitWidth="115.0" layoutX="210.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Imagenes/undraw_Login_re_4vu2-removebg-preview.png" />
+            <Image url="@../Img/WhatsApp_Image_2023-11-03_at_4.28.24_PM-removebg-preview.png" />
          </image>
      
      
