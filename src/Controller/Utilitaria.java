@@ -27,6 +27,14 @@ public abstract class Utilitaria {
 	
 	@FXML
 	protected Button btnBuscar;
+	
+	  @FXML
+	protected TextField TextFieldFecha1;
+
+	    @FXML
+		protected TextField TextFieldHora1;
+	
+	
 
 	public static void mostrarAlerta(String titulo, String mensaje) {
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -64,6 +72,8 @@ public abstract class Utilitaria {
 		}
 	}
 
+	
+	
 	@FXML
 	public void openWintwo2(ActionEvent event) {
 
@@ -91,6 +101,8 @@ public abstract class Utilitaria {
 		}
 	}
 
+	
+	
 	@FXML
 	void cambiarVista(ActionEvent event) {
 		try {
