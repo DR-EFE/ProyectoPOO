@@ -10,7 +10,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		Ventanas Pane = new Ventanas();
-		Pane.MostrarPane("/Vista/Sample.fxml");
+		//Pane.MostrarPane("/Vista/Sample.fxml");
+		Pane.MostrarPane("/Vista/VentaEmpleado.fxml");
+	
 	
 	}
 

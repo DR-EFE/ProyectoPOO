@@ -1,33 +1,41 @@
 package Controller;
 
 import java.net.URL;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.util.ResourceBundle;
 
 import DAO.VentaDAO;
 import Model.Pasteles;
 import Model.Ventas;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.text.Text;
+
+import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 public class VentaEmpleadoController extends Utilitaria implements Initializable {
+	 @FXML
+		protected TextField TextFieldFecha1;
 
+		    @FXML
+			protected TextField TextFieldHora1;
+	
+	
 	 @FXML
 	    private TableView<Ventas> tblVentas;
 
@@ -68,11 +76,7 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	    @FXML
 	    private TextField TextFCategorias;
 
-	    @FXML
-	    private TextField  TextFFecha;
-
-	    @FXML
-	    private TextField  TextHora;
+	   
 
 	    @FXML
 	    private TextField TextFFolio;
@@ -92,6 +96,18 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		
+
+		 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> MostrarHora1(event)));
+	        Timeline timeline1 = new Timeline(new KeyFrame(Duration.seconds(1), event -> MostrarFecha1(event)));
+	        timeline.setCycleCount(Timeline.INDEFINITE);
+	        timeline.play();
+	        timeline1.setCycleCount(Timeline.INDEFINITE);
+	        timeline1.play();
+		
+		
+		
+		
 		tblVentas.setEditable(true);
 		colFolio.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 		colDescripcion.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -117,6 +133,8 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 		//colPrecioUnitario.setCellValueFactory(dato -> dato.getValue().getPeso().asObject());
 		colSubTotal.setCellValueFactory(dato -> dato.getValue().getSubtotal().asObject());
 		colTotal.setCellValueFactory(dato -> dato.getValue().getTotal().asObject());
+
+		
 
 		
 	}
@@ -233,7 +251,30 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	        TextFInventario.clear();
 	    }
 	
-	
+	 @FXML
+	    void MostrarFecha1(ActionEvent event) {
+	    	// Obtener la fecha 
+	        LocalDateTime currentDateTime = LocalDateTime.now();
+	        // Formatear la fecha y hora según tus preferencias
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	        String formattedDateTime = currentDateTime.format(formatter);
+	        // Establecer el texto formateado en el TextField
+	        TextFieldFecha1.setText(formattedDateTime);
+
+	    }
+
+	    @FXML
+	    void MostrarHora1(ActionEvent event) {
+	    	// Obtener la hora actual
+	        LocalDateTime currentDateTime = LocalDateTime.now();
+	        // Formatear la fecha y hora según tus preferencias
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+	        String formattedDateTime = currentDateTime.format(formatter);
+	        // Establecer el texto formateado en el TextField
+	        TextFieldHora1.setText(formattedDateTime);
+	    }
+
+	 
 	
 	
 

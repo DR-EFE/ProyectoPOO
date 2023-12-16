@@ -23,11 +23,7 @@ import javafx.util.Duration;
 
 public class Pedidos2Controller extends Utilitaria implements Initializable{
 
-    @FXML
-    private TextField TextFieldFecha1;
-
-    @FXML
-    private TextField TextFieldHora1;
+  
 
     @FXML
     private TextField TxtBuscarPedido;

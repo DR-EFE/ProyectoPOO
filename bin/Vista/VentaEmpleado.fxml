@@ -113,8 +113,8 @@
          </font>
       </Text>
       <TextField fx:id="TextFInventario" layoutX="945.0" layoutY="215.0" prefHeight="25.0" prefWidth="191.0" style="-fx-background-color: white;" />
-      <TextField fx:id="TextHora" layoutX="939.0" layoutY="98.0" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: white;" />
-      <TextField fx:id="TextFFecha" layoutX="939.0" layoutY="43.0" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: white;" />
+      <TextField fx:id="TextFieldHora1" layoutX="939.0" layoutY="98.0" onAction="#MostrarHora1" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: white;" />
+      <TextField fx:id="TextFieldFecha1" layoutX="939.0" layoutY="43.0" onAction="#MostrarFecha1" prefHeight="25.0" prefWidth="204.0" style="-fx-background-color: white;" />
       <Button fx:id="btnAgregar" alignment="BOTTOM_CENTER" layoutX="1000.0" layoutY="303.0" mnemonicParsing="false" onAction="#agregarVentaATabla" prefHeight="30.0" prefWidth="95.0" style="-fx-background-color: F5B6B6;" text="Agregar">
          <font>
             <Font name="Britannic Bold" size="18.0" />
