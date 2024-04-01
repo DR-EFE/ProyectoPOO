@@ -9,7 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 
-import Controller.Utilitaria;
+import Controller.UtilitariaNavegabilidad;
 
 public class Pedido {
 
@@ -127,17 +127,17 @@ public class Pedido {
 				|| tipo.isEmpty() ||
 				subtotalText.isEmpty() || totalText.isEmpty() || estatus.isEmpty() || fechaHoraEntrega == null
 				|| telefonoFK.isEmpty()) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 			return false;
 		}
 
 		if (!telefonoFK.matches("^\\d+$")) {
 			// El número de teléfono contiene caracteres no válidos
-			Utilitaria.mostrarAlerta("Error", "El número de teléfono solo debe contener numeros.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "El número de teléfono solo debe contener numeros.");
 			return false;
 		} else if (telefonoFK.length() < 10) {
 			// El número de teléfono no tiene al menos 10 dígitos
-			Utilitaria.mostrarAlerta("Error", "El número de teléfono debe tener al menos 10 dígitos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "El número de teléfono debe tener al menos 10 dígitos.");
 			return false;
 		}
 
@@ -157,7 +157,7 @@ public class Pedido {
 			subtotal = Double.parseDouble(subtotalText);
 			total = Double.parseDouble(totalText);
 		} catch (NumberFormatException e) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos");
 			return false;
 		}
 

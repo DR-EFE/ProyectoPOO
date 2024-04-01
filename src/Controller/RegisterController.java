@@ -130,10 +130,10 @@ public class RegisterController {
               
                 limpiarCampos();
             } else {
-                Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
+                UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo guardar el registro.");
             }
         } catch (SQLException e) {
-            Utilitaria.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
         }
     }
 

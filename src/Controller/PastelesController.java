@@ -2,71 +2,45 @@ package Controller;
 
 import javafx.scene.control.TextField;
 import DAO.PastelesDAO;
-
 import javafx.scene.control.cell.TextFieldTableCell;
-
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.Initializable;
-
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
-
 import javafx.scene.control.TableView;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-
 import Factory.ConnectionFactory;
 import Model.Pasteles;
 
-public class PastelesController extends Utilitaria implements Initializable {
+public class PastelesController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<Pasteles> tblPais;
-	@FXML
-	protected Button btneliminarRegistro;
-	@FXML
-	protected Button btnActualizar;
-	@FXML
-	private Button btnRecargar;
-	@FXML
-	private Button closeButton;
 
-	@FXML
-	private Button minimizeButton;
-	
-	@FXML
-	private Button btnFormulario;
 	@FXML
 	private DatePicker FechaDeVencimiento;
 	@FXML
 	private DatePicker FechaElab;
 
-	@FXML
-	private Button BtnBusqueda;
+	
 
 	@FXML
 	private ComboBox<String> comboBox;
 
-	@FXML
-	private TextField TxtBuqueda;
 
 	@FXML
 	private TextField txtCodigoBarras;
@@ -143,7 +117,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 				try {
 					return Float.parseFloat(string);
 				} catch (NumberFormatException e) {
-					Utilitaria.mostrarAlerta("Error", "el valor que ingreso no es un numero");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "el valor que ingreso no es un numero");
 					return null;// O lanzar una excepción personalizada
 				}
 			}
@@ -155,7 +129,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 				try {
 					return Integer.parseInt(string);
 				} catch (NumberFormatException e) {
-					Utilitaria.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
 					return null;
 				}
 			}
@@ -169,7 +143,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 					return Integer.parseInt(string);
 					// Si la conversión falla, muestra una alerta de error
 				} catch (NumberFormatException e) {
-					Utilitaria.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
 					return null;
 				}
 			}
@@ -241,18 +215,18 @@ public class PastelesController extends Utilitaria implements Initializable {
 				int rowsUpdated = statement.executeUpdate();
 
 				if (rowsUpdated > 0) {
-					Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
+					UtilitariaNavegabilidad.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
 				} else {
-					Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
 				}
 
 				statement.close();
 				connection.close();
 			} catch (SQLException e) {
-				Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
 		}
 	}
 
@@ -261,7 +235,7 @@ public class PastelesController extends Utilitaria implements Initializable {
         Pasteles selectedProducto = tblPais.getSelectionModel().getSelectedItem();
 
         if (selectedProducto == null) {
-            Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
             return;
         }
 
@@ -272,13 +246,13 @@ public class PastelesController extends Utilitaria implements Initializable {
             boolean eliminado = pastelesDAO.eliminarPastel(codigoBarras, categoria);
 
             if (eliminado) {
-                Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
+                UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
                 lista.remove(selectedProducto);
             } else {
-                Utilitaria.mostrarAlerta("Error", "No se pudo eliminar el registro.");
+                UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo eliminar el registro.");
             }
         } catch (SQLException e) {
-            Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
         }
     }
 
@@ -324,7 +298,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 			peso = Integer.parseInt(pesoText);
 			cantidadRefri = Integer.parseInt(cantidadRefriText);
 		} catch (NumberFormatException e) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
 			return;
 		}
 
@@ -352,14 +326,14 @@ public class PastelesController extends Utilitaria implements Initializable {
 			int rowsAffected = insertStatement.executeUpdate();
 
 			if (rowsAffected > 0) {
-				Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+				UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
 				lista.add(nuevoProducto);
 				limpiarCampos();
 			} else {
-				Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo guardar el registro.");
 			}
 		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
 		}
 
 	}
@@ -376,7 +350,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 
 	@FXML
 	private void buscar(ActionEvent event) throws Exception {
-		String codigoBarras = TxtBuqueda.getText();
+		String codigoBarras = TxtBusqueda.getText();
 		if (!codigoBarras.isEmpty()) {
 			try {
 				Connection connection = ConnectionFactory.getConnection();
@@ -413,7 +387,7 @@ public class PastelesController extends Utilitaria implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "Tiene que ingresar un codigo de barras del producto");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Tiene que ingresar un codigo de barras del producto");
 
 		}
 

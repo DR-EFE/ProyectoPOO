@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import Controller.Utilitaria;
+import Controller.UtilitariaNavegabilidad;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;

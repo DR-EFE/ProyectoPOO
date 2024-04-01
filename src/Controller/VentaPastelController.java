@@ -26,30 +26,11 @@ import java.util.ResourceBundle;
 
 import Factory.ConnectionFactory;
 
-public class VentaPastelController extends Utilitaria implements Initializable {
+public class VentaPastelController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<VentaPastel> tblVentaPastel;
-	@FXML
-	private Button btnMenu;
-	@FXML
-	private TextField TxtBuqueda;
-
-	@FXML
-	private Button btnGuardarVenta_Pastel;
-	@FXML
-	private Button btnEliminarVenta_Pastel;
-	@FXML
-	private Button btnActualizarVenta_Pastel;
-
-	@FXML
-	private TextField txtFolioDeVenta;
-	@FXML
-	private TextField txtCodigoDeBarrasPastel;
-	@FXML
-	private TextField txtPastel;
-	@FXML
-	private TextField txtPeso;
+	
 
 	@FXML
 	TableColumn<VentaPastel, Integer> colFolioDeVenta;

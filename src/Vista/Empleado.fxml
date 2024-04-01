@@ -35,7 +35,7 @@
             <Font name="Bodoni MT" size="68.0" />
          </font>
       </Label>
-      <Button fx:id="btnPedidos2" alignment="BOTTOM_CENTER" layoutX="169.0" layoutY="228.0" mnemonicParsing="false" onAction="#openPedidosEmpleado" prefHeight="305.0" prefWidth="270.0" style="-fx-background-color: white;" text="Pedidos" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnPedidos" alignment="BOTTOM_CENTER" layoutX="169.0" layoutY="228.0" mnemonicParsing="false" onAction="#openPedidosEmpleado" prefHeight="305.0" prefWidth="270.0" style="-fx-background-color: white;" text="Pedidos" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -43,7 +43,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnVentas2" alignment="BOTTOM_CENTER" layoutX="554.0" layoutY="244.0" mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnVentas" alignment="BOTTOM_CENTER" layoutX="554.0" layoutY="244.0" mnemonicParsing="false" onAction="#openVentasEmpleado" prefHeight="288.0" prefWidth="194.0" style="-fx-background-color: white;" text="Ventas" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -76,7 +76,7 @@
             <MenuItem fx:id="itemCerrar" mnemonicParsing="false" onAction="#openWinOne" text="Cerrar sesión  &lt;-" />
          </items>
       </MenuButton>
-      <Button fx:id="btnVentas211" alignment="BOTTOM_CENTER" layoutX="905.0" layoutY="269.0" mnemonicParsing="false" onAction="#openEstadoPedido" prefHeight="264.0" prefWidth="285.0" style="-fx-background-color: white;" text="Estado del Pedido" textAlignment="CENTER" textFill="#321790">
+      <Button fx:id="btnEstadoPedido" alignment="BOTTOM_CENTER" layoutX="905.0" layoutY="269.0" mnemonicParsing="false" onAction="#openEstadoPedido" prefHeight="264.0" prefWidth="285.0" style="-fx-background-color: white;" text="Estado del Pedido" textAlignment="CENTER" textFill="#321790">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>

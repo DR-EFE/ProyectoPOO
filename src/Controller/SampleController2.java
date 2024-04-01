@@ -27,7 +27,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.util.Duration;
 
-public class SampleController2 implements Initializable {
+public class SampleController2 extends UtilitariaNavegabilidad implements Initializable {
 	
 	 /* @FXML
 	    private TextField TextFieldHora;
@@ -78,91 +78,24 @@ public class SampleController2 implements Initializable {
     
     @FXML
     void openWinOne(ActionEvent event) {
-        try {
-
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sample.fxml"));
-            Parent root = loader.load();
-
-            SampleController controlador = loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            //stage.setTitle("Primera Ventana");
-
-            // Llama al método initialize() de SampleController2
-            controlador.initialize(null, null);
-
-            stage.show();
-
-            // Cierra la ventana actual
-            Stage myStage = (Stage) btnCategoria.getScene().getWindow();
-            myStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+     
+            Pane.MostrarPane(event, "/Vista/Sample.fxml");
     }
     
 
     @FXML
     void cambiarVista(ActionEvent event) {
-        try {
+    
+            Pane.MostrarPane(event, "/Vista/Sample2Noc.fxml");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sample2Noc.fxml"));
-            Parent root = loader.load();
-
-            Sample2Noc controlador = loader.getController();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-          //  stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Segunda Ventana");
-
-            // Llama al método initialize() de SampleController2
-            controlador.initialize(null, null);
-
-            stage.show();
-
-            // Cierra la ventana actual
-            Stage myStage = (Stage) btnCategoria.getScene().getWindow();
-            myStage.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            
     }
 
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // TODO Auto-generated method stub
-    	// Crear un Timeline para actualizar automáticamente la hora cada segundo
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> mostrarHoraFecha(event)));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
+    
 
-    }
-
-    public void closeWindows() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sample.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.show();
-
-            Stage myStage = (Stage) this.btnCategoria.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+    public void closeWindows(ActionEvent event) {
+    	Pane.MostrarPane(event, "/Vista/Sample.fxml");
     }
 
     
@@ -189,122 +122,35 @@ public class SampleController2 implements Initializable {
     
     @FXML
     void openCaja(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Caja.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-           stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Ventas");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnCaja.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(CajaController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+    	
+            Pane.MostrarPane(event,"/Vista/Caja.fxml");
     }
 
     @FXML
     void openCatalogos(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Pedido2.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-           // stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.show();
-
-            Stage myStage = (Stage) this.btnCatalogo.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-           // Logger.getLogger(VentaEmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
-        	ex.printStackTrace();
-        }
+    	
+            Pane.MostrarPane(event,"/Vista/Pedido2.fxml");
 
     }
 
     @FXML
     void openCategorias(ActionEvent event) {
-    	String direccionFX="/Vista/Categorias.fxml";
-    	//String layautButton="btnCategoria"; 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(direccionFX));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            //stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Categoria");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnCategoria.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(SampleController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+    
+    	
+        Pane.MostrarPane(event,"/Vista/Categorias.fxml");
     }
 
     @FXML
     void openClientes(ActionEvent event) {
-            try {
-
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Cliente.fxml"));
-                Parent root = loader.load();
-
-             //   Sample2Noc controlador = loader.getController();
-
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setFullScreen(true);
-                stage.setScene(scene);
-
-                // Llama al método initialize() de SampleController2
-              //  controlador.initialize(null, null);
-                stage.show();
-
-                // Cierra la ventana actual
-                Stage myStage = (Stage) btnClientes.getScene().getWindow();
-                myStage.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+      
+                Pane.MostrarPane(event,"/Vista/Cliente.fxml");
     }
 
     @FXML
     void openPedidos(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Pedido.fxml"));
+    
 
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Pedidos");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnPedidos.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(PedidosController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+            Pane.MostrarPane(event,"/Vista/Pedido.fxml");
 
     }
 
@@ -315,74 +161,24 @@ public class SampleController2 implements Initializable {
 
     @FXML
     void openVentas(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Ventas.fxml"));
+    
 
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Ventas");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnVentas.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-           // Logger.getLogger(VentasController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+            Pane.MostrarPane(event,"/Vista/Ventas.fxml");
 
 
     }
 
     @FXML
     void openVentasPastel(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/ventas_pasteles.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Venta Pasteles");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnVentaPastel.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(VentaPastelController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+    	
+            Pane.MostrarPane(event,"/Vista/ventas_pasteles.fxml");
 
     }
     
     @FXML
     void OpenPasteles(ActionEvent event) {
-    	try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Principal.fxml"));
-
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Pasteles");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnPasteles.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(PastelesController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
+    	
+            Pane.MostrarPane(event,"/Vista/Principal.fxml");
 
     }
     
@@ -400,4 +196,22 @@ public class SampleController2 implements Initializable {
         TextFieldFH.setText(formattedDateTime);
 
     } 
+    
+    
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        // TODO Auto-generated method stub
+    	// Crear un Timeline para actualizar automáticamente la hora cada segundo
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> mostrarHoraFecha(event)));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+    }
+    
+    
+    
+    
+    
+    
 }

@@ -28,7 +28,7 @@ import javafx.util.Duration;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-public class VentaEmpleadoController extends Utilitaria implements Initializable {
+public class VentaEmpleadoController extends UtilitariaNavegabilidad implements Initializable {
 	 @FXML
 		protected TextField TextFieldFecha1;
 
@@ -166,13 +166,7 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	        ventaEncontrada.setFolio(folioProperty);
 	        ventaEncontrada.setCantidadVendida(cantidadVendidaProperty);
 	        ventaEncontrada.setSubtotal(subtotalProperty);
-	        
-	       // Pasti.getPrecio(totalProperty);
-	        
-	        
-	        
-	        //System.out.println(total);
-	        //System.out.println(totalProperty);
+	      
 	        
 	        
 	        TextFArticulo.setText(ventaEncontrada.getProductos().get());
@@ -189,11 +183,7 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	}
 
 
-	
-	
 
-
-	// ...
 
 	@FXML
 	private void agregarVentaATabla() {
@@ -201,6 +191,7 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 
 	    try {
 	        Ventas ventaEncontrada = ventaDAO.buscarVentaPorNombreProducto(textoBusqueda);
+	        Ventas buscarVenta = ventaDAO.buscarVentaPorNombreProducto(textoBusqueda);
 
 	        if (ventaEncontrada != null) {
 	            // Crear una instancia de Venta con los datos de la Ventas encontrada
@@ -214,13 +205,28 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	                   //ventaEncontrada.getCodigodebarras().get(),  // Código de barras del pastel
 	                   //ventaEncontrada.getCategorias().get()  // Categoría del pastel
 	            );
-
-	         
+	            
+	            
+	            
+	            /*
+	            Pasteles pasti = new Pasteles(
+	            		buscarVenta.getNombre().get(),
+	            		buscarVenta.getDescripcion().get(),
+	            		buscarVenta.getPrecio().get(),	
+	            		buscarVenta.getPeso().get(),
+	            		buscarVenta.getCantidad_en_refri().get(),
+	            		buscarVenta.getFecha_de_elaboracion().get(),  // Nombre del pastel
+	                   buscarVenta.getFecha_de_vencimiento().get(),  // Código de barras del pastel
+	                   buscarVenta.getCategoria().get() ,
+	                   buscarVenta.getCodigodeBarras().get() 
+	            );
+	            
+	            
+	            */
+	            
 				// Agregar la venta a la lista observable
 	            listaVentas.add(venta);
-	            
-	            
-
+	      
 	            // Limpiar los campos de búsqueda
 	            limpiarCampos();
 	        } else {
@@ -233,6 +239,7 @@ public class VentaEmpleadoController extends Utilitaria implements Initializable
 	}
 
 	
+
 	
 	// Método simulado para obtener el inventario según el folio (deberías implementarlo)
 	private String obtenerInventarioSegunFolio(int folio) {

@@ -16,12 +16,12 @@
       <Circle fill="#ffc4df" layoutX="188.0" layoutY="-50.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
       <Circle fill="#ffc4df" layoutX="814.0" layoutY="274.0" radius="147.0" stroke="WHITE" strokeType="INSIDE" />
       <Circle fill="#ffc4df" layoutX="360.0" layoutY="488.0" radius="61.0" stroke="WHITE" strokeType="INSIDE" />
-      <Button fx:id="btnPedidos3" layoutX="192.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSix2" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
+      <Button fx:id="btnPedidos" layoutX="192.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSix2" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
          <font>
             <Font name="Cambria Bold Italic" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnVentas3" layoutX="420.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSeven" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
+      <Button fx:id="btnVentas" layoutX="420.0" layoutY="348.0" mnemonicParsing="false" onAction="#openWinSeven" style="-fx-background-color: pink;" text="Ingresar" textFill="#311572">
          <font>
             <Font name="Cambria Bold Italic" size="20.0" />
          </font>

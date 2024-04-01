@@ -2,24 +2,11 @@ package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
-public class CatalogoController {
-
-    @FXML
-    private TextField TxtBusquedaCliente;
-
-    @FXML
-    private Button btnActualizar;
-
-    @FXML
-    private Button btnBuscar;
-
-    @FXML
-    private Button btnMenu;
+public class CatalogoController extends UtilitariaNavegabilidad {
 
     @FXML
     private TableColumn<?, ?> colApellidoMaterno;
@@ -41,10 +28,7 @@ public class CatalogoController {
 
     }
 
-    @FXML
-    void openWintwo(ActionEvent event) {
-
-    }
+    
 
     @FXML
     void recargarTablaClientes(ActionEvent event) {

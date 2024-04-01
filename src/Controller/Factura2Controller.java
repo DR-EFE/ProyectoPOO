@@ -12,7 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class Factura2Controller extends Utilitaria implements Initializable {
+public class Factura2Controller extends UtilitariaNavegabilidad implements Initializable {
 
     @FXML
     TableView<Facturas> tblVentas;

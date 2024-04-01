@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import Controller.Utilitaria;
+import Controller.UtilitariaNavegabilidad;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
@@ -122,13 +122,13 @@ public class Pasteles {
 		// Validar que se hayan ingresado todos los campos requeridos
 		if (codigoBarras.isEmpty() || nombre.isEmpty() || descripcion.isEmpty() ||
 				fechaElaboracion == null || fechaVencimiento == null || categoria == null) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 			return false;
 		}
 		// Validar el formato del código de barras (solo se permiten 13 dígitos
 		// numéricos)
 		if (!codigoBarras.matches("\\d{10}")) {
-			Utilitaria.mostrarAlerta("Error", "El código de barras debe contener exactamente 10 dígitos numéricos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "El código de barras debe contener exactamente 10 dígitos numéricos.");
 			return false;
 		}
 
@@ -136,12 +136,12 @@ public class Pasteles {
 		String descripcionPattern = "^[a-zA-Z0-9 ]+$";
 
 		if (!nombre.matches(nombrePattern)) {
-			Utilitaria.mostrarAlerta("Error", "El nombre solo debe contener letras, números y espacios.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "El nombre solo debe contener letras, números y espacios.");
 			return false;
 		}
 
 		if (!descripcion.matches(descripcionPattern)) {
-			Utilitaria.mostrarAlerta("Error", "La descripción solo debe contener letras, números y espacios.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "La descripción solo debe contener letras, números y espacios.");
 			return false;
 		}
 
@@ -153,7 +153,7 @@ public class Pasteles {
 			peso = Integer.parseInt(pesoText);
 			cantidadRefri = Integer.parseInt(cantidadRefriText);
 		} catch (NumberFormatException e) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
 			return false;
 		}
 
@@ -165,7 +165,7 @@ public class Pasteles {
 
 	
 		if (fechaVencimientoDate.isBefore(fechaElaboracionDate)) {
-			Utilitaria.mostrarAlerta("Error",
+			UtilitariaNavegabilidad.mostrarAlerta("Error",
 					"La fecha de vencimiento no puede ser anterior a la fecha de elaboración.");
 			return false;
 		}

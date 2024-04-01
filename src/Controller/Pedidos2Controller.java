@@ -17,19 +17,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Pedidos2Controller extends Utilitaria implements Initializable{
+public class Pedidos2Controller extends UtilitariaNavegabilidad implements Initializable{
 
-  
-
-    @FXML
-    private TextField TxtBuscarPedido;
-
-    @FXML
-    private Button btnBuscarPedido;
+   
 
     @FXML
     private Button btnBuscarPedido1;
@@ -40,8 +33,7 @@ public class Pedidos2Controller extends Utilitaria implements Initializable{
     @FXML
     private Button btnDatosCliente;
 
-    @FXML
-    private Button btnMenu;
+
 
     @FXML
     private TableColumn<?, ?> colAnticipo;
@@ -123,27 +115,6 @@ public class Pedidos2Controller extends Utilitaria implements Initializable{
     }
 
 	
-	@FXML
-    void openWinMenu(ActionEvent event) {
-		try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/Sample2.fxml"));
 
-            Parent root = loader.load();
-
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setTitle("Ventana Ventas");
-            stage.show();
-
-            Stage myStage = (Stage) this.btnMenu.getScene().getWindow();
-            myStage.close();
-
-        } catch (IOException ex) {
-            //Logger.getLogger(CajaController.class.getName()).log(Level.SEVERE, null, ex);
-            ex.printStackTrace();
-        }
-    }
 
 }

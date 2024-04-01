@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import Controller.Utilitaria;
+import Controller.UtilitariaNavegabilidad;
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
@@ -119,7 +119,7 @@ public class Ventas {
 			// Validar que se hayan ingresado todos los campos requeridos
 			if (folioVentaText.isEmpty() || cantidadText.isEmpty() || subtotalText.isEmpty() || totalText.isEmpty() ||
 					fechaVenta.isEmpty() || productos.isEmpty()) {
-				Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 				return false;
 			}
 			/*
@@ -145,7 +145,7 @@ public class Ventas {
 				fecha = LocalDate.parse(fechaVenta);
 
 			} catch (DateTimeParseException e) {
-				Utilitaria.mostrarAlerta("Error", "Por favor, ingrese las fechas en el formato correcto (YYYY-MM-DD).");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese las fechas en el formato correcto (YYYY-MM-DD).");
 				return false;
 			}
 
@@ -160,7 +160,7 @@ public class Ventas {
 				subtotal = Double.parseDouble(subtotalText);
 				total = Double.parseDouble(totalText);
 			} catch (NumberFormatException e) {
-				Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
 				return false;
 			}
 
@@ -170,7 +170,7 @@ public class Ventas {
 		
 		public static boolean validarCampoBusqueda(String folioVentaText) {
 			if (folioVentaText.isEmpty()) {
-					Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 			return false;	
 			}
 			int folioVenta;
@@ -178,7 +178,7 @@ public class Ventas {
 			try {
 				folioVenta = Integer.parseInt(folioVentaText);
 			} catch (NumberFormatException e) {
-				Utilitaria.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, ingrese valores numéricos válidos.");
 				return false;
 			}
 			

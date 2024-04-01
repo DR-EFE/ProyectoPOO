@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 
 import Factory.ConnectionFactory;
 
-public class CategoriasController extends Utilitaria implements Initializable {
+public class CategoriasController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<Categoria> tblCategoria;

@@ -28,7 +28,7 @@ import java.sql.Timestamp;
 
 import Factory.ConnectionFactory;
 
-public class PedidosController extends Utilitaria implements Initializable {
+public class PedidosController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<Pedido> tblPedido;
@@ -178,18 +178,18 @@ public class PedidosController extends Utilitaria implements Initializable {
 				int rowsUpdated = statement.executeUpdate();
 
 				if (rowsUpdated > 0) {
-					Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
+					UtilitariaNavegabilidad.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
 				} else {
-					Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
+					UtilitariaNavegabilidad.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
 				}
 
 				statement.close();
 				connection.close();
 			} catch (SQLException e) {
-				Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
 		}
 	}
 
@@ -198,7 +198,7 @@ public class PedidosController extends Utilitaria implements Initializable {
 		Pedido selectedPedido = tblPedido.getSelectionModel().getSelectedItem();
 
 		if (selectedPedido == null) {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
 			return;
 		}
 
@@ -222,10 +222,10 @@ public class PedidosController extends Utilitaria implements Initializable {
 
 			connection.commit(); // Confirmar los cambios realizados en la base de datos
 
-			Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
+			UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
 			listaPedido.remove(selectedPedido);
 		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
 		}
 	}
 
@@ -289,14 +289,14 @@ public class PedidosController extends Utilitaria implements Initializable {
 			int rowsAffected = insertStatement.executeUpdate();
 
 			if (rowsAffected > 0) {
-				Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+				UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
 				listaPedido.add(nuevoPedido);
 				limpiarCampos();
 			} else {
-				Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo guardar el registro.");
 			}
 		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
 		}
 	}
 
@@ -350,7 +350,7 @@ public class PedidosController extends Utilitaria implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "Debe ingresar un código de barras del producto");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Debe ingresar un código de barras del producto");
 		}
 	}
 

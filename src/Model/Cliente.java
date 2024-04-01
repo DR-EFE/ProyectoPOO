@@ -2,7 +2,7 @@ package Model;
 
 import javafx.beans.property.StringProperty;
 
-import Controller.Utilitaria;
+import Controller.UtilitariaNavegabilidad;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Cliente {
@@ -69,12 +69,12 @@ public class Cliente {
 
 		// Validar que se hayan ingresado todos los campos requeridos
 		if (nombre.isEmpty() || aPaterno.isEmpty() || aMaterno.isEmpty()  || telefono.isEmpty() || formaDePago == null) {
-			Utilitaria.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Por favor, complete todos los campos requeridos.");
 			return false;
 		}
 		// Validar el formato del telefono (solo se permiten 10 dígitos numéricos)
 		if (!telefono.matches("\\d{10}")) {
-			Utilitaria.mostrarAlerta("Error", "El teléfono debe contener exactamente 10 dígitos.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "El teléfono debe contener exactamente 10 dígitos.");
 			return false;
 		}
 
@@ -83,19 +83,19 @@ public class Cliente {
 		String apellidoM = "^[a-zA-Z-zñÑáéíóúÁÉÍÓÚ]+$";
 
 		if (!nombre.matches(nombreC)) {
-			Utilitaria.mostrarAlerta("Error",
+			UtilitariaNavegabilidad.mostrarAlerta("Error",
 					"El nombre solo debe contener letras, tildes y espacios, pero no números.");
 			return false;
 		}
 
 		if (!aPaterno.matches(apellidoP)) {
-			Utilitaria.mostrarAlerta("Error",
+			UtilitariaNavegabilidad.mostrarAlerta("Error",
 					"El apellido paterno solo debe contener letras, tildes y espacios, pero no números.");
 			return false;
 		}
 
 		if (!aMaterno.matches(apellidoM)) {
-			Utilitaria.mostrarAlerta("Error",
+			UtilitariaNavegabilidad.mostrarAlerta("Error",
 					"El apellido solo debe contener letras, tildes y espacios, pero no números.");
 			return false;
 		}

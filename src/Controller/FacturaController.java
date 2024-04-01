@@ -28,7 +28,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import Factory.ConnectionFactory;
 
-public class FacturaController extends Utilitaria implements Initializable {
+public class FacturaController extends UtilitariaNavegabilidad implements Initializable {
 
     @FXML
     private TableView<Facturas> tblVentas;
@@ -110,7 +110,7 @@ public class FacturaController extends Utilitaria implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            Utilitaria.mostrarAlerta("Error", "No se pudo cargar la interfaz de Usuario.fxml");
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo cargar la interfaz de Usuario.fxml");
         }
 
         tblVentas.setItems(listaFacturasCompartida);
@@ -151,7 +151,7 @@ public class FacturaController extends Utilitaria implements Initializable {
             int rowsAffected = insertStatement.executeUpdate();
 
             if (rowsAffected > 0) {
-                Utilitaria.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
+                UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha guardado correctamente.");
                 // listaFacturas.add(venta);
                 factura2Controller.agregarFactura(venta); // Agregar la venta al controlador de usuario
                 agregarFacturaCompartida(venta);// Agregar la venta al controlado del empleado
@@ -160,10 +160,10 @@ public class FacturaController extends Utilitaria implements Initializable {
                 limpiarCampos();
 
             } else {
-                Utilitaria.mostrarAlerta("Error", "No se pudo guardar el registro.");
+                UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo guardar el registro.");
             }
         } catch (SQLException e) {
-            Utilitaria.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al guardar el registro: " + e.getMessage());
         }
     }
 
@@ -173,7 +173,7 @@ public class FacturaController extends Utilitaria implements Initializable {
         Facturas selectedProducto = tblVentas.getSelectionModel().getSelectedItem();
 
         if (selectedProducto == null) {
-            Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
             return;
         }
 
@@ -199,14 +199,14 @@ public class FacturaController extends Utilitaria implements Initializable {
             // operación de eliminación en una base de datos.
             // se utiliza para verificar si la eliminación del registro de la tabla
             if (rowsAffected > 0) {
-                Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
+                UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
                 // quita la fila seleccionada
                 listaFacturas.remove(selectedProducto);
             } else {
-                Utilitaria.mostrarAlerta("Error", "No se pudo eliminar el registro.");
+                UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo eliminar el registro.");
             }
         } catch (SQLException e) {
-            Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
         }
     }
 
@@ -242,18 +242,18 @@ public class FacturaController extends Utilitaria implements Initializable {
                 int rowsUpdated = statement.executeUpdate();
 
                 if (rowsUpdated > 0) {
-                    Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
+                    UtilitariaNavegabilidad.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
                 } else {
-                    Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
+                    UtilitariaNavegabilidad.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
                 }
 
                 statement.close();
                 connection.close();
             } catch (SQLException e) {
-                Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
+                UtilitariaNavegabilidad.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
             }
         } else {
-            Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
+            UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
         }
     }
 

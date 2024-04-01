@@ -23,7 +23,7 @@ import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.FloatStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-public class CajaController extends Utilitaria implements Initializable {
+public class CajaController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<Caja> tblCaja;
@@ -73,7 +73,7 @@ public class CajaController extends Utilitaria implements Initializable {
 					try {
 						return Integer.parseInt(string);
 					} catch (NumberFormatException e) {
-						Utilitaria.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
+						UtilitariaNavegabilidad.mostrarAlerta("Error", "el valor que ingreso no es un numero entero");
 						return null;
 					}
 				}
@@ -90,7 +90,7 @@ public class CajaController extends Utilitaria implements Initializable {
 	 				try {
 	 					return Double.parseDouble(string);
 	 				} catch (NumberFormatException e) {
-	 					Utilitaria.mostrarAlerta("Error", "el valor que ingreso no es un numero");
+	 					UtilitariaNavegabilidad.mostrarAlerta("Error", "el valor que ingreso no es un numero");
 	 					return null;// O lanzar una excepción personalizada
 	 				}
 	 			}

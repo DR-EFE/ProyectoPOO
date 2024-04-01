@@ -126,7 +126,7 @@ public class ExtendedRegisterController {
         stage.close();
 
         // Abre la nueva ventana
-        Ventana.MostrarPane("/Vista/Sample.fxml");
+        Ventana.MostrarPane(event, "/Vista/Sample.fxml");
     
     	
     	 

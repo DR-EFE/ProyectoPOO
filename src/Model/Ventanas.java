@@ -1,22 +1,22 @@
 package Model;
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import Controller.CategoriasController;
+
+import javafx.scene.Node;
 import Controller.ExtendedRegisterController;
-import Controller.Main;
+
 import Controller.RegisterController;
 import Controller.SampleController;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
+
+
 import javafx.stage.Stage;
 
 public class Ventanas {
@@ -27,22 +27,27 @@ public class Ventanas {
     private Button btnCategoria;
 	
 
-    public void MostrarPane(String fxmlPath) {
+	 public void MostrarPane(ActionEvent event,String fxmlPath) {
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-            Stage primaryStage = new Stage();
+	        try {	
+	        	
+	        	 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+	            Parent root = loader.load();
+	            Stage primaryStage = new Stage();
 
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(root);
-            primaryStage.setFullScreen(true); // este sirve para poder hacer que se muestre en oantalla completa la ventana 
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
+	            // Show the scene containing the root layout.
+	            Scene scene = new Scene(root);
+	            primaryStage.setFullScreen(true); // este sirve para poder hacer que se muestre en oantalla completa la ventana 
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
+	            
+	            
+	            currentStage.close();
+	        } catch (IOException e) {
+	            System.out.println(e.getMessage());
+	        }
+	    }
     
     
     public void MostrarPane2(String fxmlPath) {

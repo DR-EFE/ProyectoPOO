@@ -24,18 +24,14 @@ import java.util.ResourceBundle;
 
 import Factory.ConnectionFactory;
 
-public class ClienteController extends Utilitaria implements Initializable {
+public class ClienteController extends UtilitariaNavegabilidad implements Initializable {
 
 	@FXML
 	TableView<Cliente> tblCliente;
 	
 
-	@FXML
-	private Button btnActualizarCliente;
+
 	
-	
-	@FXML
-	private TextField TxtBusquedaCliente;
 
 	@FXML
 	private ComboBox<String> comboBoxFormaDePago;
@@ -178,7 +174,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 		Cliente selectedProducto = tblCliente.getSelectionModel().getSelectedItem();
 
 		if (selectedProducto == null) {
-			Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro.");
 			return;
 		}
 
@@ -206,14 +202,14 @@ public class ClienteController extends Utilitaria implements Initializable {
 
 		
 			if (rowsAffected > 0) {
-				Utilitaria.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
+				UtilitariaNavegabilidad.mostrarAlerta("Éxito", "El registro se ha eliminado correctamente.");
 				// quita la fila seleccionada
 				listaClientes.remove(selectedProducto);
 			} else {
-				Utilitaria.mostrarAlerta("Error", "No se pudo eliminar el registro.");
+				UtilitariaNavegabilidad.mostrarAlerta("Error", "No se pudo eliminar el registro.");
 			}
 		} catch (SQLException e) {
-			Utilitaria.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Ocurrió un error al eliminar el registro: " + e.getMessage());
 		}
 	}
 		
@@ -246,24 +242,24 @@ public class ClienteController extends Utilitaria implements Initializable {
 	            int rowsUpdated = statement.executeUpdate();
 
 	            if (rowsUpdated > 0) {
-	                Utilitaria.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
+	                UtilitariaNavegabilidad.mostrarAlerta("Éxito", "Registro actualizado correctamente en la base de datos.");
 	            } else {
-	                Utilitaria.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
+	                UtilitariaNavegabilidad.mostrarAlerta("Error", "No se encontraron registros con los criterios proporcionados.");
 	            }
 
 	            statement.close();
 	            connection.close();
 	        } catch (SQLException e) {
-	            Utilitaria.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
+	            UtilitariaNavegabilidad.mostrarAlerta("Error", "Error al actualizar el registro: " + e.getMessage());
 	        }
 	    } else {
-	        Utilitaria.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
+	        UtilitariaNavegabilidad.mostrarAlerta("Error", "No se ha seleccionado ningún registro para actualizar.");
 	    }
 	}
 
 	@FXML
 	private void buscarCliente(ActionEvent event) throws Exception {
-		String telefono = TxtBusquedaCliente.getText();
+		String telefono = TxtBusqueda.getText();
 		if (!telefono.isEmpty()) {
 			try {
 				Connection connection = ConnectionFactory.getConnection();
@@ -296,7 +292,7 @@ public class ClienteController extends Utilitaria implements Initializable {
 				e.printStackTrace();
 			}
 		} else {
-			Utilitaria.mostrarAlerta("Error", "Tiene que ingresar el número de teléfono del cliente");
+			UtilitariaNavegabilidad.mostrarAlerta("Error", "Tiene que ingresar el número de teléfono del cliente");
 
 		}
 	}

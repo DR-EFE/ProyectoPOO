@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -16,15 +25,21 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SampleController2">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="728.0" prefWidth="1360.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SampleController2">
    <children>
+      <Button fx:id="btnCatalogo1" alignment="BOTTOM_CENTER" cache="true" layoutX="1125.0" layoutY="390.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="174.0" style="-fx-background-color: white;" text="Reportes" textFill="#08009e">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Cambria Bold Italic" size="30.0" />
+         </font>
+      </Button>
       <Label layoutX="520.0" layoutY="53.0" text="Bienvenido ">
          <font>
             <Font name="Bodoni MT" size="73.0" />
          </font></Label>
-      <Button fx:id="btnCategoria" alignment="BOTTOM_CENTER" layoutX="47.0" 
-      layoutY="183.0" mnemonicParsing="false" onAction="#openCategorias" prefHeight="185.0" 
-      prefWidth="191.0" style="-fx-background-color: white;" text="Categorias" textFill="#08009e">
+      <Button fx:id="btnCategoria" alignment="BOTTOM_CENTER" layoutX="47.0" layoutY="183.0" mnemonicParsing="false" onAction="#openCategorias" prefHeight="185.0" prefWidth="191.0" style="-fx-background-color: white;" text="Categorias" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -34,45 +49,35 @@
          <effect>
             <Blend />
          </effect></Button>
-      <Button fx:id="btnVentaPastel" alignment="BOTTOM_CENTER" layoutX="147.0" layoutY="395.0" 
-      mnemonicParsing="false" onAction="#openVentasPastel" prefHeight="202.0" prefWidth="210.0" 
-      style="-fx-background-color: white;" text="Venta Pastel" textFill="#08009e">
+      <Button fx:id="btnVentaPastel" alignment="BOTTOM_CENTER" layoutX="38.0" layoutY="394.0" mnemonicParsing="false" onAction="#openVentasPastel" prefHeight="202.0" prefWidth="210.0" style="-fx-background-color: white;" text="Venta Pastel" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnVentas" alignment="BOTTOM_CENTER" cache="true" layoutX="1138.0" 
-      layoutY="146.0" mnemonicParsing="false" onAction="#openVentas" prefHeight="220.0" 
-      prefWidth="135.0" style="-fx-background-color: white;" text="Ventas" textFill="#08009e">
+      <Button fx:id="btnVentas" alignment="BOTTOM_CENTER" cache="true" layoutX="1138.0" layoutY="146.0" mnemonicParsing="false" onAction="#openVentas" prefHeight="220.0" prefWidth="135.0" style="-fx-background-color: white;" text="Ventas" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnPedidos" alignment="BOTTOM_CENTER" layoutX="890.0" 
-      layoutY="172.0" mnemonicParsing="false" onAction="#openPedidos" prefHeight="200.0" 
-      prefWidth="168.0" style="-fx-background-color: white;" text="Pedidos" textFill="#08009e">
+      <Button fx:id="btnPedidos" alignment="BOTTOM_CENTER" layoutX="890.0" layoutY="172.0" mnemonicParsing="false" onAction="#openPedidos" prefHeight="200.0" prefWidth="168.0" style="-fx-background-color: white;" text="Pedidos" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnPasteles" alignment="BOTTOM_CENTER" layoutX="601.0" 
-      layoutY="173.0" mnemonicParsing="false" onAction="#OpenPasteles" prefHeight="195.0" 
-      prefWidth="174.0" style="-fx-background-color: white;" text="Pasteles" textFill="#08009e">
+      <Button fx:id="btnPasteles" alignment="BOTTOM_CENTER" layoutX="601.0" layoutY="173.0" mnemonicParsing="false" onAction="#OpenPasteles" prefHeight="195.0" prefWidth="174.0" style="-fx-background-color: white;" text="Pasteles" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button fx:id="btnClientes" alignment="BOTTOM_CENTER" layoutX="311.0" 
-      layoutY="187.0" mnemonicParsing="false" onAction="#openClientes" 
-      prefHeight="186.0" prefWidth="174.0" style="-fx-background-color: white;" text="Clientes" textFill="#08009e">
+      <Button fx:id="btnClientes" alignment="BOTTOM_CENTER" layoutX="311.0" layoutY="187.0" mnemonicParsing="false" onAction="#openClientes" prefHeight="186.0" prefWidth="174.0" style="-fx-background-color: white;" text="Clientes" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -106,8 +111,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="273.0" layoutX="887.0" layoutY="174.0" 
-      pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="273.0" layoutX="887.0" layoutY="174.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/52.png" />
          </image>
@@ -115,8 +119,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="152.0" fitWidth="135.0" layoutX="1144.0" layoutY="176.0" 
-      pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="152.0" fitWidth="135.0" layoutX="1144.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bin/Img/6.png" />
          </image>
@@ -124,7 +127,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="156.0" fitWidth="186.0" layoutX="184.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="156.0" fitWidth="186.0" layoutX="65.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bin/Img/7.png" />
          </image>
@@ -146,9 +149,7 @@
             <MenuItem fx:id="itemCerrar" mnemonicParsing="false" onAction="#openWinOne" text="Cerrar sesión  &lt;-" />
          </items>
       </MenuButton>
-      <Button fx:id="btnCaja" alignment="BOTTOM_CENTER" layoutX="466.0" layoutY="424.0"
-       mnemonicParsing="false" onAction="#openCaja" prefHeight="174.0" prefWidth="165.0" 
-       style="-fx-background-color: white;" text="Caja" textFill="#08009e">
+      <Button fx:id="btnCaja" alignment="BOTTOM_CENTER" layoutX="311.0" layoutY="421.0" mnemonicParsing="false" onAction="#openCaja" prefHeight="174.0" prefWidth="165.0" style="-fx-background-color: white;" text="Caja" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -156,10 +157,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUsuarios" alignment="BOTTOM_CENTER" layoutX="743.0" 
-      layoutY="419.0" mnemonicParsing="false" onAction="#openUsuarios" 
-      prefHeight="181.0" prefWidth="170.0" style="-fx-background-color: white;" 
-      text="Usuarios" textFill="#08009e">
+      <Button fx:id="btnUsuarios" alignment="BOTTOM_CENTER" layoutX="590.0" layoutY="405.0" mnemonicParsing="false" onAction="#openUsuarios" prefHeight="181.0" prefWidth="170.0" style="-fx-background-color: white;" text="Usuarios" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -167,21 +165,8 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" layoutX="1017.0" 
-      layoutY="418.0" mnemonicParsing="false" onAction="#openCatalogos" 
-      prefHeight="179.0" prefWidth="165.0" style="-fx-background-color: white;" 
-      text="Catálogo" textFill="#08009e">
-         <font>
-            <Font name="Cambria Bold Italic" size="30.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-      <Circle fill="#ffc4df" layoutX="-61.0" layoutY="321.0" 
-      radius="100.0" stroke="WHITE" strokeType="INSIDE" />
-      <ImageView fitHeight="159.0" fitWidth="150.0" layoutX="478.0" 
-      layoutY="408.0" pickOnBounds="true" preserveRatio="true">
+      <Circle fill="#ffc4df" layoutX="-61.0" layoutY="321.0" radius="100.0" stroke="WHITE" strokeType="INSIDE" />
+      <ImageView fitHeight="159.0" fitWidth="150.0" layoutX="324.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/1.jpg" />
          </image>
@@ -189,8 +174,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <ImageView fitHeight="134.0" fitWidth="150.0" layoutX="769.0" layoutY="418.0" 
-      pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="134.0" fitWidth="150.0" layoutX="612.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/2.jpg" />
          </image>
@@ -198,11 +182,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button fx:id="btnHoraFecha" layoutX="1378.0" layoutY="508.0" mnemonicParsing="false" onAction="#mostrarHoraFecha" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: white;" text="Iniciar Día">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8a8a8a" height="46.0" layoutX="1068.0" layoutY="652.0" opacity="0.35" stroke="#8a8a8a" strokeType="INSIDE" width="275.0" />
       <TextField fx:id="TextFieldFH" alignment="CENTER" editable="false" layoutX="1058.0" layoutY="645.0" opacity="0.68" prefHeight="46.0" prefWidth="275.0" promptText="Fecha" style="-fx-background-color: white;">
          <opaqueInsets>
@@ -212,7 +191,7 @@
             <Font name="Britannic Bold" size="21.0" />
          </font>
       </TextField>
-      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="1037.0" layoutY="403.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="150.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
+      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="875.0" layoutY="391.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="174.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>
@@ -220,13 +199,21 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <ImageView fitHeight="134.0" fitWidth="157.0" layoutX="1045.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="134.0" fitWidth="157.0" layoutX="907.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Img/Logo%20Pizzeria%20Delivery%20Circular%20Negro.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </ImageView>
+      <ImageView fitHeight="134.0" fitWidth="157.0" layoutX="1158.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <image>
+            <Image url="@../../bin/Img/Reporte.png" />
+         </image>
       </ImageView>
    </children>
    <cursor>
