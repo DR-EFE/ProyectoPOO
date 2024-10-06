@@ -42,10 +42,16 @@ public class Pasteles {
 		this.categoria = new SimpleStringProperty(categoria);
 	}
 
+	public Pasteles(String codigoBarras, String nombre2, String descripcion2, float precio2, int peso2,
+			int cantidadRefri, String categoria2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public StringProperty getNombre() {
 
 		return nombre;
 	}
+	
 
 	public void setNombre(StringProperty nombre) {
 		this.nombre = nombre;
@@ -115,6 +121,8 @@ public class Pasteles {
 
 	}
 
+	
+	
 	public static boolean validarCampos(String codigoBarras, String nombre, String descripcion, String precioText,
 			String pesoText, String cantidadRefriText, String fechaElaboracion, String fechaVencimiento,
 			String categoria) {
@@ -173,4 +181,27 @@ public class Pasteles {
 		return true;
 	}
 
+	public String get(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getInt(String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public String getString(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getStringProperity(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
 }
