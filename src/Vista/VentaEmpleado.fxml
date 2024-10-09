@@ -35,23 +35,13 @@
                             <TableColumn fx:id="colCantidad" editable="true" prefWidth="103.0" text="Cantidad">
             
                 </TableColumn>
-                
-                <TableColumn fx:id="colTipo" editable="true" prefWidth="118.0" text="Tipo">
-                 
-                  
-                </TableColumn>
-                
-                <TableColumn fx:id="colPrecioUnitario" editable="true" prefWidth="205.0" text="Precio unitario">
-                 
-
-                </TableColumn>
                 <TableColumn fx:id="colSubTotal" editable="true" prefWidth="141.0" text="Subtotal">
                    
                  
                 
                   
                 </TableColumn>
-                <TableColumn fx:id="colTotal" editable="true" prefWidth="183.0" text="Total">
+                <TableColumn fx:id="colTotal" editable="true" prefWidth="295.0" text="Total">
                    
                 </TableColumn>
             </columns>
@@ -102,7 +92,7 @@
          </font>
       </Text>
       <TextField fx:id="TextFFolio" layoutX="932.0" layoutY="151.0" prefHeight="25.0" prefWidth="217.0" style="-fx-background-color: white;" />
-      <Button fx:id="btnVender" alignment="BOTTOM_CENTER" layoutX="539.0" layoutY="632.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: F5B6B6;" text="Vender">
+      <Button fx:id="btnVender" alignment="BOTTOM_CENTER" layoutX="539.0" layoutY="632.0" mnemonicParsing="false" onAction="#InsertarAlaBD" prefHeight="30.0" prefWidth="167.0" style="-fx-background-color: F5B6B6;" text="Vender">
          <font>
             <Font name="Britannic Bold" size="26.0" />
          </font>

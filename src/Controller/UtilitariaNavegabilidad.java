@@ -3,6 +3,7 @@ package Controller;
 
 import java.io.IOException;
 
+import Model.SessionManager;
 import Model.Ventanas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,9 @@ import javafx.scene.Scene;
 
 public abstract class UtilitariaNavegabilidad {
 	
+	 @FXML
+	protected TextField txtUsuario;
+	    
 	private Ventanas navegabilidad;
 	@FXML
     private Button btnVentas2;
@@ -70,6 +74,10 @@ public abstract class UtilitariaNavegabilidad {
 		
 		  Ventanas Ventana = new   Ventanas();
 	
+		  
+		  
+	
+		  
 		 // Crea una instancia del controlador de la nueva escena si es necesario
         ExtendedRegisterController extendedController = new ExtendedRegisterController();
         
@@ -85,7 +93,7 @@ public abstract class UtilitariaNavegabilidad {
 		alert.setContentText(mensaje);
 		alert.showAndWait();
 	}
-
+/*
 	  @FXML
 		public
 	      void openWinOne(ActionEvent event) {
@@ -142,7 +150,7 @@ public abstract class UtilitariaNavegabilidad {
 
 	      }
 	 
-	
+	*/
 	@FXML
 	public void openWintwo(ActionEvent event) {
 		       Pane.MostrarPane(event, "/Vista/Sample2.fxml");

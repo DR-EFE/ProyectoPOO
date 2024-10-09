@@ -30,7 +30,7 @@ public abstract class UtilitariaNavEmpleado {
 	
 	
     @FXML
-    private Button btnVentas2;
+    protected Button btnVentas2;
 	
 	@FXML
 	private MenuItem itemClaro;

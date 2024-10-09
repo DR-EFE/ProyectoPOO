@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -15,6 +16,7 @@ import DAO.PastelesDAO;
 import DAO.VentaDAO;
 import Factory.ConnectionFactory;
 import Model.Pasteles;
+import Model.SessionManager;
 import Model.Ventas;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -22,6 +24,7 @@ import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -50,10 +53,8 @@ public class VentaEmpleadoController extends UtilitariaNavegabilidad implements 
     private TableColumn<Ventas, String> colDescripcion;
     @FXML
     private TableColumn<Ventas, Integer> colCantidad;
-    @FXML
-    private TableColumn<Ventas, String> colTipo;
-    @FXML
-    private TableColumn<Ventas, Float> colPrecioUnitario;
+    
+    
     @FXML
     private TableColumn<Ventas, Float> colSubTotal;
     @FXML
@@ -84,7 +85,14 @@ public class VentaEmpleadoController extends UtilitariaNavegabilidad implements 
     public void initialize(URL arg0, ResourceBundle arg1) {
         listaVentas = FXCollections.observableArrayList();
         tblVentas.setItems(listaVentas);
-       
+        // Verifica si la sesión está activa y accede al usuario
+        if (SessionManager.sesionIniciada()) {
+            String usuario = SessionManager.getUsuarioActual();
+            System.out.println("Usuario actual: " + usuario);
+            // Usar el ID de usuario para interactuar con la base de datos o registrar actividades
+        } else {
+            System.out.println("No hay ninguna sesión activa.");
+        }
 
 
         // Mostrar la fecha y hora actualizadas en los campos de texto
@@ -111,8 +119,7 @@ public class VentaEmpleadoController extends UtilitariaNavegabilidad implements 
         colFolio.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         colDescripcion.setCellFactory(TextFieldTableCell.forTableColumn());
         colCantidad.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        colTipo.setCellFactory(TextFieldTableCell.forTableColumn());
-        colPrecioUnitario.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
+       
         colSubTotal.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
         colTotal.setCellFactory(TextFieldTableCell.forTableColumn(new FloatStringConverter()));
     }
@@ -163,39 +170,120 @@ public class VentaEmpleadoController extends UtilitariaNavegabilidad implements 
 
 
     // Método para agregar una venta a la tabla
+ //para la cantidad quiero que comience con 1 y que se pueda editar en la tabla 
+    //esa sera la cantidad que se le va a decontar a la cantidad en refri 
+    //El folio tiene que obtenerse de la base de datos ya que en la base de datos es un INT PK , AUTOINCREMENTABLE 
+    //ASI QUE QUIERO LA MEJOR FORMA 
  // Método para agregar una venta a la tabla
-    @FXML
-    private void agregarVentaATabla() {
-        // Obtener el texto de búsqueda
-        String textoBusqueda = TextFBuscar.getText();
-        
-        try {
-            // Buscar el pastel en la base de datos
-            Pasteles Pasti = ventaDAO.buscarVenta(textoBusqueda);
+    
+    
+	  public String obtenerUsuarioActualId() {
+		  System.out.println("=============================================");
+		  String usuario = SessionManager.getUsuarioActual();
+		  System.out.println(usuario);
+			
+			 return usuario;
+			}
+	  
+	  
+	  
+	  @FXML
+	  private void agregarVentaATabla() {
+	      // Obtener el texto de búsqueda (código de barras o nombre)
+	      String textoBusqueda = TextFBuscar.getText();
+	      
+	      try {
+	          // Buscar el pastel en la base de datos
+	          Pasteles Pasti = ventaDAO.buscarVenta(textoBusqueda);
+	          int nuevoFolio = ventaDAO.obtenerNuevoFolio();
+	          SimpleIntegerProperty cantidadVendida = new SimpleIntegerProperty(1); // Comienza con 1
+	          float precioUnitario = Pasti.getPrecio().get(); // Obtener el precio del pastel
+	          
+	          if (Pasti != null) {
+	              // Verificar si hay suficiente inventario antes de agregar la venta
+	              if (Pasti.getCantidad_en_refri().get() > 0) {
+	                  // Crear el objeto Ventas utilizando el constructor con parámetros
+	                  Ventas venta = new Ventas(
+	                      nuevoFolio,                          // folio
+	                      cantidadVendida.get(),               // cantidadVendida
+	                      cantidadVendida.get() * precioUnitario, // subtotal
+	                      cantidadVendida.get() * precioUnitario, // total (sin descuentos)
+	                      LocalDate.now().toString(),         // fechaVenta (actual)
+	                      Pasti.getNombre().get(),             // productos
+	                      Pasti.getCodigodeBarras().get(),     // codigo
+	                      obtenerUsuarioActualId()             // empleadoVenta
+	                  );
 
-            if (Pasti != null) {
-                // Crear un objeto de tipo Ventas a partir de los datos de Pasteles
-                Ventas venta = new Ventas();
+	                  // Establecer la cantidad vendida
+	                  venta.setCantidadVendida(cantidadVendida);
 
-                venta.setFolio(new SimpleIntegerProperty(Integer.parseInt(TextFFolio.getText())));
-                venta.setProductos(Pasti.getNombre());
-                venta.setCantidadVendida(new SimpleIntegerProperty(1)); // Puedes pedir la cantidad al usuario
-              //  venta.setPrecioUnitario(new SimpleFloatProperty(Pasti.getPrecio().get()));
-                venta.setSubtotal(new SimpleFloatProperty(Pasti.getPrecio().get())); // En este caso, el subtotal es igual al precio
-                venta.setTotal(new SimpleFloatProperty(Pasti.getPrecio().get()));    // Total, puedes añadir más lógica si tienes descuentos
+	                  // Agregar un listener para actualizar subtotal y total al cambiar la cantidad
+	                  cantidadVendida.addListener((observable, oldValue, newValue) -> {
+	                      float nuevoSubtotal = newValue.intValue() * precioUnitario;
+	                      venta.setSubtotal(new SimpleFloatProperty(nuevoSubtotal));
+	                      venta.setTotal(new SimpleFloatProperty(nuevoSubtotal)); // Puedes aplicar descuentos aquí si es necesario
+	                  });
 
-                // Agregar el objeto Venta a la tabla
-                tblVentas.getItems().add(venta);
-                
-                // Imprimir en consola
-                System.out.println("Venta agregada a la tabla: " + Pasti.getNombre().get());
-            } else {
-                System.out.println("No se encontró el pastel.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	                  // Establecer el resto de propiedades
+	                  venta.setFolio(new SimpleIntegerProperty(nuevoFolio));
+	                  venta.setProductos(Pasti.getNombre());
+	                  venta.setCodigodebarras(Pasti.getCodigodeBarras());
+	                  venta.setEmpleadoVenta(obtenerUsuarioActualId());
+
+	                  // Agregar el objeto Venta a la tabla gráfica
+	                  tblVentas.getItems().add(venta);
+
+	               
+	                  // Calcular la nueva cantidad en el refrigerador
+	                  int nuevaCantidadRefri = Pasti.getCantidad_en_refri().get() - cantidadVendida.get();
+	                  Pasti.getCantidad_en_refri().set(nuevaCantidadRefri);
+	                  
+	                  // Imprimir en consola
+	                  System.out.println("Venta agregada a la tabla y guardada en la BD: " + Pasti.getNombre().get());
+	              } else {
+	                  System.out.println("No hay suficiente inventario para realizar la venta.");
+	              }
+	          } else {
+	              System.out.println("No se encontró el pastel.");
+	          }
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	      }
+	  }
+	  
+	  
+	  @FXML
+	  private void InsertarAlaBD() {
+	      // Este método se llamará al presionar un botón
+	      try {
+	          // Recorrer la tabla de ventas y guardar cada venta en la base de datos
+	          for (Ventas venta : tblVentas.getItems()) {
+	              String codigoBarras = venta.getCodigodebarras().get();
+	              int cantidadVendida = venta.getCantidadVendida().get(); // Obtener la cantidad vendida
+	              Pasteles Pasti = ventaDAO.buscarVenta(codigoBarras); // Buscar el pastel en la base de datos para obtener la cantidad actual en refrigerador
+	              
+	              if (Pasti != null) {
+	                  int cantidadActualRefri = Pasti.getCantidad_en_refri().get(); // Obtener cantidad actual del refrigerador
+	                  int nuevaCantidadRefri = cantidadActualRefri - cantidadVendida; // Calcular la nueva cantidad en refrigerador
+
+	                  // Llamar al método para actualizar la cantidad en el refrigerador en la base de datos
+	                  ventaDAO.actualizarCantidadEnRefri(codigoBarras, nuevaCantidadRefri);
+	                  // Insertar la venta en la base de datos
+	                  ventaDAO.insertarVenta(venta);
+	              } else {
+	                  System.out.println("No se encontró el pastel con código de barras: " + codigoBarras);
+	              }
+	          }
+
+	          System.out.println("Todas las ventas se han guardado en la base de datos.");
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	          System.out.println("Error al insertar en la base de datos: " + e.getMessage());
+	      }
+	  }
+
+
+	  
 
 
 
@@ -206,6 +294,9 @@ public class VentaEmpleadoController extends UtilitariaNavegabilidad implements 
         TextFFolio.clear();
         TextFInventario.clear();
     }
+    
+    
+    
 
     @FXML
     void MostrarFecha1(ActionEvent event) {

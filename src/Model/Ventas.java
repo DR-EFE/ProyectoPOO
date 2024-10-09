@@ -47,6 +47,7 @@ public class Ventas {
 		this.total = new SimpleFloatProperty(total);
 		this.fechaDeVenta = new SimpleStringProperty(fechaVenta);
 		this.productos = new SimpleStringProperty(productos);
+		 
 	}
 	
 	
@@ -113,11 +114,21 @@ public class Ventas {
 	public void setCategorias(StringProperty categorias) {
 		Categorias = categorias;
 	}
-
-	public Ventas() {
-		// TODO Auto-generated constructor stub
-	}
-
+/*
+	 public Ventas() {
+	        this.folio = new SimpleIntegerProperty();
+	        this.cantidadVendida = new SimpleIntegerProperty();
+	        this.subtotal = new SimpleFloatProperty();
+	        this.total = new SimpleFloatProperty();
+	        this.fechaDeVenta = new SimpleStringProperty();
+	        this.productos = new SimpleStringProperty();
+	        this.codigo = new SimpleStringProperty();
+	        this.empleadoVenta = new SimpleStringProperty();  // Inicializado aquí
+	        this.Codigodebarras = new SimpleStringProperty();  // Inicializado aquí si es necesario
+	    }
+	 
+	 */
+	 
 	public Ventas(String codigodeBarras2, int i, float precio, float precio2, LocalDateTime now, String nombre) {
 		// TODO Auto-generated constructor stub
 	}
@@ -157,8 +168,8 @@ public class Ventas {
 		return fechaDeVenta;
 	}
 
-	public void setFechaVenta(StringProperty fechaVenta) {
-		this.fechaDeVenta = fechaVenta;
+	public void setFechaVenta(StringProperty localDate) {
+		this.fechaDeVenta = localDate;
 	}
 
 	public StringProperty getProductos() {
@@ -251,6 +262,11 @@ public class Ventas {
 			
 			
 		}
+		public int getUsersFK() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
 		
 		
 }

@@ -18,8 +18,6 @@ import javafx.stage.Stage;
 
 public class EmpleadoController extends UtilitariaNavEmpleado implements Initializable {
 
-    @FXML
-    private Button btnVentas2;
 
     @FXML
     private Button btnPedidos2;

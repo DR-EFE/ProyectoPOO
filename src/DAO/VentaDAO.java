@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,24 @@ import Factory.ConnectionFactory;
 
 public class VentaDAO {
 	
-	
+	public void insertarVenta(Ventas venta) throws Exception {
+	    String query = "INSERT INTO ventas (Folio, CantidadVendida, Subtotal, Total, FechaDeVenta, Users_FK, Codigo_Producto, Productos) " +
+	                   "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	    Connection connection = ConnectionFactory.getConnection();
+	    PreparedStatement ps = connection.prepareStatement(query);
+
+	    ps.setInt(1, venta.getFolio().get());  // Folio
+	    ps.setInt(2, venta.getCantidadVendida().get());  // Cantidad vendida
+	    ps.setFloat(3, venta.getSubtotal().get());  // Subtotal
+	    ps.setFloat(4, venta.getTotal().get());  // Total
+	    ps.setDate(5, java.sql.Date.valueOf(LocalDateTime.now().toLocalDate()));  // Fecha de venta (fecha actual)
+	    ps.setInt(6, venta.getUsersFK());  // ID del usuario que realiza la venta (clave foránea)
+	    ps.setString(7, venta.getCodigodebarras().get());  // Código de barras del producto
+	    ps.setString(8, venta.getProductos().get());  // Nombre del producto
+
+	    ps.executeUpdate();
+	}
+
 	
 	
 	
@@ -45,10 +63,20 @@ public class VentaDAO {
 	    }
 	
 	
-	
-	
-	
+	   public void actualizarCantidadEnRefri(String codigoBarras, int nuevaCantidad) throws Exception {
+		    String query = "UPDATE pasteles SET cantidad_en_refri = ? WHERE codigo_de_barras = ?";
+		    Connection connection = ConnectionFactory.getConnection();
+		    PreparedStatement ps = connection.prepareStatement(query);
+		    
+		    ps.setInt(1, nuevaCantidad);
+		    ps.setString(2, codigoBarras);
+		    
+		    ps.executeUpdate();
+		}
 
+	
+	
+/*
 	public Ventas buscarVentaPorNombreProducto(String nombreProducto) throws Exception {
 	    Connection connection = null;
 	    PreparedStatement statement = null;
@@ -109,7 +137,7 @@ public class VentaDAO {
 	    return ventaEncontrada  ;
 	  
 	}
-	
+	*/
 	
 	
 	public Pasteles buscarVenta(String nombreProducto) throws Exception {
@@ -196,6 +224,21 @@ public class VentaDAO {
         
         return ventas;
     }
+
+	
+	
+	public int obtenerNuevoFolio() throws Exception {
+	    String query = "SELECT MAX(folio) FROM ventas";
+	    Connection connection = ConnectionFactory.getConnection();
+	    PreparedStatement ps = connection.prepareStatement(query);
+	    ResultSet rs = ps.executeQuery();
+	    
+	    if (rs.next()) {
+	        return rs.getInt(1) + 1;  // Retornar el siguiente folio disponible
+	    } else {
+	        return 1;  // Si no hay ventas aún, empezar en 1
+	    }
+	}
 
     // Otros métodos y atributos según sea necesario
 }

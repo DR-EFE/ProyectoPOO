@@ -191,7 +191,7 @@
             <Font name="Britannic Bold" size="21.0" />
          </font>
       </TextField>
-      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="875.0" layoutY="391.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="174.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
+      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="875.0" layoutY="391.0" mnemonicParsing="false" prefHeight="210.0" prefWidth="174.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>

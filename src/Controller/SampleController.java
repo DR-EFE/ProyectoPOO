@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import DAO.UserCredentialsDAO;
 import Factory.ConnectionFactory;
 import Model.PasswordUtil;
+import Model.SessionManager;
 import Model.UserCredentials;
 import Model.Ventanas;
 import javafx.event.ActionEvent;
@@ -31,8 +32,7 @@ public class SampleController extends UtilitariaNavegabilidad implements Initial
     @FXML
     private TextField txtContra;
 
-    @FXML
-    private TextField txtUsuario;
+
     @FXML
     private PasswordField passwordField1;
     @Override
@@ -76,10 +76,13 @@ public class SampleController extends UtilitariaNavegabilidad implements Initial
         UserCredentials userID = UserCredentialsDAO.getUserID2(usuario);   //  
        // String userID2 = UserModel.getTipoDeChamba() ;
         if (userID!=null && userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+        	 SessionManager.iniciarSesion(usuario);
 
                 openWintwo(event);
 
             }else if(userCredentials != null && PasswordUtil.checkPassword(password1, userCredentials.getPasswordHash(), userCredentials.getSalt())) {
+            	 SessionManager.iniciarSesion(usuario);
+
             	openWintwo2(event);
             
             }
