@@ -10,7 +10,18 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		
 		Ventanas Pane = new Ventanas();
+<<<<<<< Updated upstream
 		Pane.MostrarPane("/Vista/Sample.fxml");
+=======
+		//Pane.MostrarPane2("/Vista/Principal.fxml");
+		//Pane.MostrarPane2("/Vista/Sample.fxml");
+		Pane.MostrarPane2("/Vista/Sample2.fxml");
+		//Pane.MostrarPane2("/Vista/Diarias.fxml");
+		//Pane.MostrarPane2("/Vista/Empleado.fxml");
+		//Pane.MostrarPane("/Vista/Empleado.fxml");
+		//Pane.MostrarPane("/Vista/VentaEmpleado.fxml");
+	
+>>>>>>> Stashed changes
 	
 	}
 

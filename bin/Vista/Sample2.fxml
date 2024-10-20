@@ -156,12 +156,16 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+<<<<<<< Updated upstream
       <Button fx:id="btnUsuarios" alignment="BOTTOM_CENTER" layoutX="743.0" 
       layoutY="419.0" mnemonicParsing="false" onAction="#openUsuarios" 
       prefHeight="181.0" prefWidth="170.0" style="-fx-background-color: white;" 
       text="Usuarios" textFill="#08009e">
+=======
+      <Button fx:id="btnUsuarios" alignment="BOTTOM_CENTER" layoutX="590.0" layoutY="405.0" mnemonicParsing="false" onAction="#openUsuarios" prefHeight="181.0" prefWidth="183.0" style="-fx-background-color: white;" text="Empleados" textFill="#08009e">
+>>>>>>> Stashed changes
          <font>
-            <Font name="Cambria Bold Italic" size="30.0" />
+            <Font name="Cambria Bold Italic" size="29.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -212,7 +216,11 @@
             <Font name="Britannic Bold" size="21.0" />
          </font>
       </TextField>
+<<<<<<< Updated upstream
       <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="1037.0" layoutY="403.0" mnemonicParsing="false" onAction="#openCatalogos" prefHeight="210.0" prefWidth="150.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
+=======
+      <Button fx:id="btnCatalogo" alignment="BOTTOM_CENTER" cache="true" layoutX="875.0" layoutY="391.0" mnemonicParsing="false" prefHeight="210.0" prefWidth="174.0" style="-fx-background-color: white;" text="Catalogo" textFill="#08009e">
+>>>>>>> Stashed changes
          <font>
             <Font name="Cambria Bold Italic" size="30.0" />
          </font>

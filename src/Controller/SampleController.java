@@ -47,6 +47,7 @@ public class SampleController implements Initializable {
     
     Ventanas Ventana = new Ventanas();
     
+<<<<<<< Updated upstream
     @FXML
     void openRegister(ActionEvent event) {
     	// Obtiene el Node que generó el evento (en este caso, el botón)
@@ -62,6 +63,9 @@ public class SampleController implements Initializable {
     	
     	
     }
+=======
+   
+>>>>>>> Stashed changes
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
